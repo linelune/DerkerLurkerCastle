@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 982
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -317,22 +317,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Monster Prefab
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Monster Prefab
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "/home/agnes/Documents/Supa\xE9ro CS/COMP 376/DerkerLerker/DerkerLurkerCastle"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 665a0000
-    m_LastClickedID: 23142
-    m_ExpandedIDs: 00000000565a0000625a000000ca9a3bffffff7f
+    m_SelectedIDs: a45a0000
+    m_LastClickedID: 23204
+    m_ExpandedIDs: 00000000965a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -360,7 +360,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000565a0000
+    m_ExpandedIDs: 00000000965a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 160
+    m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
@@ -488,9 +488,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 2ca0ffffd6aaffff7aafffffccb2ffffaab5ffff06c1ffff6ec7fffffed0ffff68e1ffffc8e8ffff90efffff12f2ffff38fbffff
+      m_SelectedIDs: 225c0000
+      m_LastClickedID: 23586
+      m_ExpandedIDs: 34ebffffeaedffff38fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -623,7 +623,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 0
+      displayed: 1
       snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -739,9 +739,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.23683667, y: 3.8774428, z: 0.3703432}
+    m_Target: {x: 1.5492513, y: 3.1040113, z: 0.21053886}
     speed: 2
-    m_Value: {x: -0.23683667, y: 3.8774428, z: 0.3703432}
+    m_Value: {x: 1.5492513, y: 3.1040113, z: 0.21053886}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -788,13 +788,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.0055919695, y: 0.9932129, z: -0.053994153, w: -0.10286402}
+    m_Target: {x: -0.007238341, y: 0.97676396, z: -0.21157196, w: -0.033417407}
     speed: 2
-    m_Value: {x: -0.005591971, y: 0.9932131, z: -0.053994164, w: -0.10286404}
+    m_Value: {x: -0.0072383424, y: 0.97676414, z: -0.211572, w: -0.033417415}
   m_Size:
-    m_Target: 5.462643
+    m_Target: 4.757874
     speed: 2
-    m_Value: 5.462643
+    m_Value: 4.757874
   m_Ortho:
     m_Target: 0
     speed: 2
