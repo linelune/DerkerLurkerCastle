@@ -64,11 +64,19 @@ bool awake;
     
     void lookAt ()
   {
+        //Locks x and z axis, rotates y to face camera
+        //More akin to Doom/Hexen/Heretic style classic billboarding
+        var delta = Target.position - transform.position;
+        delta.x = delta.z = 0;
+        transform.LookAt(Target.transform.position - delta);
+        /*
       var delta = Target.position - transform.position;
       delta.z = 0;
       var rotation = Quaternion.LookRotation(delta);
       transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime*Damping);
-  }
+  */
+    }
+
   
   void throwAcid()
     {

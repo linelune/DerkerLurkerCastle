@@ -63,9 +63,13 @@ public float damage;
     
     void lookAt ()
   {
-      var delta = Target.position - transform.position;
-      delta.z = 0;
-      var rotation = Quaternion.LookRotation(delta);
-      transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime*Damping);
-  }
+        
+        var delta = Target.position - transform.position;
+        delta.x = delta.z = 0;
+        transform.LookAt(Target.transform.position - delta);
+        //var rotation = Quaternion.LookRotation(delta);
+        //Using slerp here causes the bilboarding to fail. The sprite should ALWAYS point at the camera, there shouldn't be any movement damping
+        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime*Damping);
+        //transform.rotation = Quaternion.AngleAxis(rotation.y, Vector3.up);
+    }
 }
