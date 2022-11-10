@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 189742, guid: ec948f8e0c2ff154f8d8ab7b12efce49, type: 3}
       propertyPath: m_Name
-      value: littleswordfighter
+      value: littleswordfighter Variant
       objectReference: {fileID: 0}
     - target: {fileID: 189742, guid: ec948f8e0c2ff154f8d8ab7b12efce49, type: 3}
       propertyPath: m_TagString
@@ -715,6 +715,7 @@ MonoBehaviour:
   gravity: -9.8
   jumpHeight: 1
   crouchTimer: 0
+  health: 100
 --- !u!114 &1254997392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8095248544661694285}
+  shield: {fileID: 191058841}
+  sword: {fileID: 0}
 --- !u!1 &8095248544671021183 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 191000, guid: ec948f8e0c2ff154f8d8ab7b12efce49, type: 3}

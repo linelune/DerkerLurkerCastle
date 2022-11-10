@@ -16,11 +16,16 @@ public class PlayerMotor : MonoBehaviour
     public float gravity = -9.8f;
     public float jumpHeight = 1.0f;
     public float crouchTimer;
+    public int health = 100;
+
+    // Audio
+    private AudioManager movementAM;
 
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        movementAM = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -50,9 +55,17 @@ public class PlayerMotor : MonoBehaviour
         // Move on x and z axis
         moveDirection.x = input.x;
         moveDirection.z = input.y;
-        if (transform.TransformDirection(moveDirection) == new Vector3(0.0f, 0.0f, 0.0f)) { animator.SetFloat("Speed", 0); }
-        else { animator.SetFloat("Speed", speed); }
+        if (transform.TransformDirection(moveDirection) == new Vector3(0.0f, 0.0f, 0.0f)) {
+            movementAM.StopPlaying("FootstepsOnConcrete");
+            animator.SetFloat("Speed", 0); 
+        }
+        else {
+            movementAM.Play("FootstepsOnConcrete", 0f, 1f);
+            movementAM.Volume("FootstepsOnConcrete", 1.5f);
+            animator.SetFloat("Speed", speed); 
+        }
         characterController.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+
         // Move on y axis (jump and gravity)
         playerVelocity.y += gravity * Time.deltaTime;
         if (isGrounded && playerVelocity.y < 0)
@@ -84,11 +97,14 @@ public class PlayerMotor : MonoBehaviour
         if (isSprinting)
         {
             speed = 8.0f;
+            movementAM.Play("FootstepsOnConcrete", 0f, 1.5f);
+            movementAM.Volume("FootstepsOnConcrete", 1.5f);
             animator.SetBool("IsRunning", true);
         }
         else
         {
             speed = 5.0f;
+            movementAM.StopPlaying("FootstepsOnConcrete");
             animator.SetBool("IsRunning", false);
         }
     }

@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 3080723414939687671}
   - component: {fileID: 3086921377038722885}
   - component: {fileID: 3635070314379271018}
+  - component: {fileID: 1945254239380822779}
+  - component: {fileID: 1673775266220035410}
   - component: {fileID: 2016050120129472274}
   m_Layer: 0
   m_Name: Player
@@ -169,6 +171,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1945254239380822779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760537499967283388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78c239dfec286d49bf1ed4ddfa2ac2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 100
+--- !u!114 &1673775266220035410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760537499967283388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efff02242f43cad48b7eb5a4f4767a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  speed: 5
+  gravity: -9.8
+  jumpHeight: 1
+  crouchTimer: 0
+  health: 100
 --- !u!143 &2016050120129472274
 CharacterController:
   m_ObjectHideFlags: 0
