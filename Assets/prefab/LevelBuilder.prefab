@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomList:
   - {fileID: 7293915989391342203, guid: feecb2f332bba17458ae7a1515d0468b, type: 3}
-  player: {fileID: 698031269564902243, guid: 78521ea5436f1b348a225ca36a382d5e, type: 3}
+  player: {fileID: 6679490735943902896, guid: f6716d79a5dfc5f0ab2b6f2e22b43b31, type: 3}
