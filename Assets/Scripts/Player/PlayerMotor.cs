@@ -16,6 +16,7 @@ public class PlayerMotor : MonoBehaviour
     public float gravity = -9.8f;
     public float jumpHeight = 1.0f;
     public float crouchTimer;
+    public int health = 100;
 
     // Start is called before the first frame update
     void Start()

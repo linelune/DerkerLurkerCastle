@@ -7,12 +7,12 @@ public class Freezer : MonoBehaviour
 public bool cooldown=false;
 bool freezed=false;
 GameObject mPlayer;
-PlayerInput mPI;
+    PlayerMotor mPI;
     // Start is called before the first frame update
     void Start()
     {
     mPlayer=GameObject.FindWithTag("Player");
-    mPI=mPlayer.GetComponent<PlayerInput>();
+    mPI=mPlayer.GetComponent<PlayerMotor>();
         
     }
 
@@ -26,7 +26,7 @@ PlayerInput mPI;
  {
  cooldown=true;
  mPI.speed=0;
- mPI.life--;
+ mPI.health--;
  Debug.Log("freeze");
  Invoke("releasePlayer",4f);
  Invoke("resetCoolDown",8f);
