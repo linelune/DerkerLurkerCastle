@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.075
+  m_FogDensity: 0.055
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -197,10 +197,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a4c69f7a9d3ea43907b5765229dc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TextureWarpingFactor: 0.557
+  _TextureWarpingFactor: 1
   _VertexGridResolution: 75
   _UseRetroVertexLighting: 1
-  _RetroLightingNormalFactor: 0
+  _RetroLightingNormalFactor: 0.474
   _EnableTriangleSortingEmulation: 0
   _DepthDebugView: 0
 --- !u!4 &553157485
@@ -243,6 +243,11 @@ MonoBehaviour:
   target: {fileID: 735078738}
   smoothSpeed: 0.5
   offset: {x: 0, y: 2, z: 4}
+--- !u!136 &1290700453 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 191058841, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+  m_PrefabInstance: {fileID: 1552665745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1552665745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250,37 +255,93 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1180859455, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: m_HDR
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: m_AllowMSAA
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: far clip plane
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: m_RenderingPath
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_BackGroundColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1180859456, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: m_AllowDynamicResolution
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1254997396, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 1290700453}
+    - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: colorDepth.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: colorDepth.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: colorDepth.z
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: ditherDepth.x
-      value: 16
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: ditherDepth.y
-      value: 16
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: ditherDepth.z
-      value: 16
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: ditheringMatrixSize
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034396046154882938, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_Range
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8095248544670755469, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: m_RootOrder
