@@ -1007,6 +1007,12 @@ MonoBehaviour:
   - {fileID: 1261992162560534665, guid: d2fdada1f953c554e9ccdb37277b27b4, type: 3}
   - {fileID: 684034534705399871, guid: 1dc6d07bc2793164c9dc33e7f1aa2dbe, type: 3}
   - {fileID: 7068965563946436588, guid: c27a917ba42417241846a213498b848b, type: 3}
+  - {fileID: 6269801015542324563, guid: cff1833f6aff3c446a24031086203686, type: 3}
+  - {fileID: 859886716019221186, guid: b57d32e2b1f0d1e41be42d59148cc6d2, type: 3}
+  - {fileID: 8871481947321299319, guid: a26ccb6b3ab561e43b1291352429c05f, type: 3}
+  - {fileID: 3436191879732746223, guid: 731c3966980b4f84594ec20dfb424b6a, type: 3}
+  - {fileID: 5274434673285830898, guid: 4d59b1e4c0eade2428928f9527950f60, type: 3}
+  - {fileID: 8491495256283375675, guid: bbfc992899b4b8e48a32a1c8d17357f4, type: 3}
   branchList: []
   passageList: []
   arenaList: []
