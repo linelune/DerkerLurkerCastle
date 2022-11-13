@@ -18,7 +18,7 @@ In Derker Lurker Castle, the player will explore a **procedurally generated dung
 - [x] Procedural generation
 - [x] First audio implementation
 - [x] 2D enemies
-- [ ] Dim light
+- [x] Dim light
 - [ ] Level 2
 - [ ] Make enemies 3D
 - [ ] Animate enemies
