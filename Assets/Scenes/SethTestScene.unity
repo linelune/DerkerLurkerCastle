@@ -313,15 +313,15 @@ PrefabInstance:
       objectReference: {fileID: 1290700453}
     - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: colorDepth.x
-      value: 100
+      value: 255
       objectReference: {fileID: 0}
     - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: colorDepth.y
-      value: 100
+      value: 255
       objectReference: {fileID: 0}
     - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: colorDepth.z
-      value: 100
+      value: 255
       objectReference: {fileID: 0}
     - target: {fileID: 4538258672957955103, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: ditherDepth.x
