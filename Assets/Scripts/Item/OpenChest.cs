@@ -24,7 +24,7 @@ public int radius=2;
     Target=GameObject.FindWithTag("Player").transform;
      
      
-     distance=(Target.position-transform.position).magnitude;
+     distance=Mathf.Abs((Target.position-transform.position).magnitude);
      if(distance<3f &&Input.GetButtonDown("Interact"))
      {
      StartCoroutine(openChest());
