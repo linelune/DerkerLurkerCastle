@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInterations : MonoBehaviour
+public class PlayerInteractions : MonoBehaviour
 {
     public Animator animator;
     public Collider shield;
