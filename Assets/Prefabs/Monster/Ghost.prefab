@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1620109824050574579}
   - component: {fileID: 5790260649951690396}
   - component: {fileID: 7267037918105627492}
+  - component: {fileID: 8803483620857270971}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -63,6 +64,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 0.0001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8803483620857270971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375010404725780656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7695761bc1e5e5436a0212d38ea103c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &6482633118730149282
 GameObject:
   m_ObjectHideFlags: 0
