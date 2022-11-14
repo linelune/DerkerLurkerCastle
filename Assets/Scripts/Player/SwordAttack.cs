@@ -18,5 +18,6 @@ public class SwordAttack : MonoBehaviour
             // play animation maybe or if you have a onDead() thing to animate then destroy
         }
         
+        
     }
 }
