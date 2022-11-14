@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 8190168175482036236}
   - component: {fileID: 4329598292904200184}
   - component: {fileID: 5332097279337416964}
+  - component: {fileID: 3246957830821015191}
   m_Layer: 0
   m_Name: GlutonyChest
   m_TagString: Enemy
@@ -170,3 +171,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 0.0001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3246957830821015191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632788601999944978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7695761bc1e5e5436a0212d38ea103c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100

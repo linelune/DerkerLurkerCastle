@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     private PlayerInput playerIput;
     private PlayerInput.OnFootActions onFoot;
     private PlayerMotor motor;
-    private PlayerInterations interactions;
+    private PlayerInteractions interactions;
     private PlayerLook playerLook;
     public int playerHealth = 100;
 
@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour
         onFoot = playerIput.OnFoot;
         motor = GetComponent<PlayerMotor>();
         playerLook = GetComponent<PlayerLook>();
-        interactions = GetComponent<PlayerInterations>();
+        interactions = GetComponent<PlayerInteractions>();
         // Log events
         onFoot.Jump.performed += ctx => motor.Jump();
         onFoot.Crouch.performed += ctx => motor.Crouch();
