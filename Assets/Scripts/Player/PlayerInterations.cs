@@ -7,6 +7,7 @@ public class PlayerInterations : MonoBehaviour
     public Animator animator;
     public Collider shield;
     public Collider sword;
+    public int mCoins;
 
     private void Awake()
     {
