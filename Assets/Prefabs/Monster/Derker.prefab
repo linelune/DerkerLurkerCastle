@@ -173,6 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   ChaseSpeed: 0.01
+  Face: {fileID: 7335473323720333739}
+  m_Bobspeed: 1
 --- !u!143 &2172166622878082385
 CharacterController:
   m_ObjectHideFlags: 0
