@@ -13,10 +13,13 @@ public class PlayerMotor : MonoBehaviour
     private bool crouching;
     private bool isSprinting;
     public float speed = 5f;
+    public float sprintSpeed = 8f;
+    private float baseSpeed;
     public float gravity = -9.8f;
     public float jumpHeight = 1.0f;
     public float crouchTimer;
     public int health = 100;
+    public int maxHealth = 100;
 
     // Audio
     private AudioManager movementAM;
@@ -24,12 +27,19 @@ public class PlayerMotor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        baseSpeed = speed;
+        sprintSpeed = speed + 2.0f;
         characterController = GetComponent<CharacterController>();
         movementAM = FindObjectOfType<AudioManager>();
     }
 
     void Update()
     {
+        
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
         isGrounded = characterController.isGrounded;
         if (isCrouched)
         {
@@ -47,6 +57,7 @@ public class PlayerMotor : MonoBehaviour
                 crouchTimer = 0f;
             }
         }
+        //speed = baseSpeed;
     }
 
     public void ProcessMove(Vector2 input)
@@ -96,16 +107,33 @@ public class PlayerMotor : MonoBehaviour
         isSprinting = !isSprinting;
         if (isSprinting)
         {
-            speed = 8.0f;
+            speed = sprintSpeed;
             movementAM.Play("FootstepsOnConcrete", 0f, 1.5f);
             movementAM.Volume("FootstepsOnConcrete", 1.5f);
             animator.SetBool("IsRunning", true);
         }
         else
         {
-            speed = 5.0f;
+            speed = baseSpeed;
             movementAM.StopPlaying("FootstepsOnConcrete");
             animator.SetBool("IsRunning", false);
         }
+    }
+
+    public void SpeedPower()
+    {
+        CancelInvoke("ResetSpeed");
+        baseSpeed += 3;
+        sprintSpeed += 3;
+        speed = baseSpeed;
+        Invoke("ResetSpeed", 10f);
+    }
+
+    void ResetSpeed()
+    {
+        Debug.Log("Reset Speed");
+        baseSpeed -= 3;
+        sprintSpeed -= 3;
+        speed = baseSpeed;
     }
 }
