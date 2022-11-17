@@ -255,6 +255,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 191058841, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1180859455, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: m_TagString
       value: MainCamera
@@ -394,6 +398,14 @@ PrefabInstance:
     - target: {fileID: 8095248544671020873, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
       propertyPath: m_Name
       value: littleswordfighter Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8095248544671021183, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205352827450129343, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53be09e6076f13c4184701e80f1b76e2, type: 3}
