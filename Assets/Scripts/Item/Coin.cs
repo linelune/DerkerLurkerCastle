@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public GameObject model;
     private bool collectible = false;
     // Start is called before the first frame update
     void Start()
@@ -14,7 +15,7 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(0, 35 * Time.deltaTime, 0);
     }
     void OnTriggerEnter(Collider other)
     {

@@ -12,6 +12,7 @@ public class PlayerMotor : MonoBehaviour
     private bool isCrouched;
     private bool crouching;
     private bool isSprinting;
+    private bool invulnerable = false;
     public float speed = 5f;
     public float sprintSpeed = 8f;
     private float baseSpeed;
@@ -36,7 +37,7 @@ public class PlayerMotor : MonoBehaviour
     void Update()
     {
         
-        if (health > maxHealth)
+        if (health > maxHealth || invulnerable)
         {
             health = maxHealth;
         }
@@ -125,8 +126,15 @@ public class PlayerMotor : MonoBehaviour
         CancelInvoke("ResetSpeed");
         baseSpeed += 3;
         sprintSpeed += 3;
-        speed = baseSpeed;
-        Invoke("ResetSpeed", 10f);
+        if (isSprinting)
+        {
+            speed = sprintSpeed;
+        }
+        else
+        {
+            speed = baseSpeed;
+        }
+            Invoke("ResetSpeed", 10f);
     }
 
     void ResetSpeed()
@@ -134,6 +142,39 @@ public class PlayerMotor : MonoBehaviour
         Debug.Log("Reset Speed");
         baseSpeed -= 3;
         sprintSpeed -= 3;
-        speed = baseSpeed;
+        if (isSprinting)
+        {
+            speed = sprintSpeed;
+        }
+        else
+        {
+            speed = baseSpeed;
+        }
+    }
+
+    public void InvulnPower()
+    {
+        Debug.Log("Invulnerable");
+        CancelInvoke("ResetInvuln");
+        invulnerable = true;
+        Invoke("ResetInvuln", 15f);
+    }
+    void ResetInvuln()
+    {
+        invulnerable = false;
+    }
+
+    public void MoonPower()
+    {
+        Debug.Log("Moon Jump!");
+        CancelInvoke("ResetMoon");
+        gravity = -3f;
+        Invoke("ResetMoon", 20f);
+    }
+
+    void ResetMoon()
+    {
+        Debug.Log("Reset Moon");
+        gravity = -9.81f;
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: Breakable
   m_TagString: Breakable
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -51,7 +51,6 @@ MonoBehaviour:
   - {fileID: 5316335274358942857, guid: ff9e1348b94ef904ca90b06c8c3058f0, type: 3}
   - {fileID: 7795256517292645473, guid: 553cd44a58dd98f46848ff0b39985ff9, type: 3}
   - {fileID: 2746776423899703102, guid: ae1f6ea531c09b1488fc4a2d72c2b225, type: 3}
-  content: 3
   radius: 2
 --- !u!65 &7061651903727930990
 BoxCollider:
