@@ -22,9 +22,9 @@ public class SpeedPowerup : MonoBehaviour
         model.transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(m_Bobspeed * Time.time) + 1.0f) / 2.0f);
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "Player")
+        if(col.tag == "Player")
         {
             Destroy(gameObject);
             col.gameObject.GetComponent<PlayerMotor>().SpeedPower();

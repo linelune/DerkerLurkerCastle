@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Breakable : MonoBehaviour
 {
-public GameObject mCoinPrefab;
-public int content=3;
-public int radius=2;
+    public GameObject mCoinPrefab;
+    public GameObject[] breakableModels;
+    private int content;
+    public int radius=1;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //pots contain 2-3 coins
+        content = Random.Range(2, 4);
+        //Picks a random pot model when created
+        int t = Random.Range(0, breakableModels.Length);
+        GameObject pot = Instantiate(breakableModels[t], transform.position, transform.rotation);
+        pot.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
+        pot.transform.parent = gameObject.transform;
     }
 
     // Update is called once per frame
@@ -21,12 +28,26 @@ public int radius=2;
     
     public void crushed()
     {
-    for(int i=0;i<content;i++){
-    Instantiate(mCoinPrefab,(transform.position+(Vector3)(radius * UnityEngine.Random.insideUnitCircle)),Quaternion.identity);
-    
-    Debug.Log("Coin !");
-    Destroy(this);
+    for(int i=0;i<content;i++)
+        {
+            //Gives coins a random velocity so they fly around when the pot breaks
+            GameObject c = Instantiate(mCoinPrefab, transform.position, transform.rotation);
+            Rigidbody cr = c.GetComponent<Rigidbody>();
+            float rx = Random.Range(-0.5f, 0.5f);
+            float rz = Random.Range(-0.5f, 0.5f);
+            cr.velocity = new Vector3(rx, 5f, rz);
+            Debug.Log("Coin !");
+        }
+        Destroy(gameObject);
+    }
 
-    }}
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.tag == "Player")
+        {
+            crushed();
+        }
+    }
+
     
 }

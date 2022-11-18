@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    private bool collectible = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Invoke("makeCollectible", 0.015f);
     }
 
     // Update is called once per frame
@@ -17,11 +18,15 @@ public class Coin : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-    if(other.tag=="Player")
-    {
-    other.GetComponent<PlayerInteractions>().mCoins+=1;
-    Debug.Log("We got coin");
-    Destroy(this);
+        if(other.tag=="Player" && collectible)
+        {
+            other.GetComponent<PlayerInteractions>().mCoins+=1;
+            Debug.Log("We got coin");
+            Destroy(gameObject);
+        }
     }
+    private void makeCollectible()
+    {
+        collectible = true;
     }
 }
