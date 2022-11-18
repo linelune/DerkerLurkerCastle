@@ -46,10 +46,10 @@ public class Derker : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        Debug.Log(col.gameObject.tag);
-        if(col.gameObject.tag == "Player")
+        Debug.Log(col.tag);
+        if(col.tag == "Player")
         {
             justCaught=true;
             gameObject.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
