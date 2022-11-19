@@ -24,11 +24,14 @@ public class UpgradeManager : MonoBehaviour
         {
             if(!upgradeMenu.active)
             {
+
                 upgradeMenu.SetActive(true);
+                Time.timeScale = 0f;
             }
             else
             {
                 upgradeMenu.SetActive(false);
+                Time.timeScale = 1f;            
             }
         }
     }
