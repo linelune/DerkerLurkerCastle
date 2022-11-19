@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8737071508913346221}
   - component: {fileID: 8593149732404101438}
   - component: {fileID: 7677764581658666332}
+  - component: {fileID: 476369903962781761}
   m_Layer: 0
   m_Name: Chest_Sprite
   m_TagString: Enemy
@@ -63,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  speed: 0.01
+  speed: 3
   mAcidPrefab: {fileID: 8466608430055827036, guid: 80654287e2abcc376962f96427b6d1a5, type: 3}
   damage: 0
 --- !u!114 &3246957830821015191
@@ -167,3 +168,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!143 &476369903962781761
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632788601999944978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.50048876
+  m_SlopeLimit: 5
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}

@@ -13,7 +13,8 @@ float Damping=1f;
     Animator anim;
     SpriteRenderer rend;
     Rigidbody m_Rigidbody;
-    public float speed = 0.01f;
+    public float speed = 1f;
+    private CharacterController m_Controller;
 DisplayManager mDM;
 [SerializeField] GameObject mAcidPrefab;
 Vector3 mSpawnpos;
@@ -29,6 +30,7 @@ bool awake;
         m_Rigidbody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
+        m_Controller = GetComponent<CharacterController>();
         //rend.color = new Color(0.0f, 0.0f, 0.0f, 1f);
     //mDM=GetComponentInChildren<DisplayManager>();
     throwAcid();
@@ -77,7 +79,44 @@ bool awake;
             anim.SetBool("isAwake", false);
             awake =false;
      }
+        if (awake)
+        {
+            bool strafe = false;
+            RaycastHit hit;
+            var dir = Target.position - transform.position;
+            var d = (Target.position + new Vector3(0f, 1f, 0f)) - transform.position;
+            var movement = dir;
+            
+            //Rudimentary ai, helps path around objects
+            if (Physics.Raycast(transform.position, d, out hit))
+            {
+                //Debug.Log(hit.collider.tag);
+                if (hit.collider.tag != "Player")
+                {
+                    strafe = true;
+                }
+            }
 
+                if (!strafe)
+            {
+                
+                movement = dir.normalized * speed * Time.deltaTime;
+                if (movement.magnitude > dir.magnitude) movement = dir;
+            }
+                //Strafing around objects
+            else
+            {
+                if (Physics.Raycast(transform.position, transform.TransformDirection(transform.right), out hit, 5))
+                {
+                    movement = -transform.right * speed * Time.deltaTime;
+                }
+                else
+                {
+                    movement = transform.right * speed * Time.deltaTime;
+                }
+            }
+            m_Controller.Move(movement);
+        }
 
 
 
@@ -91,12 +130,7 @@ bool awake;
         var delta = Target.position - transform.position;
         delta.x = delta.z = 0;
         transform.LookAt(Target.transform.position - delta);
-        /*
-      var delta = Target.position - transform.position;
-      delta.z = 0;
-      var rotation = Quaternion.LookRotation(delta);
-      transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime*Damping);
-  */
+
     }
 
   
