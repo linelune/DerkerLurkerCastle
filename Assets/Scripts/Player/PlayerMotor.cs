@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
@@ -14,8 +15,9 @@ public class PlayerMotor : MonoBehaviour
     private bool isSprinting;
     private bool invulnerable = false;
     public float speed = 5f;
-    public float sprintSpeed = 8f;
+    private float sprintSpeed;
     private float baseSpeed;
+    private UpgradeManager uM;
     public float gravity = -9.8f;
     public float jumpHeight = 1.0f;
     public float crouchTimer;
@@ -28,6 +30,8 @@ public class PlayerMotor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        uM = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
+        setSkills();
         baseSpeed = speed;
         sprintSpeed = speed + 2.0f;
         characterController = GetComponent<CharacterController>();
@@ -36,8 +40,11 @@ public class PlayerMotor : MonoBehaviour
 
     void Update()
     {
-        
-        if (health > maxHealth || invulnerable)
+        if (Keyboard.current[Key.Y].wasPressedThisFrame)
+        {
+            setSkills();
+        }
+            if (health > maxHealth || invulnerable)
         {
             health = maxHealth;
         }
@@ -59,6 +66,15 @@ public class PlayerMotor : MonoBehaviour
             }
         }
         //speed = baseSpeed;
+    }
+    public void setSkills()
+    {
+        speed = uM.getSpeed();
+        baseSpeed = speed;
+        sprintSpeed = speed + 2.0f;
+        maxHealth = uM.getHealth();
+        jumpHeight = uM.getJump();
+        Debug.Log("Speed: " + speed + ", Health: " + maxHealth + ", Jump: " + jumpHeight);
     }
 
     public void ProcessMove(Vector2 input)
