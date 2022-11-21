@@ -11,8 +11,8 @@ public class Breakable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //pots contain 2-3 coins
-        content = Random.Range(2, 4);
+        //pots contain 1-3 coins
+        content = Random.Range(1, 3);
         //Picks a random pot model when created
         int t = Random.Range(0, breakableModels.Length);
         GameObject pot = Instantiate(breakableModels[t], transform.position, transform.rotation);

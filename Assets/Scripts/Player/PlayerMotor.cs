@@ -17,6 +17,7 @@ public class PlayerMotor : MonoBehaviour
     public float speed = 5f;
     private float sprintSpeed;
     private float baseSpeed;
+    private bool isBlocking = false;
     private UpgradeManager uM;
     public float gravity = -9.8f;
     public float jumpHeight = 1.0f;
@@ -30,6 +31,8 @@ public class PlayerMotor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         uM = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
         setSkills();
         baseSpeed = speed;
@@ -172,7 +175,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void InvulnPower()
     {
-        Debug.Log("Invulnerable");
+        
         CancelInvoke("ResetInvuln");
         invulnerable = true;
         Invoke("ResetInvuln", 15f);
@@ -184,7 +187,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void MoonPower()
     {
-        Debug.Log("Moon Jump!");
+        
         CancelInvoke("ResetMoon");
         gravity = -3f;
         Invoke("ResetMoon", 20f);
@@ -192,7 +195,18 @@ public class PlayerMotor : MonoBehaviour
 
     void ResetMoon()
     {
-        Debug.Log("Reset Moon");
+        
         gravity = -9.81f;
+    }
+
+    public IEnumerator Block()
+    {
+        isBlocking = true;
+        yield return new WaitForSeconds(1f);
+        isBlocking = false; 
+    }
+    public bool getBlock()
+    {
+        return isBlocking;
     }
 }

@@ -15,6 +15,8 @@ float Damping=1f;
     Rigidbody m_Rigidbody;
     public float speed = 1f;
     private CharacterController m_Controller;
+    private int health = 60;
+    private bool justHit = false;
 DisplayManager mDM;
 [SerializeField] GameObject mAcidPrefab;
 Vector3 mSpawnpos;
@@ -150,5 +152,26 @@ bool awake;
     
     
     
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "PlayerAttack" && !justHit)
+        {
+            justHit = true;
+            Invoke("resetHit", 1f);
+            health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
+            //Destroy(col.gameObject);
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                //add method to spawn coins on death
+            }
+
+        }
+    }
+    void resetHit()
+    {
+        justHit = false;
     }
 }

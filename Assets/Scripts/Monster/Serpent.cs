@@ -9,7 +9,7 @@ public class Serpent : MonoBehaviour
     SpriteRenderer rend;
     Animator anim;
     Rigidbody m_Rigidbody;
-    public float speed = 1f;
+    public float speed = 3f;
     public GameObject hitbox;
     private CharacterController m_Controller;
     float distance;
@@ -44,11 +44,11 @@ public class Serpent : MonoBehaviour
         {
             rend.color = new Color(0.0f, 0.0f, 0.0f, 1f);
         }
-        if (distance < 15f)
+        if (distance < 15f || health < 50)
         {
             if (!justTP)
             {
-                Invoke("Teleport", 10f);
+                Invoke("Teleport", 7.5f);
                 justTP = true;
             }
             else

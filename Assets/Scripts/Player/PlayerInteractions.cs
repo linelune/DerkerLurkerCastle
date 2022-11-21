@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
@@ -12,7 +13,23 @@ public class PlayerInteractions : MonoBehaviour
 
     private void Awake()
     {
+        
         weapons[activeWeapon].gameObject.SetActive(true);
+    }
+    public void Update()
+    {
+        if (Keyboard.current[Key.Digit1].wasPressedThisFrame && activeWeapon != 0)
+        {
+            weapons[activeWeapon].gameObject.SetActive(false);
+            activeWeapon = 0;
+            weapons[activeWeapon].gameObject.SetActive(true);
+        }
+        if (Keyboard.current[Key.Digit2].wasPressedThisFrame && activeWeapon != 1)
+        {
+            weapons[activeWeapon].gameObject.SetActive(false);
+            activeWeapon = 1;
+            weapons[activeWeapon].gameObject.SetActive(true);
+        }
     }
     public void Attack()
     {

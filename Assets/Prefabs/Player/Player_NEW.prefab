@@ -527,12 +527,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3472074214523327745}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0.01}
+  m_LocalPosition: {x: 0, y: 2.015, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5558372872880517064}
   - {fileID: 7660206883162746908}
+  - {fileID: 2032055035229529460}
   m_Father: {fileID: 3665460431853335512}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1093,6 +1094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 2455834296295579957}
+  - {fileID: 4908397955573405615}
   mCoins: 0
 --- !u!114 &1987871750610835841
 MonoBehaviour:
@@ -1472,6 +1474,79 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &6611085884747812465
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6474998350406808801}
+    m_Modifications:
+    - target: {fileID: 513811639107670896, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_Name
+      value: Crossbow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.321
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+--- !u!4 &2032055035229529460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+  m_PrefabInstance: {fileID: 6611085884747812465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4908397955573405615 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2279219960889399774, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+  m_PrefabInstance: {fileID: 6611085884747812465}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c6ae8fd6baf104ba274fcf34b1e07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8964520079115607507
 PrefabInstance:
   m_ObjectHideFlags: 0
