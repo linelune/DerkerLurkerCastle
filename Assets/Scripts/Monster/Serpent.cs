@@ -16,6 +16,10 @@ public class Serpent : MonoBehaviour
     bool justTP = false;
     bool tpLock = true;
     bool attackLock = true;
+    float Gravity = 9.8f;
+    float velocity = 0;
+    int health = 50;
+    bool justHit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +48,7 @@ public class Serpent : MonoBehaviour
         {
             if (!justTP)
             {
-                Invoke("Teleport", 5f);
+                Invoke("Teleport", 10f);
                 justTP = true;
             }
             else
@@ -56,7 +60,17 @@ public class Serpent : MonoBehaviour
                 if (tpLock)
                 {
                     m_Controller.Move(movement);
+                    if (m_Controller.isGrounded)
+                    {
+                        velocity = 0;
+                    }
+                    else
+                    {
+                        velocity -= Gravity * Time.deltaTime;
+                        m_Controller.Move(new Vector3(0, velocity, 0));
+                    }
                 }
+
                 if (distance < 2f && tpLock && attackLock)
                 {
                     StartCoroutine(attack());
@@ -99,8 +113,24 @@ public class Serpent : MonoBehaviour
         attackLock = true;
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        Teleport();
+        if (col.tag == "PlayerAttack" && !justHit)
+        {
+            justHit = true;
+            Invoke("resetHit", 1f);
+            health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
+            //Destroy(col.gameObject);
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                //add method to spawn coins on death
+            }
+
+        }
+    }
+    void resetHit()
+    {
+        justHit=false;
     }
 }

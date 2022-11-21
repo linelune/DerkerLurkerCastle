@@ -8,7 +8,7 @@ public class PlayerMotor : MonoBehaviour
 {
     private CharacterController characterController;
     private Vector3 playerVelocity;
-    public Animator animator;
+    //public Animator animator;
     private bool isGrounded;
     private bool isCrouched;
     private bool crouching;
@@ -85,12 +85,14 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.z = input.y;
         if (transform.TransformDirection(moveDirection) == new Vector3(0.0f, 0.0f, 0.0f)) {
             movementAM.StopPlaying("FootstepsOnConcrete");
-            animator.SetFloat("Speed", 0); 
+            
+            //animator.SetFloat("Speed", 0); 
         }
         else {
             movementAM.Play("FootstepsOnConcrete", 0f, 1f);
             movementAM.Volume("FootstepsOnConcrete", 1.5f);
-            animator.SetFloat("Speed", speed); 
+            
+            //animator.SetFloat("Speed", speed); 
         }
         characterController.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
 
@@ -127,13 +129,13 @@ public class PlayerMotor : MonoBehaviour
             speed = sprintSpeed;
             movementAM.Play("FootstepsOnConcrete", 0f, 1.5f);
             movementAM.Volume("FootstepsOnConcrete", 1.5f);
-            animator.SetBool("IsRunning", true);
+            //animator.SetBool("IsRunning", true);
         }
         else
         {
             speed = baseSpeed;
             movementAM.StopPlaying("FootstepsOnConcrete");
-            animator.SetBool("IsRunning", false);
+            //animator.SetBool("IsRunning", false);
         }
     }
 

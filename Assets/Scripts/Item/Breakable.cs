@@ -43,11 +43,12 @@ public class Breakable : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "Player")
+        if (col.tag == "PlayerAttack")
         {
             crushed();
+
         }
     }
 
-    
+
 }

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    static public float playerSpeed = 5f;
-    static public int playerHealth = 100;
-    static public float playerJumpHeight = 1f;
+    public float playerSpeed = 5f;
+    public int playerHealth = 100;
+    public float playerJumpHeight = 1f;
     public GameObject upgradeMenu;
    
     // Start is called before the first frame update
@@ -26,17 +26,18 @@ public class UpgradeManager : MonoBehaviour
             {
 
                 upgradeMenu.SetActive(true);
-                Time.timeScale = 0f;
+                //Time.timeScale = 0.1f;
             }
             else
             {
                 upgradeMenu.SetActive(false);
-                Time.timeScale = 1f;            
+                //Time.timeScale = 1f;            
             }
         }
     }
     public void UpgradeSpeed()
     {
+        Debug.Log("Upgrading Speed: " + playerSpeed);
         playerSpeed += 0.5f;
     }
     public void UpgradeHealth()
@@ -49,6 +50,7 @@ public class UpgradeManager : MonoBehaviour
     }
     public float getSpeed()
     {
+        Debug.Log("Getting Speed: " + playerSpeed);
         return playerSpeed;
     }
     public int getHealth()

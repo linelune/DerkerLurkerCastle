@@ -18,6 +18,8 @@ public class Bottles : MonoBehaviour
 
     void Awake()
     {
+        //This script was throwing nullrefs idk why
+        /*
         for(int i=0; i < bottles.Length; i++)
         {
             bottleLights[i] = bottles[i].GetComponentInChildren<Light>();
@@ -28,7 +30,7 @@ public class Bottles : MonoBehaviour
             int choice = Random.Range(0, bottleLights.Length);
             bottleLights[choice].intensity = 0.8f;
             activeBottles[i] = bottles[choice];
-        }
+        }*/
     }
 
     // Update is called once per frame
