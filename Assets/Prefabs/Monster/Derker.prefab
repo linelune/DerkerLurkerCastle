@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  ChaseSpeed: 0.01
+  ChaseSpeed: 0.005
   Face: {fileID: 7335473323720333739}
   m_Bobspeed: 1
 --- !u!1 &7335473323720333739

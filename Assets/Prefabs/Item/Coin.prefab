@@ -225,7 +225,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -235,7 +235,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -322,6 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26e79873eb712303ad854049efd2dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model: {fileID: 726128042538275161}
+  bounce_sfx: {fileID: 8300000, guid: 59507c20690ca714bbd88ac8fb7beafb, type: 3}
 --- !u!54 &2903098688070564646
 Rigidbody:
   m_ObjectHideFlags: 0

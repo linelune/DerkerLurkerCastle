@@ -12,6 +12,7 @@ public class Derker : MonoBehaviour
     private Vector3 pos1;
     private Vector3 pos2;
     public float m_Bobspeed = 1f;
+    bool speeding = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,12 @@ public class Derker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Need to add some degree of speed attenuation. maybe every minute he gets .01 faster
+        if (!speeding)
+        {
+            Invoke("increaseSpeed", 60f);
+            speeding = true;
+        }
         pos1 = new Vector3(transform.position.x, 0.5f, transform.position.z);
         pos2 = new Vector3(transform.position.x, 2f, transform.position.z);
         Face.transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(m_Bobspeed * Time.time) + 1.0f) / 2.0f);
@@ -58,5 +65,11 @@ public class Derker : MonoBehaviour
             Debug.Log("Caught! Max health = " + col.gameObject.GetComponent<PlayerMotor>().maxHealth);
             Invoke("teleport", 20.0f);
         }
+    }
+
+    private void increaseSpeed()
+    {
+        ChaseSpeed += 0.001f;
+        speeding = false;
     }
 }

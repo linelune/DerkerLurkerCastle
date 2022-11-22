@@ -20,6 +20,9 @@ float distance;
     private bool justHit = false;
     private bool frozen = false;
 public float damage;
+    private AudioSource m_Audio;
+    public AudioClip awake_sfx;
+    private bool awake = false;
 
     private GameObject target;
     // Start is called before the first frame update
@@ -27,7 +30,7 @@ public float damage;
     {
     mDM=GetComponentInChildren<DisplayManager>();
     mFreezer=GetComponentInChildren<Freezer>();
-    
+        m_Audio = GetComponent<AudioSource>();
     
     //mPlayer=GameObject.Find("Player");
     //mPI=mPlayer.GetComponent<PlayerInput>();
@@ -46,6 +49,11 @@ public float damage;
      lookAt();
      if(distance<15f)
      {
+            if (!awake)
+            {
+                awake=true;
+                m_Audio.PlayOneShot(awake_sfx, 0.5f);
+            }
             if (distance > 2f)
             {
                 gameObject.transform.position = Vector3.MoveTowards(transform.position, Target.position + new Vector3(0f, 1.5f, 0f), ChaseSpeed);
@@ -62,6 +70,7 @@ public float damage;
      else
         {
             mDM.mMat=mMasleep;
+            awake = false;
         }
      
     

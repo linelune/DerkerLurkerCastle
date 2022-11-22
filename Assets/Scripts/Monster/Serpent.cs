@@ -20,6 +20,10 @@ public class Serpent : MonoBehaviour
     float velocity = 0;
     int health = 50;
     bool justHit = false;
+    private AudioSource m_Audio;
+    public AudioClip attack_sfx;
+    public AudioClip damage_sfx;
+    public AudioClip teleport_sfx;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,7 @@ public class Serpent : MonoBehaviour
         anim = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
         m_Controller = GetComponent<CharacterController>();
+        m_Audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,7 +49,7 @@ public class Serpent : MonoBehaviour
         {
             rend.color = new Color(0.0f, 0.0f, 0.0f, 1f);
         }
-        if (distance < 15f || health < 50)
+        if ((distance < 15f || health < 50) && distance > 1f)
         {
             if (!justTP)
             {
@@ -61,6 +66,7 @@ public class Serpent : MonoBehaviour
                 {
                     m_Controller.Move(movement);
 
+
                 }
 
                 if (distance < 2f && tpLock && attackLock)
@@ -74,15 +80,7 @@ public class Serpent : MonoBehaviour
             }
 
         }
-        if (m_Controller.isGrounded)
-        {
-            velocity = 0;
-        }
-        else
-        {
-            velocity -= Gravity * Time.deltaTime;
-            m_Controller.Move(new Vector3(0, velocity, 0));
-        }
+
 
 
     }
@@ -90,11 +88,14 @@ public class Serpent : MonoBehaviour
     {
         //Add particle effects for teleport
         Debug.Log("Attempting Teleport");
-        Vector3 targetPos = (Target.position + new Vector3(0f, 1f, 0f)) - (Target.forward * 2);
+        Vector3 targetPos = ((Target.position - (Target.forward * 3)) + new Vector3(0f, 1f, 0f));
         RaycastHit hit;
         if (Physics.Raycast(targetPos, -Vector3.up, out hit))
         {
-            transform.position = targetPos;
+            m_Audio.PlayOneShot(teleport_sfx, 0.5f);
+            //transform.position = targetPos;
+            m_Controller.Move(targetPos - transform.position);
+            transform.position += (Target.forward * -3);
         }
         justTP = false;
         tpLock = false;
@@ -105,7 +106,9 @@ public class Serpent : MonoBehaviour
 
         //Need to make a coroutine to effectively time hitbox
         anim.SetBool("isAttacking", true);
+        m_Audio.PlayOneShot(attack_sfx, 0.5f);
         yield return new WaitForSeconds(.4f);
+        
         //Deal damage here
         Instantiate(hitbox, transform.position, transform.rotation);
     }
@@ -119,6 +122,7 @@ public class Serpent : MonoBehaviour
         if (col.tag == "PlayerAttack" && !justHit)
         {
             justHit = true;
+            m_Audio.PlayOneShot(damage_sfx, 0.5f);
             Invoke("resetHit", 1f);
             health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
             //Destroy(col.gameObject);
