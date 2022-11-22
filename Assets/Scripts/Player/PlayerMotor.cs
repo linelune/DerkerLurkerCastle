@@ -223,8 +223,21 @@ public class PlayerMotor : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isBlocking = false; 
     }
-    public bool getBlock()
+    public void TakeDamage(int damage)
     {
-        return isBlocking;
+        if (!isBlocking)
+        {
+            health -= damage;
+            Debug.Log("Player Health: " + health);
+        }
+        else
+        {
+            Debug.Log("Blocked!");
+        }
     }
+    
+    //public bool getBlock()
+    //{
+      //  return isBlocking;
+    //}
 }

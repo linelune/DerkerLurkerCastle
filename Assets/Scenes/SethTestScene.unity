@@ -281,6 +281,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpgradeHealth
       objectReference: {fileID: 0}
+    - target: {fileID: 1987871750610835841, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1309758313}
     - target: {fileID: 2246290343201414805, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -367,6 +371,11 @@ MonoBehaviour:
   target: {fileID: 1741280856}
   smoothSpeed: 0.5
   offset: {x: 0, y: 2, z: 4}
+--- !u!20 &1309758313 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6850283744058999547, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
+  m_PrefabInstance: {fileID: 1014645411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1401362085
 GameObject:
   m_ObjectHideFlags: 0

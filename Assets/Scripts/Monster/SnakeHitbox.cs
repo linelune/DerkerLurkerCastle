@@ -21,15 +21,14 @@ public class SnakeHitbox : MonoBehaviour
         if(col.tag == "Player" && !hasHit)
         {
             //Check if player is blocking
-            if (!col.gameObject.GetComponent<PlayerMotor>().getBlock())
-            {
-                Debug.Log("Snake has hit player");
-            }
-            else
-            {
-                Debug.Log("Blocked!");
-            }
+            col.gameObject.GetComponent<PlayerMotor>().TakeDamage(5);
+            hasHit = true;
+            Invoke("ResetHit", 1f);
             //deal damage here
         }
+    }
+    void ResetHit()
+    {
+        hasHit = false;
     }
 }
