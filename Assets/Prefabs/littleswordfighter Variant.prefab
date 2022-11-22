@@ -1120,7 +1120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8095248544661694285}
   speed: 5
-  sprintSpeed: 8
   gravity: -9.8
   jumpHeight: 1
   crouchTimer: 0
@@ -1138,7 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281fc77dde4d5d4f89677560a4e0a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1180859456}
+  playerCamera: {fileID: 1180859456}
   xSensitivity: 30
   ySensitivity: 30
 --- !u!114 &1254997393
@@ -1168,7 +1167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8095248544661694285}
   shield: {fileID: 191058841}
-  sword: {fileID: 0}
+  sword: {fileID: 191058841}
   mCoins: 0
 --- !u!1 &8095248544671021183 stripped
 GameObject:
