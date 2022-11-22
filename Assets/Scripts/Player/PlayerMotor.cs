@@ -30,7 +30,14 @@ public class PlayerMotor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        uM = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
+        if (GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>())
+        {
+            uM = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
+        }
+        else
+        {
+            uM = null;
+        }
         setSkills();
         baseSpeed = speed;
         sprintSpeed = speed + 2.0f;
