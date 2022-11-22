@@ -9,6 +9,7 @@ public class Crossbow : Weapon
     public Transform emitter;
     private Animator anim;
     private bool reloading=false;
+    private bool bunting = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class Crossbow : Weapon
     }
     public override IEnumerator Attack()
     {
-        if (!reloading)
+        if (!reloading && !bunting)
         {
             reloading=true;
             anim.SetBool("isAttacking", true);
@@ -39,7 +40,25 @@ public class Crossbow : Weapon
 
     public override IEnumerator AltAttack()
     {
-        yield return null;
+        if (!reloading && !bunting)
+        {
+            bunting = true;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, emitter.transform.forward, out hit, 2.5f))
+            {
+                if (hit.collider.tag == "Enemy")
+                {
+                    hit.collider.gameObject.GetComponent<EnemyParent>().buntHit();
+                    
+                }
+            }
+            anim.SetBool("isBunting", true);
+
+            yield return new WaitForSeconds(.1f);
+            anim.SetBool("isBunting", false);
+            yield return new WaitForSeconds(0.9f);
+            bunting = false;
+        }
     }
     void OnEnable()
     {

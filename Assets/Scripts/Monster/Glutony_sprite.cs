@@ -5,8 +5,8 @@ using UnityEngine;
 public class Glutony_sprite : MonoBehaviour
 {
   [SerializeField]
-Transform Target;
-float Damping=1f;
+    Transform Target;
+    float Damping=1f;
     //[SerializeField] Material mMawake;
     //[SerializeField] Material mMasleep;
     //[SerializeField] Material mMfreeze;
@@ -17,13 +17,17 @@ float Damping=1f;
     private CharacterController m_Controller;
     private int health = 60;
     private bool justHit = false;
-DisplayManager mDM;
-[SerializeField] GameObject mAcidPrefab;
-Vector3 mSpawnpos;
+    DisplayManager mDM;
+    [SerializeField] GameObject mAcidPrefab;
+    Vector3 mSpawnpos;
 
-float distance;
-public float damage;
-bool awake;
+    float distance;
+    public float damage;
+    bool awake;
+
+
+    float Gravity = 9.8f;
+    float velocity = 0;
 
     private GameObject target;
     // Start is called before the first frame update
@@ -118,7 +122,19 @@ bool awake;
                 }
             }
             m_Controller.Move(movement);
+
         }
+
+        if (m_Controller.isGrounded)
+        {
+            velocity = 0;
+        }
+        else
+        {
+            velocity -= Gravity * Time.deltaTime;
+            m_Controller.Move(new Vector3(0, velocity, 0));
+        }
+
 
 
 
@@ -174,4 +190,5 @@ bool awake;
     {
         justHit = false;
     }
+    
 }

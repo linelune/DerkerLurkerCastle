@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3780324069600833489}
   - component: {fileID: 9141206151066309280}
   - component: {fileID: 5915588938137888781}
+  - component: {fileID: 5116287883306964720}
   - component: {fileID: 7693790201142052684}
   m_Layer: 0
   m_Name: Serpent
@@ -172,6 +173,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &5116287883306964720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6459752365683518239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b43715863dfd3458dea8f4a0b3568f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &7693790201142052684
 BoxCollider:
   m_ObjectHideFlags: 0

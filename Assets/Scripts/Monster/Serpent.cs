@@ -60,21 +60,13 @@ public class Serpent : MonoBehaviour
                 if (tpLock)
                 {
                     m_Controller.Move(movement);
-                    if (m_Controller.isGrounded)
-                    {
-                        velocity = 0;
-                    }
-                    else
-                    {
-                        velocity -= Gravity * Time.deltaTime;
-                        m_Controller.Move(new Vector3(0, velocity, 0));
-                    }
+
                 }
 
                 if (distance < 2f && tpLock && attackLock)
                 {
                     StartCoroutine(attack());
-                    Invoke("ResetAttack", 2f);
+                    Invoke("ResetAttack", 4f);
                     attackLock = false;
 
                 }
@@ -82,7 +74,16 @@ public class Serpent : MonoBehaviour
             }
 
         }
-        
+        if (m_Controller.isGrounded)
+        {
+            velocity = 0;
+        }
+        else
+        {
+            velocity -= Gravity * Time.deltaTime;
+            m_Controller.Move(new Vector3(0, velocity, 0));
+        }
+
 
     }
     void Teleport()
