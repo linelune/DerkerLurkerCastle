@@ -7,7 +7,7 @@ public class Derker : MonoBehaviour
     [SerializeField]
     Transform Target;
     public float ChaseSpeed;
-    public GameObject Face;
+    //public GameObject Face;
     private bool justCaught = false;
     private Vector3 pos1;
     private Vector3 pos2;
@@ -23,14 +23,17 @@ public class Derker : MonoBehaviour
     void Update()
     {
         //Need to add some degree of speed attenuation. maybe every minute he gets .01 faster
+       
+        /*
         if (!speeding)
         {
             Invoke("increaseSpeed", 60f);
             speeding = true;
         }
+        */
         pos1 = new Vector3(transform.position.x, 0.5f, transform.position.z);
         pos2 = new Vector3(transform.position.x, 2f, transform.position.z);
-        Face.transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(m_Bobspeed * Time.time) + 1.0f) / 2.0f);
+        transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(m_Bobspeed * Time.time) + 1.0f) / 2.0f);
         if (!justCaught)
         {
             Target = GameObject.FindWithTag("Player").transform;
@@ -38,7 +41,7 @@ public class Derker : MonoBehaviour
             {
                 teleport();
             }
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, Target.position, ChaseSpeed);
+            gameObject.transform.position = Vector3.MoveTowards(transform.position, Target.position, .005f);
         }
     }
 
