@@ -7,6 +7,7 @@ public class Knight : MonoBehaviour
     public GameObject model;
     public GameObject attack_hitbox;
     public GameObject charge_hitbox;
+    public GameObject emitter;
     public GameObject Ghost;
     public GameObject GhostParticles;
     private GameObject Target;
@@ -19,12 +20,21 @@ public class Knight : MonoBehaviour
     Vector3 movement;
     Vector3 chargeTarget;
     private CharacterController m_Controller;
+    float Gravity = 9.8f;
+    float velocity = 0;
+    private bool justHit = false;
+    private int health = 300;
+    private AudioSource m_Audio;
+    public AudioClip attack_sfx;
+    public AudioClip damage_sfx;
     // Start is called before the first frame update
     void Start()
     {
         m_Controller = GetComponent<CharacterController>();
         anim = model.GetComponent<Animator>();
+        m_Audio = GetComponent<AudioSource>();
         Target = GameObject.FindWithTag("Player");
+        charge_hitbox.SetActive(false);
     }
 
     // Update is called once per frame
@@ -36,7 +46,7 @@ public class Knight : MonoBehaviour
         }
         
         var dir = Target.transform.position - transform.position;
-        gameObject.transform.forward = dir;
+        gameObject.transform.forward = new Vector3(dir.x,0f, dir.z);
         if (dir.magnitude > 3f)
         {
             if (canCharge)
@@ -58,9 +68,9 @@ public class Knight : MonoBehaviour
             else
             {
                 dir = chargeTarget - transform.position;
-                movement = dir.normalized * (5*speed) * Time.deltaTime;
+                movement = dir.normalized * (6*speed) * Time.deltaTime;
                 if (movement.magnitude > dir.magnitude) movement = dir;
-                Debug.Log(movement.magnitude);
+                
                 if(chargeTarget == transform.position)
                 {
                     anim.SetBool("isCharging", false);
@@ -74,6 +84,8 @@ public class Knight : MonoBehaviour
         }
         else
         {
+            anim.SetBool("isCharging", false);
+            isCharging = false;
             anim.SetBool("isWalking", false);
             if (canAttack)
             {
@@ -81,12 +93,27 @@ public class Knight : MonoBehaviour
                 StartCoroutine(attack());
             }
         }
+        if (!isCharging)
+        {
+            charge_hitbox.SetActive(false);
+        }
+        if (m_Controller.isGrounded)
+        {
+            velocity = 0;
+        }
+        else
+        {
+            velocity -= Gravity * Time.deltaTime;
+            m_Controller.Move(new Vector3(0, velocity, 0));
+        }
     }
     //Need to create/spawn hitboxes
     private IEnumerator attack()
     {
         anim.SetBool("isAttacking", true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.35f);
+        m_Audio.PlayOneShot(attack_sfx, 0.5f);
+        Instantiate(attack_hitbox, emitter.transform.position, emitter.transform.rotation);
         anim.SetBool("isAttacking", false);
         yield return new WaitForSeconds(4f);
         canAttack = true;
@@ -95,7 +122,9 @@ public class Knight : MonoBehaviour
     private IEnumerator charge()
     {
         canCharge = false;
+        charge_hitbox.SetActive(true);
         anim.SetBool("isCharging", true);
+        
         isCharging = true;
         
         yield return new WaitForSeconds(3f);
@@ -115,5 +144,34 @@ public class Knight : MonoBehaviour
         Instantiate(Ghost, pos, transform.rotation);
         yield return new WaitForSeconds(10f);
         canSpawnGhost = true;
+    }
+
+    void OnCollisionEnter()
+    {
+        anim.SetBool("isCharging", false);
+        isCharging = false;
+        anim.SetBool("isWalking", false);
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "PlayerAttack" && !justHit)
+        {
+            justHit = true;
+            m_Audio.PlayOneShot(damage_sfx, 0.5f);
+            Invoke("resetHit", 1f);
+            health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
+            //Destroy(col.gameObject);
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                //add method to spawn coins on death
+            }
+
+        }
+    }
+    void resetHit()
+    {
+        justHit = false;
     }
 }

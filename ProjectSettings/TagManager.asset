@@ -9,6 +9,7 @@ TagManager:
   - Breakable
   - UpgradeManager
   - PlayerAttack
+  - Boss
   layers:
   - Default
   - TransparentFX

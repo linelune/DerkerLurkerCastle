@@ -24,6 +24,7 @@ public class PlayerMotor : MonoBehaviour
     public float crouchTimer;
     public int health = 100;
     public int maxHealth = 100;
+    Vector3 impact = Vector3.zero;
 
     // Audio
     private AudioManager movementAM;
@@ -73,7 +74,7 @@ public class PlayerMotor : MonoBehaviour
                 crouchTimer = 0f;
             }
         }
-        //speed = baseSpeed;
+
     }
     public void setSkills()
     {
@@ -115,10 +116,23 @@ public class PlayerMotor : MonoBehaviour
             
             //animator.SetFloat("Speed", speed); 
         }
-        characterController.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        // apply the impact force:
+        if (impact.magnitude > 0.2)
+        {
+            characterController.Move(impact * Time.deltaTime);
+            // consumes the impact energy each cycle:
+            impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
+            //speed = baseSpeed;
 
-        // Move on y axis (jump and gravity)
-        playerVelocity.y += gravity * Time.deltaTime;
+        }
+        else
+        {
+            characterController.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+
+            // Move on y axis (jump and gravity)
+            playerVelocity.y += gravity * Time.deltaTime;
+
+        }
         if (isGrounded && playerVelocity.y < 0)
             playerVelocity.y = -2.0f;
         characterController.Move(playerVelocity * Time.deltaTime);
@@ -235,9 +249,19 @@ public class PlayerMotor : MonoBehaviour
             Debug.Log("Blocked!");
         }
     }
-    
+
+    public void chargeHit()
+    {
+
+        GameObject t = GameObject.FindWithTag("Boss");
+        Vector3 dir = t.transform.position - (transform.position + new Vector3(0f, 5f, 0f) );
+        impact = dir.normalized * -40f;
+        //if (movement.magnitude > dir.magnitude) movement = dir;
+        //controller.Move(movement);
+    }
+
     //public bool getBlock()
     //{
-      //  return isBlocking;
+    //  return isBlocking;
     //}
 }

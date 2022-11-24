@@ -25,12 +25,12 @@ public class Derker : MonoBehaviour
     void Update()
     {
         //Need to add some degree of speed attenuation. maybe every minute he gets .01 faster
-       
+
         
         if (!speeding)
         {
             //change invoke time to augment rate of speed increase
-            Invoke("increaseSpeed", 40f);
+            Invoke("increaseSpeed", 1f);
             speeding = true;
         }
         if (!isDerking)

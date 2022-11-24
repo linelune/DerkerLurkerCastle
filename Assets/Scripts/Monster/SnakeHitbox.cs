@@ -5,6 +5,7 @@ using UnityEngine;
 public class SnakeHitbox : MonoBehaviour
 {
     bool hasHit = false;
+    public int Damage = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class SnakeHitbox : MonoBehaviour
         if(col.tag == "Player" && !hasHit)
         {
             //Check if player is blocking
-            col.gameObject.GetComponent<PlayerMotor>().TakeDamage(5);
+            col.gameObject.GetComponent<PlayerMotor>().TakeDamage(Damage);
             hasHit = true;
             Invoke("ResetHit", 1f);
             //deal damage here

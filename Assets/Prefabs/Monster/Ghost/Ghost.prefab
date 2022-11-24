@@ -54,7 +54,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   mMawake: {fileID: 2100000, guid: b84ecbe16731bd09aa7451f2c7892331, type: 2}
   mMasleep: {fileID: 2100000, guid: 42b6acfbcdd0aea66b0eaeded241341f, type: 2}
-  ChaseSpeed: 0.015
+  ChaseSpeed: 0.025
   damage: 0
   awake_sfx: {fileID: 8300000, guid: 0d30e7edd38f1ac4a85470a43d442d4c, type: 3}
 --- !u!114 &8803483620857270971
