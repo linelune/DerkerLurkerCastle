@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System;
 
 public class UpgradeLightScript : MonoBehaviour
@@ -32,8 +33,15 @@ public class UpgradeLightScript : MonoBehaviour
 
     private bool isDisplayingAnswer;
 
+    private UpgradeManager um;
+
+    public UnityEvent m_healthUpgrade;
+    public UnityEvent m_speedUpgrade;
+    public UnityEvent m_jumpUpgrade;
+
     void Start()
     {
+        um = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
         upgradeType = (UPGRADE_TYPE) upgradeTypeIndex;
         healthUpgradeQuestion = "Do you want a gift of life from the goddess Aelia ?";
         speedUpgradeQuestion = "Do you want to be faster like the god Spror ?";
@@ -41,7 +49,7 @@ public class UpgradeLightScript : MonoBehaviour
         toAcceptText = "\nCome closer if that is what you want and if you possesses _ coins so that the god accept.";
         giftTakenAnswer = "Gift taken !";
         notEnoughCoinAnswer = "You need more coins if you want a new gift !";
-        level = 0;
+        level = um.playerLevel;
         updatePrice();
         timer = DateTime.Now;
         isDisplayingAnswer = false;
@@ -92,21 +100,43 @@ public class UpgradeLightScript : MonoBehaviour
 
         // Try to buy the upgrade when the player really close to the light
 
-        // TO DO - Get player coins
-        int playerCoins = 100;
+      
+      
 
         if ((upgradeType == UPGRADE_TYPE.HEALTH && text.text.StartsWith(healthUpgradeQuestion)
             || upgradeType == UPGRADE_TYPE.SPEED && text.text.StartsWith(speedUpgradeQuestion)
             || upgradeType == UPGRADE_TYPE.JUMP && text.text.StartsWith(jumpUpgradeQuestion))
             && Vector3.Distance(transform.position, playerSoul.position) < 1.5f
-            && playerCoins > price)
+            && um.coins > price)
         {
-            playerCoins -= price;
+            um.coins -= price;
+
 
             // TO DO - Upgrade player
+            switch (upgradeType){
+                case UPGRADE_TYPE.HEALTH:
+                    if(m_healthUpgrade != null)
+                    {
+                        m_healthUpgrade.Invoke();
+                    }
+                    break; 
+                case UPGRADE_TYPE.SPEED:
+                    if (m_speedUpgrade != null)
+                    {
+                        m_speedUpgrade.Invoke();
+                    }
+                    break;
+                case UPGRADE_TYPE.JUMP:
+                    if (m_jumpUpgrade != null)
+                    {
+                        m_jumpUpgrade.Invoke();
+                    }
+                    break;
 
-            level += 1;
-            updatePrice();
+
+                }
+            um.playerLevel += 1;
+            
 
             playerSoul.position = new Vector3(0.0f, 1.0f, 0.0f);
             playerSoul.eulerAngles = Vector3.zero;
@@ -141,15 +171,19 @@ public class UpgradeLightScript : MonoBehaviour
             text.text = "";
             isDisplayingAnswer = false;
         }
+        updatePrice();
     }
 
     void updatePrice()
     {
-        price = 10;
+        price = (int)(10 * 1.5 * um.playerLevel);
 
+        /*
         for (int i = 0; i < level; i++)
         {
             price = (int) (price * 1.5f); 
         }
+        for loops are slow 
+        */
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
@@ -243,6 +244,10 @@ public class PlayerMotor : MonoBehaviour
         {
             health -= damage;
             Debug.Log("Player Health: " + health);
+            if(health < 0)
+            {
+                SceneManager.LoadScene("Out Of Time Zone");
+            }
         }
         else
         {
