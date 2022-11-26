@@ -23,13 +23,15 @@ public class Knight : MonoBehaviour
     float Gravity = 9.8f;
     float velocity = 0;
     private bool justHit = false;
-    private int health = 300;
+    private int health = 1000;
     private AudioSource m_Audio;
     public AudioClip attack_sfx;
     public AudioClip damage_sfx;
+    private UnityEngine.AI.NavMeshAgent nma;
     // Start is called before the first frame update
     void Start()
     {
+        nma = GetComponent<UnityEngine.AI.NavMeshAgent>();
         m_Controller = GetComponent<CharacterController>();
         anim = model.GetComponent<Animator>();
         m_Audio = GetComponent<AudioSource>();
@@ -46,13 +48,15 @@ public class Knight : MonoBehaviour
         }
         
         var dir = Target.transform.position - transform.position;
-        gameObject.transform.forward = new Vector3(dir.x,0f, dir.z);
+        //gameObject.transform.forward = nma.nextPosition;
+
         if (dir.magnitude > 3f)
         {
             if (canCharge)
             {
                 StartCoroutine(charge());
                 chargeTarget = Target.transform.position;
+                nma.SetDestination(chargeTarget);
                 //canCharge = false;
 
             }
@@ -61,25 +65,31 @@ public class Knight : MonoBehaviour
 
             if (!isCharging)
             {
+                nma.stoppingDistance = 3f;
+                nma.acceleration = 8f;
+                nma.speed = 3.5f;
+                nma.SetDestination(Target.transform.position);
                 anim.SetBool("isWalking", true);
-                movement = dir.normalized * speed * Time.deltaTime;
-                if (movement.magnitude > dir.magnitude) movement = dir;
+               
             }
             else
             {
-                dir = chargeTarget - transform.position;
-                movement = dir.normalized * (6*speed) * Time.deltaTime;
-                if (movement.magnitude > dir.magnitude) movement = dir;
+                nma.stoppingDistance = 0f;
+                nma.acceleration = 20f;
+                nma.speed = 21f;
                 
-                if(chargeTarget == transform.position)
+
+                float dist = nma.remainingDistance;
+                if (dist != Mathf.Infinity && nma.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete && nma.remainingDistance == 0)
                 {
-                    anim.SetBool("isCharging", false);
                     isCharging = false;
+                    anim.SetBool("isCharging", false);
                 }
             }
 
 
-            m_Controller.Move(movement);
+            // m_Controller.Move(movement);
+            
              
         }
         else
@@ -159,7 +169,7 @@ public class Knight : MonoBehaviour
         {
             justHit = true;
             m_Audio.PlayOneShot(damage_sfx, 0.5f);
-            Invoke("resetHit", 1f);
+            Invoke("resetHit", .1f);
             health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
             //Destroy(col.gameObject);
             if (health <= 0)
