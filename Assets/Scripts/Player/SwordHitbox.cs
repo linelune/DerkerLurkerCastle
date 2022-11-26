@@ -5,10 +5,12 @@ using UnityEngine;
 public class SwordHitbox : PlayerHitbox
 {
     //public int damageVal = 30;
+
     // Start is called before the first frame update
     void Start()
     {
-        damageVal = 30;  
+        damageVal = 30;
+
     }
 
     // Update is called once per frame
@@ -21,5 +23,6 @@ public class SwordHitbox : PlayerHitbox
     {
         return damageVal;
     }
+
 
 }

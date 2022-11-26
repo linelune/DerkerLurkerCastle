@@ -30,7 +30,7 @@ public class Derker : MonoBehaviour
         if (!speeding)
         {
             //change invoke time to augment rate of speed increase
-            Invoke("increaseSpeed", 1f);
+            Invoke("increaseSpeed", 15f);
             speeding = true;
         }
         if (!isDerking)
@@ -49,7 +49,7 @@ public class Derker : MonoBehaviour
             {
                 teleport();
             }
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, Target.position, .005f);
+            gameObject.transform.position = Vector3.MoveTowards(transform.position, Target.position, ChaseSpeed);
         }
     }
 
@@ -73,15 +73,17 @@ public class Derker : MonoBehaviour
             gameObject.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
             //Debug.Log("Caught Player");
             col.gameObject.GetComponent<PlayerMotor>().maxHealth -= 25;
+            ChaseSpeed /= 2f;
             Debug.Log("Caught! Max health = " + col.gameObject.GetComponent<PlayerMotor>().maxHealth);
             Invoke("teleport", 20.0f);
+            
         }
     }
 
     private void increaseSpeed()
     {
         Debug.Log("Speed increase");
-        ChaseSpeed += 0.002f;
+        ChaseSpeed *= 1.2f;
         speeding = false;
     }
     private void StartDerking()
