@@ -6,16 +6,20 @@ TagManager:
   tags:
   - Enemy
   - EnemySpawnPoint
+  - Breakable
+  - UpgradeManager
+  - PlayerAttack
+  - Boss
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Derker
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - hitbox
+  - Arrow
   - 
   - 
   - 
