@@ -9,6 +9,7 @@ public class Coin : MonoBehaviour
     private GameObject pot;
     private AudioSource m_Audio;
     public AudioClip bounce_sfx;
+    private int max_bounces = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,8 @@ public class Coin : MonoBehaviour
     {
         if(other.tag=="Player")
         {
-            other.GetComponent<PlayerInteractions>().mCoins+=1;
+            //other.GetComponent<PlayerInteractions>().mCoins+=1;
+            GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().coins += 1;
             Debug.Log("We got coin");
             StartCoroutine(cleanup());
         }
@@ -32,7 +34,11 @@ public class Coin : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        m_Audio.PlayOneShot(bounce_sfx, 0.1f);
+        if (max_bounces > 0)
+        {
+            m_Audio.PlayOneShot(bounce_sfx, 0.1f);
+            max_bounces -= 1;
+        }
     }
     private void makeCollectible()
     {

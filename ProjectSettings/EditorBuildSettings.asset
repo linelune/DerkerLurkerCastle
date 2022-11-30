@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: ecdd95d661a7ac94ca92757d5d3f9762
+    path: Assets/Scenes/Out Of Time Zone.unity
+    guid: a562fd6039fb15a41af5e2dfe2aac6c5
   - enabled: 1
-    path: Assets/Scenes/Level1_presentation.unity
-    guid: b7ebcd372aadb414ab7c3e56d1db4fba
+    path: Assets/Scenes/SethTestScene.unity
+    guid: bce8a3271ec92914daf7761406acd124
   m_configObjects: {}

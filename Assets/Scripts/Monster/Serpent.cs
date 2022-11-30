@@ -9,7 +9,7 @@ public class Serpent : MonoBehaviour
     SpriteRenderer rend;
     Animator anim;
     Rigidbody m_Rigidbody;
-    public float speed = 3f;
+    public float speed = 5f;
     public GameObject hitbox;
     private CharacterController m_Controller;
     float distance;
@@ -123,7 +123,7 @@ public class Serpent : MonoBehaviour
         {
             justHit = true;
             m_Audio.PlayOneShot(damage_sfx, 0.5f);
-            Invoke("resetHit", 1f);
+            Invoke("resetHit", .1f);
             health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
             //Destroy(col.gameObject);
             if (health <= 0)

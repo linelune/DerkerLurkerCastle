@@ -123,54 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &93630660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 93630662}
-  - component: {fileID: 93630661}
-  m_Layer: 0
-  m_Name: UpgradeManager
-  m_TagString: UpgradeManager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &93630661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93630660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e40552fea29faa428939ee2deab8ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSpeed: 5
-  playerHealth: 100
-  playerJumpHeight: 1
-  upgradeMenu: {fileID: 1872705815}
---- !u!4 &93630662
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93630660}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 431.99402, y: 306.16998, z: -641.0643}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &195392022
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 557261348968562943, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 93630661}
+      objectReference: {fileID: 0}
     - target: {fileID: 557261348968562943, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpgradeHealth
@@ -288,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 2246290343201414805, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 93630661}
+      objectReference: {fileID: 0}
     - target: {fileID: 2246290343201414805, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpgradeJump
@@ -344,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 6031628715263495298, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 93630661}
+      objectReference: {fileID: 0}
     - target: {fileID: 6031628715263495298, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpgradeSpeed
@@ -584,11 +536,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3665460431853335512, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
   m_PrefabInstance: {fileID: 1014645411}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1872705815 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4216410141708258392, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
-  m_PrefabInstance: {fileID: 1014645411}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7365356731158040349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -646,7 +593,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3920616676157810861, guid: d16a60191c254d746911ab366a69784a, type: 3}
       propertyPath: ChaseSpeed
-      value: 0.001
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141142708826251279, guid: d16a60191c254d746911ab366a69784a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
