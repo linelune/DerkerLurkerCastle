@@ -9,7 +9,7 @@ public class Serpent : MonoBehaviour
     SpriteRenderer rend;
     Animator anim;
     Rigidbody m_Rigidbody;
-    public float speed = 3f;
+    public float speed = 5f;
     public GameObject hitbox;
     private CharacterController m_Controller;
     float distance;
