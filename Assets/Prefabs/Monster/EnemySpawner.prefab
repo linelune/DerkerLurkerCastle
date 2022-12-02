@@ -47,5 +47,6 @@ MonoBehaviour:
   active: 0
   enemies:
   - {fileID: 5375010404725780656, guid: ceb9106b728cc1599af207c74291fcc0, type: 3}
-  - {fileID: 6632788601999944978, guid: 15a39f87fc7c0521db9eb3c2ff062470, type: 3}
+  - {fileID: 6632788601999944978, guid: 9d723c6116cecef4cabc50a7680a2a6c, type: 3}
+  - {fileID: 6459752365683518239, guid: f789166e225691146b3820d702dd3ee6, type: 3}
   spawnrate: 5

@@ -1,22 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
     private CharacterController characterController;
     private Vector3 playerVelocity;
-    public Animator animator;
+    //public Animator animator;
     private bool isGrounded;
     private bool isCrouched;
     private bool crouching;
     private bool isSprinting;
+    private bool invulnerable = false;
     public float speed = 5f;
+    private float sprintSpeed;
+    private float baseSpeed;
+    private bool isBlocking = false;
+    private UpgradeManager uM;
     public float gravity = -9.8f;
     public float jumpHeight = 1.0f;
     public float crouchTimer;
     public int health = 100;
+    public int maxHealth = 100;
+    Vector3 impact = Vector3.zero;
 
     // Audio
     private AudioManager movementAM;
@@ -24,12 +33,31 @@ public class PlayerMotor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        Cursor.lockState = CursorLockMode.Locked;
+
+        if (GameObject.FindWithTag("UpgradeManager"))
+            uM = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
+        else
+            uM = null;
+
+        setSkills();
+        baseSpeed = speed;
+        sprintSpeed = speed + 2.0f;
         characterController = GetComponent<CharacterController>();
         movementAM = FindObjectOfType<AudioManager>();
     }
 
     void Update()
     {
+        if (Keyboard.current[Key.Y].wasPressedThisFrame)
+        {
+            setSkills();
+        }
+            if (health > maxHealth || invulnerable)
+        {
+            health = maxHealth;
+        }
         isGrounded = characterController.isGrounded;
         if (isCrouched)
         {
@@ -47,6 +75,29 @@ public class PlayerMotor : MonoBehaviour
                 crouchTimer = 0f;
             }
         }
+
+    }
+    public void setSkills()
+    {
+        if (uM != null)
+            speed = uM.getSpeed();
+        else
+            speed = 5.0f;
+
+        baseSpeed = speed;
+        sprintSpeed = speed + 2.0f;
+
+        if (uM != null)
+            maxHealth = uM.getHealth();
+        else
+            maxHealth = 100;
+
+        if (uM != null)
+            jumpHeight = uM.getJump();
+        else
+            jumpHeight = 1f;
+
+        Debug.Log("Speed: " + speed + ", Health: " + maxHealth + ", Jump: " + jumpHeight);
     }
 
     public void ProcessMove(Vector2 input)
@@ -57,17 +108,32 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.z = input.y;
         if (transform.TransformDirection(moveDirection) == new Vector3(0.0f, 0.0f, 0.0f)) {
             movementAM.StopPlaying("FootstepsOnConcrete");
-            animator.SetFloat("Speed", 0); 
+            
+            //animator.SetFloat("Speed", 0); 
         }
         else {
             movementAM.Play("FootstepsOnConcrete", 0f, 1f);
             movementAM.Volume("FootstepsOnConcrete", 1.5f);
-            animator.SetFloat("Speed", speed); 
+            
+            //animator.SetFloat("Speed", speed); 
         }
-        characterController.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        // apply the impact force:
+        if (impact.magnitude > 0.2)
+        {
+            characterController.Move(impact * Time.deltaTime);
+            // consumes the impact energy each cycle:
+            impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
+            //speed = baseSpeed;
 
-        // Move on y axis (jump and gravity)
-        playerVelocity.y += gravity * Time.deltaTime;
+        }
+        else
+        {
+            characterController.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+
+            // Move on y axis (jump and gravity)
+            playerVelocity.y += gravity * Time.deltaTime;
+
+        }
         if (isGrounded && playerVelocity.y < 0)
             playerVelocity.y = -2.0f;
         characterController.Move(playerVelocity * Time.deltaTime);
@@ -96,16 +162,111 @@ public class PlayerMotor : MonoBehaviour
         isSprinting = !isSprinting;
         if (isSprinting)
         {
-            speed = 8.0f;
+            speed = sprintSpeed;
             movementAM.Play("FootstepsOnConcrete", 0f, 1.5f);
             movementAM.Volume("FootstepsOnConcrete", 1.5f);
-            animator.SetBool("IsRunning", true);
+            //animator.SetBool("IsRunning", true);
         }
         else
         {
-            speed = 5.0f;
+            speed = baseSpeed;
             movementAM.StopPlaying("FootstepsOnConcrete");
-            animator.SetBool("IsRunning", false);
+            //animator.SetBool("IsRunning", false);
         }
     }
+
+    public void SpeedPower()
+    {
+        CancelInvoke("ResetSpeed");
+        baseSpeed += 3;
+        sprintSpeed += 3;
+        if (isSprinting)
+        {
+            speed = sprintSpeed;
+        }
+        else
+        {
+            speed = baseSpeed;
+        }
+            Invoke("ResetSpeed", 10f);
+    }
+
+    void ResetSpeed()
+    {
+        Debug.Log("Reset Speed");
+        baseSpeed -= 3;
+        sprintSpeed -= 3;
+        if (isSprinting)
+        {
+            speed = sprintSpeed;
+        }
+        else
+        {
+            speed = baseSpeed;
+        }
+    }
+
+    public void InvulnPower()
+    {
+        
+        CancelInvoke("ResetInvuln");
+        invulnerable = true;
+        Invoke("ResetInvuln", 15f);
+    }
+    void ResetInvuln()
+    {
+        invulnerable = false;
+    }
+
+    public void MoonPower()
+    {
+        
+        CancelInvoke("ResetMoon");
+        gravity = -3f;
+        Invoke("ResetMoon", 20f);
+    }
+
+    void ResetMoon()
+    {
+        
+        gravity = -9.81f;
+    }
+
+    public IEnumerator Block()
+    {
+        isBlocking = true;
+        yield return new WaitForSeconds(1f);
+        isBlocking = false; 
+    }
+    public void TakeDamage(int damage)
+    {
+        if (!isBlocking)
+        {
+            health -= damage;
+            Debug.Log("Player Health: " + health);
+            if(health < 0)
+            {
+                SceneManager.LoadScene("Out Of Time Zone");
+            }
+        }
+        else
+        {
+            Debug.Log("Blocked!");
+        }
+    }
+
+    public void chargeHit()
+    {
+
+        GameObject t = GameObject.FindWithTag("Boss");
+        Vector3 dir = t.transform.position - (transform.position + new Vector3(0f, 5f, 0f) );
+        impact = dir.normalized * -40f;
+        //if (movement.magnitude > dir.magnitude) movement = dir;
+        //controller.Move(movement);
+    }
+
+    //public bool getBlock()
+    //{
+    //  return isBlocking;
+    //}
 }

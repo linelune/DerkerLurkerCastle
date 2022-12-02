@@ -6,6 +6,7 @@ public class Freezer : MonoBehaviour
 {
 public bool cooldown=false;
 bool freezed=false;
+    private float resetval;
 GameObject mPlayer;
     PlayerMotor mPI;
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ GameObject mPlayer;
  public void freezePlayer()
  {
  cooldown=true;
+        resetval = mPI.speed;
  mPI.speed=0;
  mPI.health--;
  Debug.Log("freeze");
@@ -37,9 +39,9 @@ GameObject mPlayer;
         
   
   
-  void releasePlayer()
+  public void releasePlayer()
   {
-  mPI.speed=10;
+  mPI.speed=resetval;
   Debug.Log("release");
   }
   

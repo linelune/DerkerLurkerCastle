@@ -1,0 +1,893 @@
+fileFormatVersion: 2
+guid: 628a7edeaad61344d82d8e6fb6899da3
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 361
+        width: 60
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 354d28a2f19b7864cb3542ede8a92a7f
+      internalID: -1990616022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 361
+        width: 64
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14437342be6eb29448ba074fb7cc3183
+      internalID: 1416769305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_2
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 363
+        width: 86
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067945c3c5d6c6944aeba814ef9271ae
+      internalID: 264486134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 360
+        width: 65
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f53c23558ed7e9548b0ed0251a09fe4b
+      internalID: 1697958586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_4
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 361
+        width: 62
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f23c65b349003747aac6dc946868a0c
+      internalID: 1593610279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_5
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 361
+        width: 60
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad5990612f705894d80dd3c07df14b8d
+      internalID: -167068322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_6
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 360
+        width: 109
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb410d1dd86799f4bba759f89bc4747c
+      internalID: -1560564985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_7
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 362
+        width: 122
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9eadb844f9c2a744af2160e7cb1be29
+      internalID: -1892856277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_8
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 369
+        width: 80
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a02613987c029e439378f8fd3cdb9af
+      internalID: 1292206930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_9
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 261
+        width: 110
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cbef2a70d8fa5642b7505583c47223c
+      internalID: 366108262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_10
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 257
+        width: 60
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd38f71715770145b6691a4c90ca6f3
+      internalID: 1726585588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_11
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 256
+        width: 59
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4cb73b2763f79479db1ff12935b498
+      internalID: 478415595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_12
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 253
+        width: 78
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 850f2c2fcd463f640a6982d53efb58bb
+      internalID: 2009446791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_13
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 259
+        width: 114
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75514af1dd52fc84d87bdeb79d3c7a41
+      internalID: 1365865166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_14
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 253
+        width: 81
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d168e426e8f2d284a8f4aa9243bc0af3
+      internalID: 1408320697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_15
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 254
+        width: 59
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06646f97862e6c04389e65f2e2f920e7
+      internalID: 1570962369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_16
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 250
+        width: 60
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c47b40a8a1c7a4d4395ab825cfa47404
+      internalID: -1842770043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_17
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 248
+        width: 68
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca7a0b24165808c4291d3bfd4c29d739
+      internalID: -968978581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_18
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 153
+        width: 108
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b368f487179ac8440ab4594ed16a66a1
+      internalID: 1519570435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_19
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 153
+        width: 68
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b778a1ef00166d5439d07ec48608af46
+      internalID: 940106056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_20
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 155
+        width: 60
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829c6063b1b763c4693163fabf38d40b
+      internalID: -1618806506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_21
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 153
+        width: 55
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e4c5109e0e27440ae133eb183dd9c2
+      internalID: 526358604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_22
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 150
+        width: 66
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a9971c1f6ccdc14c89067bef4fd2e08
+      internalID: 1816997508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_23
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 149
+        width: 105
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ccda1460d85154cb9d36885574003b
+      internalID: 211266847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_24
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 147
+        width: 72
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce3d41ff00a84148b0bc06c661a7325
+      internalID: -1718660777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_25
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 151
+        width: 138
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af760cb45b2b08b48898830d98b2540e
+      internalID: 900778046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_26
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 50
+        width: 173
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba39689a2e0e09a4abf6ccbb74071b0e
+      internalID: 975944432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_27
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 37
+        width: 65
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad33b81ebe0419f4bae9420179079fd4
+      internalID: 464855457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_28
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 116
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1631b957a35494e4b83815ed6bca6f81
+      internalID: 1459319126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_29
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 34
+        width: 75
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffc3448274ddb96428430c6c87412a70
+      internalID: -736019306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_30
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 102
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596a18c386e9f914db3a20fd57d836c2
+      internalID: -2672819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_31
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 29
+        width: 76
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af9080ed17b8f6429b5085854121df4
+      internalID: -261076284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_32
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 33
+        width: 79
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 997922c3d08aa264087a0f2077934cbb
+      internalID: -2087653505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_33
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 33
+        width: 81
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f88f907227453b242afba9397ff63f17
+      internalID: -94783964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Duke Nukem 3D - King Cobra 1_34
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 37
+        width: 91
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a9c969be3fb7848b2d6e4265bc5aa7
+      internalID: -557517153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: ea2a55d52445dc8499d258f3c00aea6f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PC Computer - Duke Nukem 3D - King Cobra 1_12: 2009446791
+      PC Computer - Duke Nukem 3D - King Cobra 1_21: 526358604
+      PC Computer - Duke Nukem 3D - King Cobra 1_0: -1990616022
+      PC Computer - Duke Nukem 3D - King Cobra 1_1: 1416769305
+      PC Computer - Duke Nukem 3D - King Cobra 1_18: 1519570435
+      PC Computer - Duke Nukem 3D - King Cobra 1_16: -1842770043
+      PC Computer - Duke Nukem 3D - King Cobra 1_32: -2087653505
+      PC Computer - Duke Nukem 3D - King Cobra 1_8: 1292206930
+      PC Computer - Duke Nukem 3D - King Cobra 1_3: 1697958586
+      PC Computer - Duke Nukem 3D - King Cobra 1_13: 1365865166
+      PC Computer - Duke Nukem 3D - King Cobra 1_14: 1408320697
+      PC Computer - Duke Nukem 3D - King Cobra 1_24: -1718660777
+      PC Computer - Duke Nukem 3D - King Cobra 1_25: 900778046
+      PC Computer - Duke Nukem 3D - King Cobra 1_29: -736019306
+      PC Computer - Duke Nukem 3D - King Cobra 1_30: -2672819
+      PC Computer - Duke Nukem 3D - King Cobra 1_9: 366108262
+      PC Computer - Duke Nukem 3D - King Cobra 1_4: 1593610279
+      PC Computer - Duke Nukem 3D - King Cobra 1_6: -1560564985
+      PC Computer - Duke Nukem 3D - King Cobra 1_28: 1459319126
+      PC Computer - Duke Nukem 3D - King Cobra 1_15: 1570962369
+      PC Computer - Duke Nukem 3D - King Cobra 1_17: -968978581
+      PC Computer - Duke Nukem 3D - King Cobra 1_26: 975944432
+      PC Computer - Duke Nukem 3D - King Cobra 1_27: 464855457
+      PC Computer - Duke Nukem 3D - King Cobra 1_34: -557517153
+      PC Computer - Duke Nukem 3D - King Cobra 1_7: -1892856277
+      PC Computer - Duke Nukem 3D - King Cobra 1_19: 940106056
+      PC Computer - Duke Nukem 3D - King Cobra 1_10: 1726585588
+      PC Computer - Duke Nukem 3D - King Cobra 1_31: -261076284
+      PC Computer - Duke Nukem 3D - King Cobra 1_22: 1816997508
+      PC Computer - Duke Nukem 3D - King Cobra 1_2: 264486134
+      PC Computer - Duke Nukem 3D - King Cobra 1_33: -94783964
+      PC Computer - Duke Nukem 3D - King Cobra 1_11: 478415595
+      PC Computer - Duke Nukem 3D - King Cobra 1_20: -1618806506
+      PC Computer - Duke Nukem 3D - King Cobra 1_5: -167068322
+      PC Computer - Duke Nukem 3D - King Cobra 1_23: 211266847
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

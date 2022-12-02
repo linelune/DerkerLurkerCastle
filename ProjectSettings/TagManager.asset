@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - EnemySpawnPoint
+  - Breakable
+  - UpgradeManager
+  - PlayerAttack
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -14,8 +18,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
+  - hitbox
+  - Arrow
   - 
   - 
   - 
