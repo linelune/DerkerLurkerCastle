@@ -33,6 +33,11 @@ public class PlayerMotor : MonoBehaviour
     public UnityEvent SpeedOverlay;
     public UnityEvent MoonOverlay;
     public UnityEvent DerkerOverlay;
+    public UnityEvent DeathOverlay;
+
+    public Animator playerCameraAnimator;
+    private bool isDead = false;
+    private float deathTime = 0.0f;
 
     // Audio
     private AudioManager movementAM;
@@ -83,6 +88,7 @@ public class PlayerMotor : MonoBehaviour
             }
         }
 
+        CheckDeathEnd();
     }
     public void setSkills()
     {
@@ -109,6 +115,9 @@ public class PlayerMotor : MonoBehaviour
 
     public void ProcessMove(Vector2 input)
     {
+        if (isDead)
+            return;
+
         Vector3 moveDirection = Vector3.zero;
         // Move on x and z axis
         moveDirection.x = input.x;
@@ -246,8 +255,7 @@ public class PlayerMotor : MonoBehaviour
     }
 
     void ResetMoon()
-    {
-        
+    {   
         gravity = -9.81f;
     }
 
@@ -266,12 +274,7 @@ public class PlayerMotor : MonoBehaviour
             {
                 DamageOverlay.Invoke();
             }
-            Debug.Log("Player Health: " + health);
-            if(health <= 0)
-            {
-                //Add death event
-                SceneManager.LoadScene("Out Of Time Zone");
-            }
+            CheckHealth();
         }
         else
         {
@@ -300,11 +303,36 @@ public class PlayerMotor : MonoBehaviour
         {
             DerkerOverlay.Invoke();
         }
+        CheckHealth();
+    }
+
+    private void CheckHealth()
+    {
+        Debug.Log("Player Health : " + health);
+        health = 0;
         if (health <= 0)
         {
-            SceneManager.LoadScene("Out Of Time Zone");
+            isDead = true;
+
+            playerCameraAnimator.SetBool("isPlayerDead", true);
+
+            DeathOverlay.Invoke();
         }
     }
 
-    //add death event
+    public bool IsPlayerAlive()
+    {
+        return ! isDead;
+    }
+
+    private void CheckDeathEnd()
+    {
+        if (!isDead)
+            return;
+
+        deathTime += Time.deltaTime;
+
+        if (deathTime >= 2.5f)
+            SceneManager.LoadScene("Out Of Time Zone");
+    }
 }

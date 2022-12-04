@@ -8,22 +8,14 @@ public class UpgradeManager : MonoBehaviour
     public float playerSpeed = 5f;
     public int playerHealth = 100;
     public float playerJumpHeight = 1f;
-    //public GameObject upgradeMenu;
     public int playerLevel = 1;
     public int coins = 0;
    
-    // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        //upgradeMenu.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void UpgradeSpeed()
     {
         

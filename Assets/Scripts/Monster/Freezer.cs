@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Freezer : MonoBehaviour
 {
-public bool cooldown=false;
-bool freezed=false;
+    public bool cooldown = false;
     private float resetval;
-GameObject mPlayer;
+    GameObject mPlayer;
     PlayerMotor mPI;
-    // Start is called before the first frame update
+
     void Start()
     {
-    mPlayer=GameObject.FindWithTag("Player");
-    mPI=mPlayer.GetComponent<PlayerMotor>();
-        
+        mPlayer=GameObject.FindWithTag("Player");
+        mPI=mPlayer.GetComponent<PlayerMotor>();
     }
 
     // Update is called once per frame

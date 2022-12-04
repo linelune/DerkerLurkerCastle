@@ -100,9 +100,6 @@ public class UpgradeLightScript : MonoBehaviour
 
         // Try to buy the upgrade when the player really close to the light
 
-      
-      
-
         if ((upgradeType == UPGRADE_TYPE.HEALTH && text.text.StartsWith(healthUpgradeQuestion)
             || upgradeType == UPGRADE_TYPE.SPEED && text.text.StartsWith(speedUpgradeQuestion)
             || upgradeType == UPGRADE_TYPE.JUMP && text.text.StartsWith(jumpUpgradeQuestion))
@@ -111,8 +108,6 @@ public class UpgradeLightScript : MonoBehaviour
         {
             um.coins -= price;
 
-
-            // TO DO - Upgrade player
             switch (upgradeType){
                 case UPGRADE_TYPE.HEALTH:
                     if(m_healthUpgrade != null)
@@ -177,13 +172,5 @@ public class UpgradeLightScript : MonoBehaviour
     void updatePrice()
     {
         price = (int)(10 * 1.5 * um.playerLevel);
-
-        /*
-        for (int i = 0; i < level; i++)
-        {
-            price = (int) (price * 1.5f); 
-        }
-        for loops are slow 
-        */
     }
 }

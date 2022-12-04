@@ -5,8 +5,8 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public GameObject model;
-    private bool collectible = false;
-    private GameObject pot;
+    //private bool collectible = false;
+    //private GameObject pot;
     private AudioSource m_Audio;
     public AudioClip bounce_sfx;
     private int max_bounces = 4;
@@ -40,10 +40,7 @@ public class Coin : MonoBehaviour
             max_bounces -= 1;
         }
     }
-    private void makeCollectible()
-    {
-        collectible = true;
-    }
+
     private IEnumerator cleanup()
     {
         Destroy(model);

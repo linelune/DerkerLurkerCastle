@@ -8,7 +8,6 @@ public class Serpent : MonoBehaviour
     Transform Target;
     SpriteRenderer rend;
     Animator anim;
-    Rigidbody m_Rigidbody;
     public float speed = 5f;
     public GameObject hitbox;
     private CharacterController m_Controller;
@@ -16,8 +15,6 @@ public class Serpent : MonoBehaviour
     bool justTP = false;
     bool tpLock = true;
     bool attackLock = true;
-    float Gravity = 9.8f;
-    float velocity = 0;
     int health = 50;
     bool justHit = false;
     private AudioSource m_Audio;
@@ -27,7 +24,6 @@ public class Serpent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
         m_Controller = GetComponent<CharacterController>();

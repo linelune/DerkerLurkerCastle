@@ -12,7 +12,10 @@ public class SwordShield : Weapon
     public Transform emitter;
     private Animator swordanim;
     private Animator shieldanim;
-    private bool atk1 = false, atk2 = false, atk1done = false;
+    private bool atk1 = false;
+    private bool atk2 = false;
+    //private bool atk1done = false;
+    
     // Start is called before the first frame update
     void Start()
     {
