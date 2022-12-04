@@ -309,7 +309,7 @@ public class PlayerMotor : MonoBehaviour
     private void CheckHealth()
     {
         Debug.Log("Player Health : " + health);
-        health = 0;
+
         if (health <= 0)
         {
             isDead = true;

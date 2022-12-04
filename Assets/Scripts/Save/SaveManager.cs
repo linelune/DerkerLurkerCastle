@@ -6,23 +6,24 @@ using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
-    private BinaryFormatter binaryFormatter;
-    private UpgradeManager upgradeManager;
+    private BinaryFormatter binaryFormatter = null;
+    private UpgradeManager upgradeManager = null;
 
-    private string saveFileName;
+    private string saveFileName = "/Save1.dat";
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
 
-        binaryFormatter = new BinaryFormatter();
-        upgradeManager = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
-
-        saveFileName = "/Save1.dat";
+        if (binaryFormatter == null || upgradeManager == null)
+            InitValue();
     }
 
     public void SaveData()
     {
+        if (binaryFormatter == null || upgradeManager == null)
+            InitValue();
+
         FileStream file = File.Create(
             Application.persistentDataPath + saveFileName
         );
@@ -43,6 +44,9 @@ public class SaveManager : MonoBehaviour
 
     public void LoadData()
     {
+        if (binaryFormatter == null || upgradeManager == null)
+            InitValue();
+
         if (File.Exists(Application.persistentDataPath + saveFileName))
         {
             FileStream file = File.Open(
@@ -64,6 +68,9 @@ public class SaveManager : MonoBehaviour
 
     public void ResetData()
     {
+        if (binaryFormatter == null || upgradeManager == null)
+            InitValue();
+
         if (File.Exists(Application.persistentDataPath + saveFileName))
         {
             File.Delete(
@@ -72,5 +79,11 @@ public class SaveManager : MonoBehaviour
 
             Debug.Log("Data reset !");
         }
+    }
+
+    private void InitValue()
+    {
+        binaryFormatter = new BinaryFormatter();
+        upgradeManager = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
     }
 }
