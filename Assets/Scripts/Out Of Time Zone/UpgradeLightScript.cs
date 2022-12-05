@@ -8,13 +8,14 @@ using System;
 public class UpgradeLightScript : MonoBehaviour
 {
     public Transform playerSoul;
+    public CharacterController playerSoulCharacterController;
 
     public Text text;
     public RawImage filter;
 
     public int level;
 
-    public enum UPGRADE_TYPE { HEALTH, SPEED, JUMP };
+    public enum UPGRADE_TYPE { HEALTH, SPEED, JUMP, DAMAGE };
 
     public int upgradeTypeIndex;
 
@@ -23,6 +24,7 @@ public class UpgradeLightScript : MonoBehaviour
     private string healthUpgradeQuestion;
     private string speedUpgradeQuestion;
     private string jumpUpgradeQuestion;
+    private string damageUpgradeQuestion;
     private string toAcceptText;
     private string giftTakenAnswer;
     private string notEnoughCoinAnswer;
@@ -35,17 +37,18 @@ public class UpgradeLightScript : MonoBehaviour
 
     private UpgradeManager um;
 
-    public UnityEvent m_healthUpgrade;
-    public UnityEvent m_speedUpgrade;
-    public UnityEvent m_jumpUpgrade;
+    public UnityEvent upgradeEvent;
 
     void Start()
     {
         um = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
         upgradeType = (UPGRADE_TYPE) upgradeTypeIndex;
+        
         healthUpgradeQuestion = "Do you want a gift of life from the goddess Aelia ?";
         speedUpgradeQuestion = "Do you want to be faster like the god Spror ?";
         jumpUpgradeQuestion = "Do you want to get close to the sky as the god Virleas ?";
+        damageUpgradeQuestion = "Do you want to be as strong as the god Minaor ?";
+
         toAcceptText = "\nCome closer if that is what you want and if you possesses _ coins so that the god accept.";
         giftTakenAnswer = "Gift taken !";
         notEnoughCoinAnswer = "You need more coins if you want a new gift !";
@@ -69,28 +72,31 @@ public class UpgradeLightScript : MonoBehaviour
                 text.text = speedUpgradeQuestion + toAcceptTextWithPrice;
             else if (upgradeType == UPGRADE_TYPE.JUMP)
                 text.text = jumpUpgradeQuestion + toAcceptTextWithPrice;
+            else if (upgradeType == UPGRADE_TYPE.DAMAGE)
+                text.text = damageUpgradeQuestion + toAcceptTextWithPrice;
         }
 
         // Show filter depending on the distance between light and player
 
         if (Vector3.Distance(transform.position, playerSoul.position) < 7.0f)
         {
+            float alpha = 255.0f * ((1.0f - ((Vector3.Distance(transform.position, playerSoul.position) - 1.5f) / 5.5f)) / 4.0f) / 255.0f;
             if (upgradeType == UPGRADE_TYPE.HEALTH)
-                filter.color = new Color(1.0f, 0.0f, 0.0f,
-                    255.0f * ((1.0f - ((Vector3.Distance(transform.position, playerSoul.position) - 1.5f) / 5.5f)) / 4.0f) / 255.0f);
+                filter.color = new Color(1.0f, 0.0f, 0.0f, alpha);
             else if (upgradeType == UPGRADE_TYPE.SPEED)
-                filter.color = new Color(1.0f, 1.0f, 0.0f,
-                    255.0f * ((1.0f - ((Vector3.Distance(transform.position, playerSoul.position) - 1.5f) / 5.5f)) / 4.0f) / 255.0f);
+                filter.color = new Color(1.0f, 1.0f, 0.0f, alpha);
             else if (upgradeType == UPGRADE_TYPE.JUMP)
-                filter.color = new Color(0.0f, 1.0f, 0.0f,
-                    255.0f * ((1.0f - ((Vector3.Distance(transform.position, playerSoul.position) - 1.5f) / 5.5f)) / 4.0f) / 255.0f);
+                filter.color = new Color(0.0f, 1.0f, 0.0f, alpha);
+            else if (upgradeType == UPGRADE_TYPE.DAMAGE)
+                filter.color = new Color(1.0f, 0.0f, 1.0f, alpha);
         }
 
         // Remove the question when the player go away from the light
 
         if ((upgradeType == UPGRADE_TYPE.HEALTH && text.text.StartsWith(healthUpgradeQuestion)
             || upgradeType == UPGRADE_TYPE.SPEED && text.text.StartsWith(speedUpgradeQuestion)
-            || upgradeType == UPGRADE_TYPE.JUMP && text.text.StartsWith(jumpUpgradeQuestion))
+            || upgradeType == UPGRADE_TYPE.JUMP && text.text.StartsWith(jumpUpgradeQuestion)
+            || upgradeType == UPGRADE_TYPE.DAMAGE && text.text.StartsWith(damageUpgradeQuestion))
             && Vector3.Distance(transform.position, playerSoul.position) > 7.0f)
         {
             text.text = "";
@@ -102,39 +108,24 @@ public class UpgradeLightScript : MonoBehaviour
 
         if ((upgradeType == UPGRADE_TYPE.HEALTH && text.text.StartsWith(healthUpgradeQuestion)
             || upgradeType == UPGRADE_TYPE.SPEED && text.text.StartsWith(speedUpgradeQuestion)
-            || upgradeType == UPGRADE_TYPE.JUMP && text.text.StartsWith(jumpUpgradeQuestion))
+            || upgradeType == UPGRADE_TYPE.JUMP && text.text.StartsWith(jumpUpgradeQuestion)
+            || upgradeType == UPGRADE_TYPE.DAMAGE && text.text.StartsWith(damageUpgradeQuestion))
             && Vector3.Distance(transform.position, playerSoul.position) < 1.5f
             && um.coins > price)
         {
             um.coins -= price;
 
-            switch (upgradeType){
-                case UPGRADE_TYPE.HEALTH:
-                    if(m_healthUpgrade != null)
-                    {
-                        m_healthUpgrade.Invoke();
-                    }
-                    break; 
-                case UPGRADE_TYPE.SPEED:
-                    if (m_speedUpgrade != null)
-                    {
-                        m_speedUpgrade.Invoke();
-                    }
-                    break;
-                case UPGRADE_TYPE.JUMP:
-                    if (m_jumpUpgrade != null)
-                    {
-                        m_jumpUpgrade.Invoke();
-                    }
-                    break;
+            if (upgradeEvent != null)
+                upgradeEvent.Invoke();
 
-
-                }
             um.playerLevel += 1;
-            
+
+            playerSoulCharacterController.enabled = false;
 
             playerSoul.position = new Vector3(0.0f, 1.0f, 0.0f);
             playerSoul.eulerAngles = Vector3.zero;
+
+            playerSoulCharacterController.enabled = true;
 
             text.text = giftTakenAnswer;
             timer = DateTime.Now;
@@ -144,11 +135,16 @@ public class UpgradeLightScript : MonoBehaviour
         }
         else if ((upgradeType == UPGRADE_TYPE.HEALTH && text.text.StartsWith(healthUpgradeQuestion)
             || upgradeType == UPGRADE_TYPE.SPEED && text.text.StartsWith(speedUpgradeQuestion)
-            || upgradeType == UPGRADE_TYPE.JUMP && text.text.StartsWith(jumpUpgradeQuestion))
+            || upgradeType == UPGRADE_TYPE.JUMP && text.text.StartsWith(jumpUpgradeQuestion)
+            || upgradeType == UPGRADE_TYPE.DAMAGE && text.text.StartsWith(damageUpgradeQuestion))
             && Vector3.Distance(transform.position, playerSoul.position) < 1.5f)
         {
+            playerSoulCharacterController.enabled = false;
+
             playerSoul.position = new Vector3(0.0f, 1.0f, 0.0f);
             playerSoul.eulerAngles = Vector3.zero;
+
+            playerSoulCharacterController.enabled = true;
 
             text.text = notEnoughCoinAnswer;
             timer = DateTime.Now;
@@ -166,6 +162,7 @@ public class UpgradeLightScript : MonoBehaviour
             text.text = "";
             isDisplayingAnswer = false;
         }
+
         updatePrice();
     }
 

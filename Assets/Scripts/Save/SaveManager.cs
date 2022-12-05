@@ -9,7 +9,7 @@ public class SaveManager : MonoBehaviour
     private BinaryFormatter binaryFormatter = null;
     private UpgradeManager upgradeManager = null;
 
-    private string saveFileName = "/Save1.dat";
+    private string saveFileName = "/SaveV2.dat";
 
     void Start()
     {
@@ -32,6 +32,7 @@ public class SaveManager : MonoBehaviour
         save.savedPlayerSpeed = upgradeManager.playerSpeed;
         save.savedPlayerMaxHealth = upgradeManager.playerHealth;
         save.savedPlayerJumpHeight = upgradeManager.playerJumpHeight;
+        save.savedPlayerDamageMultiplier = upgradeManager.playerDamage;
         save.savedPlayerLevel = upgradeManager.playerLevel;
         save.savedPlayerCoins = upgradeManager.coins;
 
@@ -59,6 +60,7 @@ public class SaveManager : MonoBehaviour
             upgradeManager.playerSpeed = save.savedPlayerSpeed;
             upgradeManager.playerHealth = save.savedPlayerMaxHealth;
             upgradeManager.playerJumpHeight = save.savedPlayerJumpHeight;
+            upgradeManager.playerDamage = save.savedPlayerDamageMultiplier;
             upgradeManager.playerLevel = save.savedPlayerLevel;
             upgradeManager.coins = save.savedPlayerCoins;
 

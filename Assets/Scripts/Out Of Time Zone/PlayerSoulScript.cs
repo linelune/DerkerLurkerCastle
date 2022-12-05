@@ -30,7 +30,7 @@ public class PlayerSoulScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        GetComponent<PlayerLook>().ProcessLook(playerInput.OnFoot.LookAround.ReadValue<Vector2>());
+        GetComponent<PlayerLook>().ProcessHorizontalLook(playerInput.OnFoot.LookAround.ReadValue<Vector2>());
     }
 
     void FixedUpdate()

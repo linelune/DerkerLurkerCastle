@@ -8,6 +8,7 @@ public class UpgradeManager : MonoBehaviour
     public float playerSpeed = 5f;
     public int playerHealth = 100;
     public float playerJumpHeight = 1f;
+    public float playerDamage = 1.0f;
     public int playerLevel = 1;
     public int coins = 0;
    
@@ -32,6 +33,13 @@ public class UpgradeManager : MonoBehaviour
         Debug.Log("Jump");
         playerJumpHeight += 0.2f;
     }
+
+    public void UpgradeDamage()
+    {
+        Debug.Log("Damage !");
+        playerDamage += 0.1f;
+    }
+
     public float getSpeed()
     {
         Debug.Log("Getting Speed: " + playerSpeed);

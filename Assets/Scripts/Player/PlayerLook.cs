@@ -26,4 +26,12 @@ public class PlayerLook : MonoBehaviour
         // Rotate Player to look left and right
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
     }
+
+    public void ProcessHorizontalLook(Vector2 input)
+    {
+        float mouseX = input.x;
+
+        // Rotate Player to look left and right
+        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+    }
 }
