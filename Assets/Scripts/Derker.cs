@@ -72,7 +72,7 @@ public class Derker : MonoBehaviour
             justCaught=true;
             gameObject.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
             //Debug.Log("Caught Player");
-            col.gameObject.GetComponent<PlayerMotor>().maxHealth -= 25;
+            col.gameObject.GetComponent<PlayerMotor>().Derk();
             ChaseSpeed /= 2f;
             Debug.Log("Caught! Max health = " + col.gameObject.GetComponent<PlayerMotor>().maxHealth);
             Invoke("teleport", 20.0f);

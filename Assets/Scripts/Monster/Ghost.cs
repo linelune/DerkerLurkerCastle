@@ -9,8 +9,7 @@ public class Ghost : MonoBehaviour
 [SerializeField]
 Transform Target;
 float Damping=1f;
-[SerializeField] Material mMawake;
-[SerializeField] Material mMasleep;
+
 //[SerializeField] Material mMfreeze;
 DisplayManager mDM;
 Freezer mFreezer;
@@ -21,19 +20,29 @@ float distance;
     private bool frozen = false;
 public float damage;
     private AudioSource m_Audio;
+    private Animator anim;
     public AudioClip awake_sfx;
     private bool awake = false;
+
+    GameObject mPlayer;
+    PlayerMotor mPI;
+    public bool cooldown = true;
+    bool freezed = false;
+    private float resetval;
 
     private GameObject target;
     // Start is called before the first frame update
     void Start()
     {
-    mDM=GetComponentInChildren<DisplayManager>();
-    mFreezer=GetComponentInChildren<Freezer>();
+        mPlayer = GameObject.FindWithTag("Player");
+        mPI = mPlayer.GetComponent<PlayerMotor>();
+        
         m_Audio = GetComponent<AudioSource>();
-    
-    //mPlayer=GameObject.Find("Player");
-    //mPI=mPlayer.GetComponent<PlayerInput>();
+        anim = GetComponent<Animator>();
+        anim.SetBool("isAsleep", true);
+
+        //mPlayer=GameObject.Find("Player");
+        //mPI=mPlayer.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -52,24 +61,26 @@ public float damage;
             if (!awake)
             {
                 awake=true;
+                anim.SetBool("isAsleep", false);
                 m_Audio.PlayOneShot(awake_sfx, 0.5f);
             }
             if (distance > 2f)
             {
                 gameObject.transform.position = Vector3.MoveTowards(transform.position, Target.position + new Vector3(0f, 1.5f, 0f), ChaseSpeed);
             }
-            mDM.mMat=mMawake;
-            if(!mFreezer.cooldown && distance<2f)
+
+            if(cooldown && distance<3f)
             {
-                mFreezer.freezePlayer();
+                //freezePlayer();
+                Debug.Log("WHY");
+                anim.SetBool("isAttacking", true);
                 frozen=true;
      
             }
-     
+    
      }
      else
         {
-            mDM.mMat=mMasleep;
             awake = false;
         }
      
@@ -113,7 +124,31 @@ public float damage;
     void OnDestroy()
     {
         if (frozen) {
-            mFreezer.releasePlayer();
+            releasePlayer();
                 }
     }
+    public void freezePlayer()
+    {
+        anim.SetBool("isAttacking", false);
+        cooldown = false;
+        resetval = mPI.speed;
+        mPI.speed = 0;
+        mPI.health--;
+        Debug.Log("freeze");
+        Invoke("releasePlayer", 4f);
+        Invoke("resetCoolDown", 8f);
+    }
+
+    public void releasePlayer()
+    {
+        mPI.speed = resetval;
+        Debug.Log("release");
+    }
+
+    void resetCoolDown()
+    {
+        cooldown = true;
+        Debug.Log("reset cooldown");
+    }
+
 }

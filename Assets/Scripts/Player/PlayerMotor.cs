@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMotor : MonoBehaviour
 {
@@ -26,6 +27,12 @@ public class PlayerMotor : MonoBehaviour
     public int health = 100;
     public int maxHealth = 100;
     Vector3 impact = Vector3.zero;
+
+    public UnityEvent DamageOverlay;
+    public UnityEvent InvulnOverlay;
+    public UnityEvent SpeedOverlay;
+    public UnityEvent MoonOverlay;
+    public UnityEvent DerkerOverlay;
 
     // Audio
     private AudioManager movementAM;
@@ -180,6 +187,10 @@ public class PlayerMotor : MonoBehaviour
         CancelInvoke("ResetSpeed");
         baseSpeed += 3;
         sprintSpeed += 3;
+        if (SpeedOverlay != null)
+        {
+            SpeedOverlay.Invoke();
+        }
         if (isSprinting)
         {
             speed = sprintSpeed;
@@ -211,6 +222,10 @@ public class PlayerMotor : MonoBehaviour
         
         CancelInvoke("ResetInvuln");
         invulnerable = true;
+        if(InvulnOverlay != null)
+        {
+            InvulnOverlay.Invoke();
+        }
         Invoke("ResetInvuln", 15f);
     }
     void ResetInvuln()
@@ -223,6 +238,10 @@ public class PlayerMotor : MonoBehaviour
         
         CancelInvoke("ResetMoon");
         gravity = -3f;
+        if (MoonOverlay != null)
+        {
+            MoonOverlay.Invoke();
+        }
         Invoke("ResetMoon", 20f);
     }
 
@@ -243,9 +262,14 @@ public class PlayerMotor : MonoBehaviour
         if (!isBlocking)
         {
             health -= damage;
-            Debug.Log("Player Health: " + health);
-            if(health < 0)
+            if(DamageOverlay != null)
             {
+                DamageOverlay.Invoke();
+            }
+            Debug.Log("Player Health: " + health);
+            if(health <= 0)
+            {
+                //Add death event
                 SceneManager.LoadScene("Out Of Time Zone");
             }
         }
@@ -265,8 +289,22 @@ public class PlayerMotor : MonoBehaviour
         //controller.Move(movement);
     }
 
-    //public bool getBlock()
-    //{
-    //  return isBlocking;
-    //}
+    public void Derk()
+    {
+        maxHealth -= 25;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        if(DerkerOverlay != null)
+        {
+            DerkerOverlay.Invoke();
+        }
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("Out Of Time Zone");
+        }
+    }
+
+    //add death event
 }
