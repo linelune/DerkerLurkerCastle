@@ -29,6 +29,7 @@ public class PlayerMotor : MonoBehaviour
     Vector3 impact = Vector3.zero;
 
     public UnityEvent DamageOverlay;
+    public UnityEvent FreezeOverlay;
     public UnityEvent InvulnOverlay;
     public UnityEvent SpeedOverlay;
     public UnityEvent MoonOverlay;
@@ -277,9 +278,12 @@ public class PlayerMotor : MonoBehaviour
             CheckHealth();
         }
         else
-        {
-            Debug.Log("Blocked!");
-        }
+            Debug.Log("Blocked !");
+    }
+
+    public void Freeze()
+    {
+        FreezeOverlay.Invoke();
     }
 
     public void chargeHit()

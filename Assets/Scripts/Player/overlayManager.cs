@@ -6,27 +6,21 @@ using UnityEngine.UI;
 public class overlayManager : MonoBehaviour
 {
     public Image damageOverlay;
+    public Image freezeOverlay;
     public Image speedOverlay;
     public Image invulnOverlay;
     public Image moonOverlay;
     public Image derkerOverlay;
     public Image deathOverlay;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void takeDamage()
+    public void TakeDamage()
     {
         StartCoroutine(FadeImage(damageOverlay, 0f));
+    }
+
+    public void Freeze()
+    {
+        StartCoroutine(FadeImage(freezeOverlay, 0f));
     }
 
     public void Invuln()
