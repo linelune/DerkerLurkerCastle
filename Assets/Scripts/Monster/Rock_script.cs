@@ -146,6 +146,7 @@ bool awake;
     
     void spawn_rocks()
     {
+    Debug.Log("i try");
      if(awake){
     Debug.Log("Little rocky!");
     mSpawnpos = Random.insideUnitSphere * 4+transform.position;
