@@ -7,6 +7,7 @@ public class ExitLightScript : MonoBehaviour
 {
     public Transform playerSoul;
 
+
     void Start()
     {
         
@@ -17,7 +18,7 @@ public class ExitLightScript : MonoBehaviour
         if (Vector3.Distance(transform.position, playerSoul.position) < 2.0f)
         {
             // TO DO - Go back to life;
-            SceneManager.LoadScene("SethTestScene");
+            SceneManager.LoadScene("Level_1");
         }
     }
 }
