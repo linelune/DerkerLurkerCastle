@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -1427640161, guid: 92040006d7b2e3c4b918ad3e2991c653, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.2857143, y: 2.1439035}
@@ -126,10 +126,10 @@ GameObject:
   - component: {fileID: 9184565787545292980}
   - component: {fileID: 9184565787545292979}
   - component: {fileID: 9184565787545292978}
-  - component: {fileID: 9184565787545292977}
+  - component: {fileID: 4564616211638509864}
   - component: {fileID: 9184565787545292981}
   m_Layer: 0
-  m_Name: DerkerBoss
+  m_Name: Clone
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9184565787545292976}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 4.3
@@ -182,7 +182,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &9184565787545292977
+--- !u!114 &4564616211638509864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,13 +191,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9184565787545292976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c0e8818d5ade114b8b5da0a28253345, type: 3}
+  m_Script: {fileID: 11500000, guid: 8706a1a70c992704db1c43e7c472216c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   emitter: {fileID: 3850584529684974499}
-  reflectable: {fileID: 3571481722121245357, guid: c6c684ec2b563a24b898921c673f9a8d, type: 3}
   avoidable: {fileID: 8263836476369448692, guid: 8d61e220024789b4791bebd59e4069e2, type: 3}
-  clone: {fileID: 9184565787545292976, guid: 64acec28d7e598343a0f90f4fef03892, type: 3}
 --- !u!114 &9184565787545292981
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Knight : MonoBehaviour
 {
@@ -176,6 +177,7 @@ public class Knight : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene("Level_2");
                 //add method to spawn coins on death
             }
 

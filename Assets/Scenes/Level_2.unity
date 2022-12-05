@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lb: {fileID: 6592764226946898199, guid: 98d26d86f6647044a95b15d0116de91b, type: 3}
-  bossPortal: {fileID: 4996170600075541076, guid: 0445423b53e02b64e98e13336c92c7fc, type: 3}
+  bossPortal: {fileID: 4996170600075541076, guid: fd801f7ee38b79b4a8160f60d0c4e15f, type: 3}
 --- !u!4 &195392024
 Transform:
   m_ObjectHideFlags: 0

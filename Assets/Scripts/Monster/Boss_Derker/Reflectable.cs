@@ -51,6 +51,7 @@ public class Reflectable : MonoBehaviour
                 movespeed += 0.01f;
                 if (numbounces <= 0)
                 {
+                    col.gameObject.GetComponent<BossDerker>().takeDamage();
                     Destroy(gameObject);
                     //Deal damage
                 }
