@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Glutony_sprite : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Glutony_sprite : MonoBehaviour
     private CharacterController m_Controller;
     private int health = 60;
     private bool justHit = false;
+    public GameObject deathPart;
     DisplayManager mDM;
     [SerializeField] GameObject mAcidPrefab;
     Vector3 mSpawnpos;
@@ -68,7 +70,7 @@ public class Glutony_sprite : MonoBehaviour
         }
 
         lookAt();
-     if(distance<5f)
+     if(distance<15f)
      {
      
      
@@ -79,7 +81,7 @@ public class Glutony_sprite : MonoBehaviour
      
      }
      //Chase distance longer than awake distance
-     if(distance > 10f)
+     if(distance > 20f)
      {
      
             anim.SetBool("isAwake", false);
@@ -189,6 +191,14 @@ public class Glutony_sprite : MonoBehaviour
     void resetHit()
     {
         justHit = false;
+    }
+
+        void OnDestroy()
+        {
+        if (SceneManager.GetActiveScene().isLoaded)
+        {
+            Instantiate(deathPart, transform.position, transform.rotation);
+        }
     }
     
 }

@@ -26,6 +26,7 @@ public class Coin : MonoBehaviour
         if(other.tag=="Player")
         {
             //other.GetComponent<PlayerInteractions>().mCoins+=1;
+            other.gameObject.GetComponent<PlayerMotor>().health += 1;
             GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().coins += 1;
             Debug.Log("We got coin");
             StartCoroutine(cleanup());

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Depreciated, combined with ghost class
+
 public class Freezer : MonoBehaviour
 {
     public bool cooldown = false;

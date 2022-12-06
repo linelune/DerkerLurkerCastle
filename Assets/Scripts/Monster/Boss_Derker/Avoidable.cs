@@ -17,10 +17,13 @@ public class Avoidable : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player")
         {
             col.gameObject.GetComponent<PlayerMotor>().TakeDamage(25);
         }
-        Destroy(gameObject);
+        if (col.gameObject.tag != "Boss")
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf934bd64dd8f7e4da31e5407b9b1420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lb: {fileID: 6592764226946898199, guid: 98d26d86f6647044a95b15d0116de91b, type: 3}
+  lb: {fileID: 6592764226946898199, guid: 076762cb2e3e96543895f419330df02f, type: 3}
   bossPortal: {fileID: 4996170600075541076, guid: fd801f7ee38b79b4a8160f60d0c4e15f, type: 3}
 --- !u!4 &195392024
 Transform:
@@ -256,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3665460431853335512, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3665460431853335512, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_LocalPosition.z

@@ -204,6 +204,8 @@ MonoBehaviour:
   GhostParticles: {fileID: 2093665427698663830, guid: 0a2bd33049915e5469b5d91a146dedfd, type: 3}
   attack_sfx: {fileID: 8300000, guid: 32ef17fc14d90d84d918d2e02e52624b, type: 3}
   damage_sfx: {fileID: 8300000, guid: 36c2c839943718a47a2b5fd8348cbe46, type: 3}
+  deathPart: {fileID: 2312591318274358134, guid: 1c8b119cdc4a3054780e59320414a67a, type: 3}
+  mCoinPrefab: {fileID: 7838264792752073962, guid: 72169da8d9e928260b10f7f3fdb01fb5, type: 3}
 --- !u!82 &5120006087939361478
 AudioSource:
   m_ObjectHideFlags: 0

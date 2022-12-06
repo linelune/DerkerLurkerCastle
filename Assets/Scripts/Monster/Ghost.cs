@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ghost : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Ghost : MonoBehaviour
     //DisplayManager mDM;
     //Freezer mFreezer;
     float distance;
+    SpriteRenderer rend;
+    public GameObject deathPart;
     public float ChaseSpeed = 0.05f;
     private int health = 20;
     private bool justHit = false;
@@ -40,7 +43,7 @@ public class Ghost : MonoBehaviour
         m_Audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         anim.SetBool("isAsleep", true);
-
+        rend = GetComponent<SpriteRenderer>();
         //mPlayer=GameObject.Find("Player");
         //mPI=mPlayer.GetComponent<PlayerInput>();
     }
@@ -50,6 +53,12 @@ public class Ghost : MonoBehaviour
         Target=GameObject.FindWithTag("Player").transform;
           
         distance=(Target.position-transform.position).magnitude;
+
+        if (distance < 30f)
+            rend.color = new Color(1 - distance / 20, 1 - distance / 20, 1 - distance / 20, 1f);
+        else
+            rend.color = new Color(0.0f, 0.0f, 0.0f, 1f);
+
         // < 3 is close
         // > 3 is far
         //Debug.Log(distance.ToString());
@@ -109,15 +118,21 @@ public class Ghost : MonoBehaviour
     }
     void OnDestroy()
     {
-        if (frozen) {
+        if (frozen)
+        {
             releasePlayer();
-                }
+        }
+        if (SceneManager.GetActiveScene().isLoaded)
+        {
+            Instantiate(deathPart, transform.position, transform.rotation);
+        }
     }
     public void freezePlayer()
     {
         anim.SetBool("isAttacking", false);
         cooldown = false;
         resetval = mPI.speed;
+        mPI.TakeDamage(5);
         mPI.speed = 0;
         mPI.health--;
 
@@ -139,5 +154,6 @@ public class Ghost : MonoBehaviour
         cooldown = true;
         Debug.Log("reset cooldown");
     }
+
 
 }

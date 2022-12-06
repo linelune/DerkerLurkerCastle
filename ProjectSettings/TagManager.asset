@@ -11,6 +11,7 @@ TagManager:
   - PlayerAttack
   - Boss
   - SaveManager
+  - DeathPlane
   layers:
   - Default
   - TransparentFX
