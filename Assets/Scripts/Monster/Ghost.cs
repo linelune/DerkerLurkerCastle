@@ -147,6 +147,7 @@ public float damage;
         anim.SetBool("isAttacking", false);
         cooldown = false;
         resetval = mPI.speed;
+        mPI.TakeDamage(5);
         mPI.speed = 0;
         mPI.health--;
         Debug.Log("freeze");
