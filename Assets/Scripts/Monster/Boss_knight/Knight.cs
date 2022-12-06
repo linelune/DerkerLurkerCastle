@@ -105,7 +105,7 @@ public class Knight : MonoBehaviour
                 anim.SetBool("isCharging", false);
                 isCharging = false;
                 anim.SetBool("isWalking", false);
-                gameObject.transform.forward = dir;
+                gameObject.transform.forward = new Vector3(dir.x, 0f, dir.z);
                 if (canAttack)
                 {
                     canAttack = false;
