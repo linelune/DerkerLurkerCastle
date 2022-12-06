@@ -154,7 +154,7 @@ public class Knight : MonoBehaviour
         Instantiate(GhostParticles, pos, transform.rotation);
         yield return new WaitForSeconds(5f);
         Instantiate(Ghost, pos, transform.rotation);
-        yield return new WaitForSeconds(10f);
+        //yield return new WaitForSeconds(10f);
         canSpawnGhost = true;
     }
 

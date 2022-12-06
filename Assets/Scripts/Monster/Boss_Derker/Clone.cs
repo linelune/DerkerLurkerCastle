@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class Clone : MonoBehaviour
 {
-    private float targetDistance = 5f;
-    private float targetHeight = 2f;
+    private float targetDistance = 3.5f;
+    private float targetHeight = 2.5f;
     private float thrust = 0.75f;
     private Rigidbody rb;
     public Transform emitter;
    
-    public Rigidbody avoidable;
+    public GameObject meleeHitbox;
     
-    private bool shootA = true;
+    private bool canAttack = true;
 
     private GameObject target;
     private Vector3 dir;
-
+    private Animator anim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindWithTag("Player");
     }
@@ -47,20 +47,31 @@ public class Clone : MonoBehaviour
         {
             rb.AddForce(Vector3.up * thrust);
         }
-            if (shootA)
+            if (canAttack && dir.magnitude < 5f)
             {
-                Invoke("ShootAvoidable", 3f);
-                shootA = false;
+            canAttack = false;
+            StartCoroutine(atkTrigger());
+                
             }
 
         
 
     }
-    void ShootAvoidable()
+    void Attack()
     {
-        shootA = true;
-        Rigidbody shot = Instantiate(avoidable, emitter.position, emitter.rotation);
-        shot.velocity = ((target.transform.position + new Vector3(0f, 1.5f, 0f)) - gameObject.transform.position).normalized * 15f;
+        //canAttack = true;
+        Instantiate(meleeHitbox, emitter.position, emitter.rotation);
+        //shot.velocity = ((target.transform.position + new Vector3(0f, 1.5f, 0f)) - gameObject.transform.position).normalized * 15f;
+    }
+    IEnumerator atkTrigger()
+    {
+        yield return new WaitForSeconds(3f);
+        anim.SetBool("isAttacking", true);
+        yield return new WaitForSeconds(.1f);
+        anim.SetBool("isAttacking", false);
+        yield return new WaitForSeconds(.9f);
+        canAttack = true;
+
     }
     void OnTriggerEnter(Collider col)
     {

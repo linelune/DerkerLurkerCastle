@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ghost : MonoBehaviour
 {
@@ -9,11 +10,12 @@ public class Ghost : MonoBehaviour
 [SerializeField]
 Transform Target;
 float Damping=1f;
-
-//[SerializeField] Material mMfreeze;
-DisplayManager mDM;
+    SpriteRenderer rend;
+    //[SerializeField] Material mMfreeze;
+    DisplayManager mDM;
 Freezer mFreezer;
 float distance;
+    public GameObject deathPart;
     public float ChaseSpeed = 0.05f;
     private int health = 20;
     private bool justHit = false;
@@ -40,7 +42,7 @@ public float damage;
         m_Audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         anim.SetBool("isAsleep", true);
-
+        rend = GetComponent<SpriteRenderer>();
         //mPlayer=GameObject.Find("Player");
         //mPI=mPlayer.GetComponent<PlayerInput>();
     }
@@ -52,10 +54,18 @@ public float damage;
      
      
      distance=(Target.position-transform.position).magnitude;
-     // < 3 is close
-     // > 3 is far
-     //Debug.Log(distance.ToString());
-     lookAt();
+        if (distance < 30f)
+        {
+            rend.color = new Color(1 - distance / 20, 1 - distance / 20, 1 - distance / 20, 1f);
+        }
+        else
+        {
+            rend.color = new Color(0.0f, 0.0f, 0.0f, 1f);
+        }
+        // < 3 is close
+        // > 3 is far
+        //Debug.Log(distance.ToString());
+        lookAt();
      if(distance<15f)
      {
             if (!awake)
@@ -123,9 +133,14 @@ public float damage;
     }
     void OnDestroy()
     {
-        if (frozen) {
+        if (frozen)
+        {
             releasePlayer();
-                }
+        }
+        if (SceneManager.GetActiveScene().isLoaded)
+        {
+            Instantiate(deathPart, transform.position, transform.rotation);
+        }
     }
     public void freezePlayer()
     {
@@ -150,5 +165,6 @@ public float damage;
         cooldown = true;
         Debug.Log("reset cooldown");
     }
+
 
 }

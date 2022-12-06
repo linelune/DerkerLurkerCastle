@@ -13,7 +13,7 @@ float Damping=1f;
 DisplayManager mDM;
 [SerializeField] GameObject mAcidPrefab;
 Vector3 mSpawnpos;
-
+    public GameObject deathPart;
 float distance;
 public float damage;
 bool awake;
@@ -94,5 +94,9 @@ bool awake;
     
     
     
+    }
+    void OnDestroy()
+    {
+        Instantiate(deathPart, transform.position, transform.rotation);
     }
 }

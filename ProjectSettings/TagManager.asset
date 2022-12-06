@@ -10,6 +10,7 @@ TagManager:
   - UpgradeManager
   - PlayerAttack
   - Boss
+  - DeathPlane
   layers:
   - Default
   - TransparentFX

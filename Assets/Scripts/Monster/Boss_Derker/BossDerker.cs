@@ -5,8 +5,8 @@ using UnityEngine;
 public class BossDerker : MonoBehaviour
 {
 
-    private float targetDistance = 15f;
-    private float targetHeight = 5f;
+    private float targetDistance = 20f;
+    private float targetHeight = 7f;
     private float thrust = 0.75f;
     private Rigidbody rb;
     public Transform emitter;
@@ -74,30 +74,39 @@ public class BossDerker : MonoBehaviour
         }
         if(state == states.CLONE)
         {
-            targetHeight = 2f;
+            targetHeight = 3.5f;
             if (spawnClone)
             {
-                Invoke("SpawnClone", 7f);
+                Invoke("SpawnClone", 2f);
                 spawnClone = false;
             }
         }
     }
     void ShootReflectable()
     {
-        Instantiate(reflectable, emitter.position, emitter.rotation);
-        shootR = true; 
+        if (state == states.PROJECTILE)
+        {
+            Instantiate(reflectable, emitter.position, emitter.rotation);
+        }
+            shootR = true; 
     }
     void ShootAvoidable()
     {
         shootA = true;
-        Rigidbody shot = Instantiate(avoidable, emitter.position, emitter.rotation);
-        shot.velocity = ((target.transform.position + new Vector3(0f,1.5f,0f)) - gameObject.transform.position).normalized * 30f;
+        if (state == states.PROJECTILE)
+        {
+            Rigidbody shot = Instantiate(avoidable, emitter.position, emitter.rotation);
+            shot.velocity = ((target.transform.position + new Vector3(0f, 1.5f, 0f)) - emitter.transform.position).normalized * 30f;
+        }
     }
 
     void SpawnClone()
     {
-        var pos = transform.position + new Vector3(0f, 5f, 0f) + Random.insideUnitSphere * 5;
-        Instantiate(clone, pos, transform.rotation);
+        if (state == states.CLONE)
+        {
+            var pos = transform.position + new Vector3(0f, 5f, 0f) + Random.insideUnitSphere * 5;
+            Instantiate(clone, pos, transform.rotation);
+        }
         spawnClone = true;
     }
     IEnumerator SwapState()

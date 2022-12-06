@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Serpent : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class Serpent : MonoBehaviour
     float velocity = 0;
     int health = 50;
     bool justHit = false;
+    public GameObject deathPart;
     private AudioSource m_Audio;
     public AudioClip attack_sfx;
     public AudioClip damage_sfx;
@@ -80,6 +82,15 @@ public class Serpent : MonoBehaviour
             }
 
         }
+        if (m_Controller.isGrounded)
+        {
+            velocity = 0;
+        }
+        else
+        {
+            velocity -= Gravity * Time.deltaTime;
+            m_Controller.Move(new Vector3(0, velocity, 0));
+        }
 
 
 
@@ -137,5 +148,12 @@ public class Serpent : MonoBehaviour
     void resetHit()
     {
         justHit=false;
+    }
+    void OnDestroy()
+    {
+        if (SceneManager.GetActiveScene().isLoaded)
+        {
+            Instantiate(deathPart, transform.position, transform.rotation);
+        }
     }
 }
