@@ -337,6 +337,6 @@ public class PlayerMotor : MonoBehaviour
         deathTime += Time.deltaTime;
 
         if (deathTime >= 2.5f)
-            SceneManager.LoadScene("Out Of Time Zone");
+            SceneManager.LoadScene("Death Menu");
     }
 }

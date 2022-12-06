@@ -11,8 +11,6 @@ public class PlayerSoulScript : MonoBehaviour
 
     private CharacterController characterController;
 
-    private SaveManager saveManager;
-
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -22,10 +20,6 @@ public class PlayerSoulScript : MonoBehaviour
         playerInput.Enable();
 
         characterController = GetComponent<CharacterController>();
-
-        saveManager = GameObject.FindWithTag("SaveManager").GetComponent<SaveManager>();
-
-        saveManager.SaveData();
     }
 
     private void LateUpdate()

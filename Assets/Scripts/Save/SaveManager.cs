@@ -9,7 +9,7 @@ public class SaveManager : MonoBehaviour
     private BinaryFormatter binaryFormatter = null;
     private UpgradeManager upgradeManager = null;
 
-    private string saveFileName = "/SaveV2.dat";
+    private readonly string saveFileName = "/SaveV2.dat";
 
     void Start()
     {
