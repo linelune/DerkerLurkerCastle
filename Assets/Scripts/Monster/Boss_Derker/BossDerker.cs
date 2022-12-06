@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossDerker : MonoBehaviour
 {
@@ -184,6 +185,8 @@ public class BossDerker : MonoBehaviour
             yield return null;
         }
         rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 0f);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("EndingCutscene");
         //Load scene or something here
     }
 }
