@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 7691060864683076731}
   m_Layer: 0
   m_Name: Clone
-  m_TagString: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emitter: {fileID: 3850584529684974499}
   meleeHitbox: {fileID: 6348132423974045048, guid: 73c928ccd03dc7e4bb305ef617cb9415, type: 3}
+  deathPart: {fileID: 2312591318274358134, guid: 1c8b119cdc4a3054780e59320414a67a, type: 3}
 --- !u!114 &9184565787545292981
 MonoBehaviour:
   m_ObjectHideFlags: 0

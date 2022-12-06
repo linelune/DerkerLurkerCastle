@@ -101,6 +101,7 @@ MonoBehaviour:
   reflectable: {fileID: 3571481722121245357, guid: c6c684ec2b563a24b898921c673f9a8d, type: 3}
   avoidable: {fileID: 8263836476369448692, guid: 8d61e220024789b4791bebd59e4069e2, type: 3}
   clone: {fileID: 9184565787545292976, guid: 64acec28d7e598343a0f90f4fef03892, type: 3}
+  cloneParticles: {fileID: 3716275016998676315, guid: 5e68374ddf702734894cac03d0e2f74f, type: 3}
 --- !u!114 &9184565787545292981
 MonoBehaviour:
   m_ObjectHideFlags: 0

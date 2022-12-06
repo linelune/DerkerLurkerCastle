@@ -13,6 +13,7 @@ public class BossDerker : MonoBehaviour
     public GameObject reflectable;
     public Rigidbody avoidable;
     public GameObject clone;
+    public GameObject cloneParticles;
     private bool shootA = true;
     private bool shootR = true;
     private bool spawnClone = true;
@@ -20,14 +21,18 @@ public class BossDerker : MonoBehaviour
     private bool justHit = false;
     private GameObject target;
     private Vector3 dir;
+    private SpriteRenderer rend;
 
-    private enum states{PROJECTILE, CLONE };
+    private Animator anim;
+    private enum states{PROJECTILE, CLONE, DIE };
     private states state;
 
-    private int health = 2000;
+    private int health = 1200;
     // Start is called before the first frame update
     void Start()
     {
+        rend = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         state = states.PROJECTILE;
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindWithTag("Player");
@@ -36,6 +41,10 @@ public class BossDerker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(health <= 0)
+        {
+            StartCoroutine(die());
+        }
         if(canSwap){
             canSwap = false;
             StartCoroutine(SwapState());
@@ -62,14 +71,10 @@ public class BossDerker : MonoBehaviour
             targetHeight = 5f;
             if (shootA)
             {
-                Invoke("ShootAvoidable", 3f);
+                
+                anim.SetBool("isBeaming", true);
+                Invoke("ShootAvoidable", 5f);
                 shootA = false;
-            }
-            if (shootR)
-            {
-                Invoke("ShootReflectable", 10f);
-                shootR = false;
-
             }
         }
         if(state == states.CLONE)
@@ -77,36 +82,53 @@ public class BossDerker : MonoBehaviour
             targetHeight = 3.5f;
             if (spawnClone)
             {
-                Invoke("SpawnClone", 2f);
+                anim.SetBool("isCloning", true);
+                Invoke("resetClone", 2f);
                 spawnClone = false;
             }
         }
     }
     void ShootReflectable()
     {
-        if (state == states.PROJECTILE)
-        {
-            Instantiate(reflectable, emitter.position, emitter.rotation);
-        }
+
             shootR = true; 
     }
     void ShootAvoidable()
     {
+        
         shootA = true;
-        if (state == states.PROJECTILE)
+    }
+
+    void shootBeam()
+    {
+        anim.SetBool("isBeaming", false);
+        if (shootR)
+        {
+            Instantiate(reflectable, emitter.position, emitter.rotation);
+            shootR = false;
+            Invoke("ShootReflectable", 10f);
+        }
+        else
         {
             Rigidbody shot = Instantiate(avoidable, emitter.position, emitter.rotation);
             shot.velocity = ((target.transform.position + new Vector3(0f, 1.5f, 0f)) - emitter.transform.position).normalized * 30f;
         }
+        
     }
 
     void SpawnClone()
     {
+        anim.SetBool("isCloning", false);
         if (state == states.CLONE)
         {
             var pos = transform.position + new Vector3(0f, 5f, 0f) + Random.insideUnitSphere * 5;
+            Instantiate(cloneParticles, pos, transform.rotation);
             Instantiate(clone, pos, transform.rotation);
         }
+        //spawnClone = true;
+    }
+    void resetClone()
+    {
         spawnClone = true;
     }
     IEnumerator SwapState()
@@ -130,14 +152,11 @@ public class BossDerker : MonoBehaviour
         {
             justHit = true;
             //m_Audio.PlayOneShot(damage_sfx, 0.5f);
+            anim.SetBool("isHurting", true);
             Invoke("resetHit", .1f);
             health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
             //Destroy(col.gameObject);
-            if (health <= 0)
-            {
-                Destroy(gameObject);
-                //add method to spawn coins on death
-            }
+
 
         }
     }
@@ -145,9 +164,26 @@ public class BossDerker : MonoBehaviour
     void resetHit()
     {
         justHit = false;
+        anim.SetBool("isHurting", false);
     }
-    public void takeDamage()
+    public void takeDamage(int dmg)
     {
-        health -= 75;
+        anim.SetBool("isHurting", true);
+        Invoke("resetHit", .1f);
+        health -= dmg;
+    }
+
+    IEnumerator die()
+    {
+        state = states.DIE;
+        anim.SetBool("isHurting", true);
+        for (float i = 5; i >= 0; i -= Time.deltaTime)
+        {
+            // set color with i as alpha
+            rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, i/5);
+            yield return null;
+        }
+        rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 0f);
+        //Load scene or something here
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Clone : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Clone : MonoBehaviour
     public GameObject meleeHitbox;
     
     private bool canAttack = true;
+
+    public GameObject deathPart;
 
     private GameObject target;
     private Vector3 dir;
@@ -47,7 +50,7 @@ public class Clone : MonoBehaviour
         {
             rb.AddForce(Vector3.up * thrust);
         }
-            if (canAttack && dir.magnitude < 5f)
+            if (canAttack && dir.magnitude < 3f)
             {
             canAttack = false;
             StartCoroutine(atkTrigger());
@@ -65,11 +68,11 @@ public class Clone : MonoBehaviour
     }
     IEnumerator atkTrigger()
     {
-        yield return new WaitForSeconds(3f);
+        //yield return new WaitForSeconds(3f);
         anim.SetBool("isAttacking", true);
         yield return new WaitForSeconds(.1f);
         anim.SetBool("isAttacking", false);
-        yield return new WaitForSeconds(.9f);
+        yield return new WaitForSeconds(2.9f);
         canAttack = true;
 
     }
@@ -82,6 +85,15 @@ public class Clone : MonoBehaviour
                
            
 
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (SceneManager.GetActiveScene().isLoaded)
+        {
+            GameObject.FindWithTag("Boss").GetComponent<BossDerker>().takeDamage(5);
+            Instantiate(deathPart, transform.position, transform.rotation);
         }
     }
 }
