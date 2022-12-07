@@ -6,12 +6,22 @@ public class PlayerLook : MonoBehaviour
 {
     public Camera playerCamera;
 
-    public static float xSensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
-    public static float ySensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+    public static float xSensitivity;
+    public static float ySensitivity;
 
     private float xRotation = 0f;
 
+    private void Awake()
+    {
+        xSensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+        ySensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+    }
 
+    private void Update()
+    {
+        xSensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+        ySensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+    }
     public void ProcessLook(Vector2 input)
     {
         float mouseX = input.x;

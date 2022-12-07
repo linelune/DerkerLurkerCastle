@@ -21,6 +21,7 @@ public class ExitLightScript : MonoBehaviour
             UIManager.menusPanel.SetActive(false);
             UIManager.inGameUI.SetActive(true);
             UIManager.pauseMenu.SetActive(false);
+            UIManager.healthBarAndCoin.SetActive(true);
         }
     }
 }
