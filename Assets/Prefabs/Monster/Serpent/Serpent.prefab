@@ -158,6 +158,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   speed: 5
   hitbox: {fileID: 6348132423974045048, guid: 167cff1aebffad144a4557e32ddf9b96, type: 3}
+  deathPart: {fileID: 2312591318274358134, guid: 1c8b119cdc4a3054780e59320414a67a, type: 3}
   attack_sfx: {fileID: 8300000, guid: 7731629c744584f4485f376fa0bdfd9f, type: 3}
   damage_sfx: {fileID: 8300000, guid: 57af5a0a8d4cb68408c711f0bc2dd57f, type: 3}
   teleport_sfx: {fileID: 8300000, guid: 70857a4bad8d14b49ad276d9c611a12b, type: 3}

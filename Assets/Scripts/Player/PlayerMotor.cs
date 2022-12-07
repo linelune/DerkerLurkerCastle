@@ -61,7 +61,7 @@ public class PlayerMotor : MonoBehaviour
         {
             setSkills();
         }
-            if (health > maxHealth || invulnerable)
+            if (health > maxHealth)
         {
             health = maxHealth;
         }
@@ -259,7 +259,7 @@ public class PlayerMotor : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        if (!isBlocking)
+        if (!isBlocking && !invulnerable)
         {
             health -= damage;
             if(DamageOverlay != null)
@@ -305,6 +305,13 @@ public class PlayerMotor : MonoBehaviour
             SceneManager.LoadScene("Out Of Time Zone");
         }
     }
-
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.gameObject.tag == "DeathPlane")
+        {
+            //die
+            SceneManager.LoadScene("Out Of Time Zone");
+        }
+    }
     //add death event
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ghost : MonoBehaviour
 {
@@ -9,31 +10,41 @@ public class Ghost : MonoBehaviour
 [SerializeField]
 Transform Target;
 float Damping=1f;
-[SerializeField] Material mMawake;
-[SerializeField] Material mMasleep;
-//[SerializeField] Material mMfreeze;
-DisplayManager mDM;
+    SpriteRenderer rend;
+    //[SerializeField] Material mMfreeze;
+    DisplayManager mDM;
 Freezer mFreezer;
 float distance;
+    public GameObject deathPart;
     public float ChaseSpeed = 0.05f;
     private int health = 20;
     private bool justHit = false;
     private bool frozen = false;
 public float damage;
     private AudioSource m_Audio;
+    private Animator anim;
     public AudioClip awake_sfx;
     private bool awake = false;
+
+    GameObject mPlayer;
+    PlayerMotor mPI;
+    public bool cooldown = true;
+    bool freezed = false;
+    private float resetval;
 
     private GameObject target;
     // Start is called before the first frame update
     void Start()
     {
-    mDM=GetComponentInChildren<DisplayManager>();
-    mFreezer=GetComponentInChildren<Freezer>();
+        mPlayer = GameObject.FindWithTag("Player");
+        mPI = mPlayer.GetComponent<PlayerMotor>();
+        
         m_Audio = GetComponent<AudioSource>();
-    
-    //mPlayer=GameObject.Find("Player");
-    //mPI=mPlayer.GetComponent<PlayerInput>();
+        anim = GetComponent<Animator>();
+        anim.SetBool("isAsleep", true);
+        rend = GetComponent<SpriteRenderer>();
+        //mPlayer=GameObject.Find("Player");
+        //mPI=mPlayer.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -43,33 +54,43 @@ public float damage;
      
      
      distance=(Target.position-transform.position).magnitude;
-     // < 3 is close
-     // > 3 is far
-     //Debug.Log(distance.ToString());
-     lookAt();
+        if (distance < 30f)
+        {
+            rend.color = new Color(1 - distance / 20, 1 - distance / 20, 1 - distance / 20, 1f);
+        }
+        else
+        {
+            rend.color = new Color(0.0f, 0.0f, 0.0f, 1f);
+        }
+        // < 3 is close
+        // > 3 is far
+        //Debug.Log(distance.ToString());
+        lookAt();
      if(distance<15f)
      {
             if (!awake)
             {
                 awake=true;
+                anim.SetBool("isAsleep", false);
                 m_Audio.PlayOneShot(awake_sfx, 0.5f);
             }
             if (distance > 2f)
             {
                 gameObject.transform.position = Vector3.MoveTowards(transform.position, Target.position + new Vector3(0f, 1.5f, 0f), ChaseSpeed);
             }
-            mDM.mMat=mMawake;
-            if(!mFreezer.cooldown && distance<2f)
+
+            if(cooldown && distance<3f)
             {
-                mFreezer.freezePlayer();
+                //freezePlayer();
+                Debug.Log("WHY");
+                anim.SetBool("isAttacking", true);
                 frozen=true;
      
             }
-     
+    
      }
      else
         {
-            mDM.mMat=mMasleep;
             awake = false;
         }
      
@@ -112,8 +133,39 @@ public float damage;
     }
     void OnDestroy()
     {
-        if (frozen) {
-            mFreezer.releasePlayer();
-                }
+        if (frozen)
+        {
+            releasePlayer();
+        }
+        if (SceneManager.GetActiveScene().isLoaded)
+        {
+            Instantiate(deathPart, transform.position, transform.rotation);
+        }
     }
+    public void freezePlayer()
+    {
+        anim.SetBool("isAttacking", false);
+        cooldown = false;
+        resetval = mPI.speed;
+        mPI.TakeDamage(5);
+        mPI.speed = 0;
+        mPI.health--;
+        Debug.Log("freeze");
+        Invoke("releasePlayer", 4f);
+        Invoke("resetCoolDown", 8f);
+    }
+
+    public void releasePlayer()
+    {
+        mPI.speed = resetval;
+        Debug.Log("release");
+    }
+
+    void resetCoolDown()
+    {
+        cooldown = true;
+        Debug.Log("reset cooldown");
+    }
+
+
 }
