@@ -13,11 +13,10 @@ public bool active;
     public float spawnrate=5f;
     GameObject[] mPoints;
     int num=0;
-    int num2=0;
     //Added bool to prevent overlapping spawns.
     //Prevents clipping issues with multiple enemies spawning on top of one another
     //-Seth
-    private bool hasSpawned = false;
+    //private bool hasSpawned = false;
     
 
     // Start is called before the first frame update
