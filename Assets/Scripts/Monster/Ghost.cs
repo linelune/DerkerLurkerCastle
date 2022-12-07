@@ -25,6 +25,7 @@ public class Ghost : MonoBehaviour
     private AudioSource m_Audio;
     private Animator anim;
     public AudioClip awake_sfx;
+    public AudioClip freeze_sfx;
     private bool awake = false;
 
     GameObject mPlayer;
@@ -129,6 +130,7 @@ public class Ghost : MonoBehaviour
     }
     public void freezePlayer()
     {
+        m_Audio.PlayOneShot(freeze_sfx);
         anim.SetBool("isAttacking", false);
         cooldown = false;
         resetval = mPI.speed;
