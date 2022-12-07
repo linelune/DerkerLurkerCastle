@@ -13,10 +13,15 @@ public class SwordShield : Weapon
     private Animator swordanim;
     private Animator shieldanim;
     private bool atk1 = false, atk2 = false, atk1done = false;
+
+    // Audio
+    private AudioSource m_Audio;
+    public AudioClip slash_sfx;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_Audio = GetComponent<AudioSource>();
         pm = GameObject.FindWithTag("Player").GetComponent<PlayerMotor>();
         swordanim = swordModel.gameObject.GetComponent<Animator>();
         shieldanim = shieldModel.gameObject.GetComponent<Animator>();
@@ -36,7 +41,8 @@ public class SwordShield : Weapon
             atk1 = true;
             swordanim.SetBool("isAttacking", true);
             Debug.Log("Attack 1");
-           
+            m_Audio.PlayOneShot(slash_sfx);
+
             //Instantiate(swordHitbox, emitter.position, emitter.rotation);
             yield return new WaitForSeconds(1f);
             if (!atk2)
@@ -52,9 +58,9 @@ public class SwordShield : Weapon
             atk2 = true;
        
             swordanim.SetBool("isAttacking2", true);
-            
-            
             Debug.Log("Attack 2");
+            m_Audio.PlayOneShot(slash_sfx);
+
             yield return new WaitForSeconds(.666f);
             swordanim.SetBool("isAttacking", false);
             swordanim.SetBool("isAttacking2", false);

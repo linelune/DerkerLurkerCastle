@@ -10,9 +10,15 @@ public class Crossbow : Weapon
     private Animator anim;
     private bool reloading=false;
     private bool bunting = false;
+
+    // Audio
+    private AudioSource m_Audio;
+    public AudioClip shoot_sfx;
+
     // Start is called before the first frame update
     void Start()
     {
+        m_Audio = GetComponent<AudioSource>();
         anim = model.gameObject.GetComponent<Animator>();
         anim.keepAnimatorControllerStateOnDisable = true;
         gameObject.SetActive(false);
@@ -29,6 +35,7 @@ public class Crossbow : Weapon
         {
             reloading=true;
             anim.SetBool("isAttacking", true);
+            m_Audio.PlayOneShot(shoot_sfx);
             Rigidbody shot = Instantiate(bolt, emitter.transform.position, emitter.transform.rotation);
             shot.velocity = (emitter.transform.forward * 50);
             yield return new WaitForSeconds(.1f);
@@ -53,7 +60,7 @@ public class Crossbow : Weapon
                 }
             }
             anim.SetBool("isBunting", true);
-
+            m_Audio.PlayOneShot(shoot_sfx);
             yield return new WaitForSeconds(.1f);
             anim.SetBool("isBunting", false);
             yield return new WaitForSeconds(0.9f);

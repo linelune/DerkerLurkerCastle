@@ -32,9 +32,9 @@ public class Glutony_sprite : MonoBehaviour
     float velocity = 0;
 
     // Audio
-    private AudioSource m_Audio;
+    public AudioSource m_Audio;
     public AudioClip awake_sfx;
-    public AudioClip walk_sfx;
+    public AudioClip spit_sfx;
 
 
     private GameObject target;
@@ -83,7 +83,7 @@ public class Glutony_sprite : MonoBehaviour
      
             anim.SetBool("isAwake", true);
             awake=true;
-            m_Audio.Play();
+            m_Audio.PlayOneShot(awake_sfx);
      
      
      }
@@ -167,10 +167,11 @@ public class Glutony_sprite : MonoBehaviour
     
     //instantiate
     if(awake){
-    Debug.Log("acid!");
-    mSpawnpos = Random.insideUnitSphere * 4+transform.position;
-    mSpawnpos.y=0;
-    Instantiate(mAcidPrefab,mSpawnpos,Quaternion.identity);
+        m_Audio.PlayOneShot(spit_sfx);
+        Debug.Log("acid!");
+        mSpawnpos = Random.insideUnitSphere * 4+transform.position;
+        mSpawnpos.y=0;
+        Instantiate(mAcidPrefab,mSpawnpos,Quaternion.identity);
     }
     
     Invoke("throwAcid",3f);
