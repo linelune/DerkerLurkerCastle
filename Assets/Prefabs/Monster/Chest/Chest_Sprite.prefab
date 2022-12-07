@@ -59,8 +59,8 @@ MonoBehaviour:
   mAcidPrefab: {fileID: 8466608430055827036, guid: 80654287e2abcc376962f96427b6d1a5, type: 3}
   damage: 0
   m_Audio: {fileID: -5137259867633243036}
-  awake_sfx: {fileID: 8300000, guid: 1e7bd8dca9695db4f84c6a6677ef3dea, type: 3}
-  walk_sfx: {fileID: 8300000, guid: d09ba7c837df7b04f85bbbb24119c781, type: 3}
+  awake_sfx: {fileID: 8300000, guid: fa51acf1df7a54da39892efccaee9e61, type: 3}
+  spit_sfx: {fileID: 8300000, guid: f7b2c9eee5c0b054faa1beecbd1f9c03, type: 3}
 --- !u!114 &3733958934962991804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 49e852e23707f4a4d9dfba838bda9bc4, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -312,7 +312,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

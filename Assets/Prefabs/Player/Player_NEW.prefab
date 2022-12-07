@@ -1054,6 +1054,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crossbow
       objectReference: {fileID: 0}
+    - target: {fileID: 2279219960889399774, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
+      propertyPath: shoot_sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ba09fdf21abe8f4785395d2964f73d9, type: 3}
     - target: {fileID: 5155501016390068997, guid: 6183c5feda88d264db0f3fa8712fdc54, type: 3}
       propertyPath: m_RootOrder
       value: 1

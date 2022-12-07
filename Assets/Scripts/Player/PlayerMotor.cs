@@ -117,14 +117,13 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
         if (transform.TransformDirection(moveDirection) == new Vector3(0.0f, 0.0f, 0.0f)) {
-            //movementAM.StopPlaying("Footsteps");
+            AudioManager.instance.StopPlaying("Footsteps");
             
             //animator.SetFloat("Speed", 0); 
         }
         else {
-           //movementAM.Play("Footsteps", 0f, 1f);
-           //movementAM.Volume("Footsteps", 1.5f);
-            
+            AudioManager.instance.Play("Footsteps", 0f, 1f);
+            AudioManager.instance.Volume("Footsteps", 1.5f);
             //animator.SetFloat("Speed", speed); 
         }
         // apply the impact force:
@@ -173,14 +172,14 @@ public class PlayerMotor : MonoBehaviour
         if (isSprinting)
         {
             speed = sprintSpeed;
-            //movementAM.Play("Footsteps", 0f, 1.5f);
-            //movementAM.Volume("Footsteps", 1.5f);
+            AudioManager.instance.Play("Footsteps", 0f, 1.5f);
+            AudioManager.instance.Volume("Footsteps", 1.5f);
             //animator.SetBool("IsRunning", true);
         }
         else
         {
             speed = baseSpeed;
-            //movementAM.StopPlaying("Footsteps");
+            AudioManager.instance.StopPlaying("Footsteps");
             //animator.SetBool("IsRunning", false);
         }
     }
@@ -265,7 +264,7 @@ public class PlayerMotor : MonoBehaviour
         if (!isBlocking && !invulnerable)
         {
             //m_Audio.PlayOneShot(takeDamageSound);
-            //movementAM.Play("TakeHit");
+            AudioManager.instance.Play("Grunt");
             health -= damage;
             if(DamageOverlay != null)
             {
@@ -275,6 +274,7 @@ public class PlayerMotor : MonoBehaviour
             if(health <= 0)
             {
                 //Add death event
+                AudioManager.instance.Play("Die");
                 SceneManager.LoadScene("Out Of Time Zone");
             }
         }
