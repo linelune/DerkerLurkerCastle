@@ -92,10 +92,13 @@ public class UIManager : MonoBehaviour
     void PauseGame()
     {
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
     }
     void ResumeGame()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
     }
     
