@@ -35,9 +35,9 @@ public class UpgradeLightScript : MonoBehaviour
 
     private UpgradeManager um;
 
-    public UnityEvent m_healthUpgrade;
-    public UnityEvent m_speedUpgrade;
-    public UnityEvent m_jumpUpgrade;
+    //public UnityEvent m_healthUpgrade;
+    //public UnityEvent m_speedUpgrade;
+    //public UnityEvent m_jumpUpgrade;
 
     void Start()
     {
@@ -115,22 +115,19 @@ public class UpgradeLightScript : MonoBehaviour
             // TO DO - Upgrade player
             switch (upgradeType){
                 case UPGRADE_TYPE.HEALTH:
-                    if(m_healthUpgrade != null)
-                    {
-                        m_healthUpgrade.Invoke();
-                    }
+                   
+                        GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().UpgradeHealth();
+                    
                     break; 
                 case UPGRADE_TYPE.SPEED:
-                    if (m_speedUpgrade != null)
-                    {
-                        m_speedUpgrade.Invoke();
-                    }
+                    
+                        GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().UpgradeSpeed();
+                    
                     break;
                 case UPGRADE_TYPE.JUMP:
-                    if (m_jumpUpgrade != null)
-                    {
-                        m_jumpUpgrade.Invoke();
-                    }
+                    
+                        GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().UpgradeJump();
+                    
                     break;
 
 

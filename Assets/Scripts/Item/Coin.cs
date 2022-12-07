@@ -5,7 +5,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public GameObject model;
-    private bool collectible = false;
+    private bool collectible = true;
     private GameObject pot;
     private AudioSource m_Audio;
     public AudioClip bounce_sfx;
