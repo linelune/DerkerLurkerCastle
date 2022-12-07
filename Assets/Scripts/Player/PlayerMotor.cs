@@ -94,9 +94,9 @@ public class PlayerMotor : MonoBehaviour
     public void setSkills()
     {
         if (uM != null)
-            speed = uM.getSpeed();
+            speed = uM.getSpeed() * transform.localScale.x;
         else
-            speed = 5.0f;
+            speed = 5.0f * transform.localScale.x;
 
         baseSpeed = speed;
         sprintSpeed = speed + 2.0f;
