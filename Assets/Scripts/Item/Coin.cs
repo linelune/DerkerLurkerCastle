@@ -9,6 +9,7 @@ public class Coin : MonoBehaviour
     //private GameObject pot;
     private AudioSource m_Audio;
     public AudioClip bounce_sfx;
+    public AudioClip pickup_sfx;
     private int max_bounces = 4;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class Coin : MonoBehaviour
         if(other.tag=="Player")
         {
             //other.GetComponent<PlayerInteractions>().mCoins+=1;
+            m_Audio.PlayOneShot(pickup_sfx, 0.1f);
             other.gameObject.GetComponent<PlayerMotor>().health += 1;
             GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().coins += 1;
             UIManager.coinDisplay.text = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().coins.ToString();

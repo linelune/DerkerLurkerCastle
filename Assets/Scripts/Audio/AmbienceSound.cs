@@ -7,8 +7,8 @@ public class AmbienceSound : MonoBehaviour
     public List<AudioClip> audioClips;
     public AudioClip currentClip;
     public AudioSource source;
-    public float minWaitBetweenPlays = 1f;
-    public float maxWaitBetweenPlays = 5f;
+    public float minWaitBetweenPlays = 5f;
+    public float maxWaitBetweenPlays = 15f;
     public float waitTimeCountdown = -1f;
 
     void Start()
@@ -22,7 +22,7 @@ public class AmbienceSound : MonoBehaviour
         //{
             if (waitTimeCountdown < 0f)
             {
-                float pitchBend = Random.Range(0.5f, 2f);
+                float pitchBend = Random.Range(0.5f, 1.2f);
                 float volumeBend = Random.Range(0.5f, 0.8f);
                 currentClip = audioClips[Random.Range(0, audioClips.Count)];
                 source.clip = currentClip;

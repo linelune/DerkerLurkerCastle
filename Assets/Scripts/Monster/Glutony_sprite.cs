@@ -35,10 +35,17 @@ public class Glutony_sprite : MonoBehaviour
     float Gravity = 9.8f;
     float velocity = 0;
 
+    // Audio
+    private AudioSource m_Audio;
+    public AudioClip awake_sfx;
+    public AudioClip walk_sfx;
+
+
     private GameObject target;
     // Start is called before the first frame update
     void Start()
     {
+        m_Audio = GetComponent<AudioSource>();
         m_Rigidbody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
@@ -69,8 +76,8 @@ public class Glutony_sprite : MonoBehaviour
      
      
             anim.SetBool("isAwake", true);
-        awake=true;
-     
+            awake=true;
+            m_Audio.Play();
      
      
      }
@@ -80,6 +87,7 @@ public class Glutony_sprite : MonoBehaviour
      
             anim.SetBool("isAwake", false);
             awake =false;
+            m_Audio.Stop();
      }
         if (awake && !dead)
         {
