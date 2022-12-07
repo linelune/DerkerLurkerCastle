@@ -35,7 +35,7 @@ public class PlayerMotor : MonoBehaviour
     public UnityEvent DerkerOverlay;
 
     // Audio
-    private AudioManager movementAM;
+    //private AudioManager movementAM;
     /*private AudioSource m_Audio;
     public AudioClip takeDamageSound;*/
 
@@ -54,7 +54,7 @@ public class PlayerMotor : MonoBehaviour
         baseSpeed = speed;
         sprintSpeed = speed + 2.0f;
         characterController = GetComponent<CharacterController>();
-        movementAM = GetComponent<AudioManager>();
+        //movementAM = GetComponent<AudioManager>();
         //m_Audio = GetComponent<AudioSource>();
     }
 
@@ -117,13 +117,13 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
         if (transform.TransformDirection(moveDirection) == new Vector3(0.0f, 0.0f, 0.0f)) {
-            movementAM.StopPlaying("Footsteps");
+            //movementAM.StopPlaying("Footsteps");
             
             //animator.SetFloat("Speed", 0); 
         }
         else {
-            movementAM.Play("Footsteps", 0f, 1f);
-            movementAM.Volume("Footsteps", 1.5f);
+           //movementAM.Play("Footsteps", 0f, 1f);
+           //movementAM.Volume("Footsteps", 1.5f);
             
             //animator.SetFloat("Speed", speed); 
         }
@@ -145,7 +145,7 @@ public class PlayerMotor : MonoBehaviour
 
         }
         if (isGrounded && playerVelocity.y < 0)
-            playerVelocity.y = -2.0f;
+        playerVelocity.y = -2.0f;
         characterController.Move(playerVelocity * Time.deltaTime);
     }
 
@@ -173,14 +173,14 @@ public class PlayerMotor : MonoBehaviour
         if (isSprinting)
         {
             speed = sprintSpeed;
-            movementAM.Play("Footsteps", 0f, 1.5f);
-            movementAM.Volume("Footsteps", 1.5f);
+            //movementAM.Play("Footsteps", 0f, 1.5f);
+            //movementAM.Volume("Footsteps", 1.5f);
             //animator.SetBool("IsRunning", true);
         }
         else
         {
             speed = baseSpeed;
-            movementAM.StopPlaying("Footsteps");
+            //movementAM.StopPlaying("Footsteps");
             //animator.SetBool("IsRunning", false);
         }
     }
@@ -265,7 +265,7 @@ public class PlayerMotor : MonoBehaviour
         if (!isBlocking && !invulnerable)
         {
             //m_Audio.PlayOneShot(takeDamageSound);
-            movementAM.Play("TakeHit");
+            //movementAM.Play("TakeHit");
             health -= damage;
             if(DamageOverlay != null)
             {
