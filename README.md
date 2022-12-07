@@ -12,56 +12,56 @@ In Derker Lurker Castle, the player will explore a **procedurally generated dung
 #### Please note: To keep the repository as organized as possible, we agreed on a naming naming convention. When creating new folder, the first letter must be capitalized and the folder must end with an s. 
 
 ## Changes Since Prototype
-Extended Level Design:
--Added more rooms and passageways for the player to explore
--Added additional clutter to decorate the rooms
--Added a randomly spawned boss portal the player must find to progress
-
-Added UI and Screen Overlays
--Added Main Menu, Pause Menu, Options Menu, Controls Screen
--Added overlays to visually indicate the following effects to the player:
--Taken Damage
--Frozen by a ghost
--Gained a powerup
-
-Added temporary powerups
--Powerups randomly spawn throughout the game
--Speed Powerup
--Invincibility Powerup
--Moonjump powerup
-
-Added breakable pots and collectible coins
--Pots spawn throughout the dungeon, containing a small number of coins the player can loot
--Coins are used to purchase permanent upgrades, as well as restore a small amount of HP to the player
-
-Added two boss fights
--Ghost Knight
--Derker (Final Boss)
-
-Added Cutscenes
--Game start/intro cutscene
--Game End/ Credits cutscene
-
-Added the Crossbow
--Player can shoot enemies at range
--Does less damage than the sword, and has a reload time
--Player can shove enemies back with the block button
--Gives a bit of space for the player to breathe
-
-Added additional enemies
--Snake
--Melee enemy, can teleport
--Tooth Head
--Melee enemy, cannot teleport
-
-Implemented upgrade and save/load system
--Player can save their permanent upgrades between play sessions
-
-Made the game scarier
--Added more time pressure
--Derker gets faster much more quickly now
--Made the game darker
-
+Extended Level Design: <br/>
+-Added more rooms and passageways for the player to explore <br/>
+-Added additional clutter to decorate the rooms <br/>
+-Added a randomly spawned boss portal the player must find to progress <br/>
+<br/>
+Added UI and Screen Overlays <br/>
+-Added Main Menu, Pause Menu, Options Menu, Controls Screen <br/>
+-Added overlays to visually indicate the following effects to the player: <br/>
+-Taken Damage <br/>
+-Frozen by a ghost <br/>
+-Gained a powerup <br/>
+ <br/>
+Added temporary powerups <br/>
+-Powerups randomly spawn throughout the game <br/>
+-Speed Powerup <br/>
+-Invincibility Powerup <br/>
+-Moonjump powerup <br/>
+ <br/>
+Added breakable pots and collectible coins <br/>
+-Pots spawn throughout the dungeon, containing a small number of coins the player can loot <br/>
+-Coins are used to purchase permanent upgrades, as well as restore a small amount of HP to the player <br/>
+<br/>
+Added two boss fights <br/>
+-Ghost Knight <br/>
+-Derker (Final Boss) <br/>
+<br/>
+Added Cutscenes <br/>
+-Game start/intro cutscene <br/>
+-Game End/ Credits cutscene <br/>
+<br/>
+Added the Crossbow <br/>
+-Player can shoot enemies at range <br/>
+-Does less damage than the sword, and has a reload time <br/>
+-Player can shove enemies back with the block button <br/>
+-Gives a bit of space for the player to breathe <br/>
+<br/>
+Added additional enemies <br/>
+-Snake <br/>
+-Melee enemy, can teleport <br/>
+-Tooth Head <br/>
+-Melee enemy, cannot teleport <br/>
+<br/>
+Implemented upgrade and save/load system <br/>
+-Player can save their permanent upgrades between play sessions <br/>
+<br/>
+Made the game scarier <br/>
+-Added more time pressure <br/>
+-Derker gets faster much more quickly now <br/>
+-Made the game darker <br/>
+<br/>
 
 ## Useful links
 
