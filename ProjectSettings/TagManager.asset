@@ -11,6 +11,9 @@ TagManager:
   - PlayerAttack
   - Boss
   - DeathPlane
+  - Controls
+  - IngameUI
+  - Menu
   layers:
   - Default
   - TransparentFX

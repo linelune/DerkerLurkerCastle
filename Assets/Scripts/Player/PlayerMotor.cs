@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class PlayerMotor : MonoBehaviour
@@ -26,6 +27,7 @@ public class PlayerMotor : MonoBehaviour
     public float crouchTimer;
     public int health = 100;
     public int maxHealth = 100;
+    public Slider healthBar;
     Vector3 impact = Vector3.zero;
 
     public UnityEvent DamageOverlay;
@@ -41,6 +43,7 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
 
+        healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         Cursor.lockState = CursorLockMode.Locked;
 
         if (GameObject.FindWithTag("UpgradeManager"))
@@ -57,6 +60,8 @@ public class PlayerMotor : MonoBehaviour
 
     void Update()
     {
+        UpdateHealth();
+        
         if (Keyboard.current[Key.Y].wasPressedThisFrame)
         {
             setSkills();
@@ -314,4 +319,10 @@ public class PlayerMotor : MonoBehaviour
         }
     }
     //add death event
+
+    public void UpdateHealth()
+    {
+        healthBar.maxValue = maxHealth;
+        healthBar.value = health;
+    }
 }

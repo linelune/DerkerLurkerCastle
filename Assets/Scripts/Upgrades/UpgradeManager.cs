@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using TMPro;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class UpgradeManager : MonoBehaviour
     //public GameObject upgradeMenu;
     public int playerLevel = 1;
     public int coins = 0;
-   
+
     // Start is called before the first frame update
     void Start()
     {

@@ -111,6 +111,8 @@ public class UpgradeLightScript : MonoBehaviour
         {
             um.coins -= price;
 
+            UIManager.coinDisplay.text = um.coins.ToString();
+
 
             // TO DO - Upgrade player
             switch (upgradeType){

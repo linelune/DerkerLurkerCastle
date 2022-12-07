@@ -10,7 +10,6 @@ public class ExitLightScript : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     void Update()
@@ -19,6 +18,9 @@ public class ExitLightScript : MonoBehaviour
         {
             // TO DO - Go back to life;
             SceneManager.LoadScene("Level_1");
+            UIManager.menusPanel.SetActive(false);
+            UIManager.inGameUI.SetActive(true);
+            UIManager.pauseMenu.SetActive(false);
         }
     }
 }

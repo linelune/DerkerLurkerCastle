@@ -6,10 +6,11 @@ public class PlayerLook : MonoBehaviour
 {
     public Camera playerCamera;
 
-    public float xSensitivity = 20.0f;
-    public float ySensitivity = 20.0f;
+    public static float xSensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+    public static float ySensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
 
     private float xRotation = 0f;
+
 
     public void ProcessLook(Vector2 input)
     {
