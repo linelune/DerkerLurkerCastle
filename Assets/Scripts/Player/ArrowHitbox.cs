@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class ArrowHitbox : PlayerHitbox
 {
-    private UpgradeManager uM;
-
+    // Start is called before the first frame update
     void Start()
     {
         damageVal = 20;
+    }
 
-        uM = null;
+    // Update is called once per frame
+    void Update()
+    {
 
-        if (GameObject.FindWithTag("UpgradeManager"))
-            uM = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
     }
 
     public override int getDamage()
     {
-        return (int) (damageVal * uM.playerDamage);
+        return damageVal;
     }
-
     void OnTriggerEnter(Collider col)
     {
         if(col.tag == "Enemy")

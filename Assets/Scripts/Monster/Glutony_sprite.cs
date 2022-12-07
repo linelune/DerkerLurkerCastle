@@ -7,7 +7,7 @@ public class Glutony_sprite : MonoBehaviour
 {
   [SerializeField]
     Transform Target;
-    //float Damping=1f;
+    float Damping=1f;
     //[SerializeField] Material mMawake;
     //[SerializeField] Material mMasleep;
     //[SerializeField] Material mMfreeze;

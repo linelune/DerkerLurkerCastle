@@ -31,11 +31,8 @@ public class InputManager : MonoBehaviour
     // Frame-rate independent MonoBehaviour.FixedUpdate message for physics calculations.
     void FixedUpdate()
     {
-        if (motor.IsPlayerAlive())
-        {
-            // Inform the player motor to move
-            motor.ProcessMove(onFoot.Move.ReadValue<Vector2>());
-        }
+        // Inform the player motor to move
+        motor.ProcessMove(onFoot.Move.ReadValue<Vector2>());
     }
 
     private void Update()
@@ -48,10 +45,7 @@ public class InputManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (motor.IsPlayerAlive())
-        {
-            playerLook.ProcessLook(onFoot.LookAround.ReadValue<Vector2>());
-        }
+        playerLook.ProcessLook(onFoot.LookAround.ReadValue<Vector2>());
     }
 
     // Enables the onFoot actionMap from our PlayerInput

@@ -9,6 +9,7 @@ public class Serpent : MonoBehaviour
     Transform Target;
     SpriteRenderer rend;
     Animator anim;
+    Rigidbody m_Rigidbody;
     public float speed = 5f;
     public GameObject hitbox;
     private CharacterController m_Controller;
@@ -28,6 +29,7 @@ public class Serpent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_Rigidbody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
         m_Controller = GetComponent<CharacterController>();

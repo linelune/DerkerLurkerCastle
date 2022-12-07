@@ -10,7 +10,6 @@ TagManager:
   - UpgradeManager
   - PlayerAttack
   - Boss
-  - SaveManager
   - DeathPlane
   - Controls
   - IngameUI

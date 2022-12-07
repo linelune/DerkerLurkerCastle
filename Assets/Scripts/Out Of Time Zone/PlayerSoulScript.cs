@@ -5,40 +5,29 @@ using UnityEngine;
 public class PlayerSoulScript : MonoBehaviour
 {
     public float speed = 10.0f;
-    public float gravity = -9.8f;
 
     private PlayerInput playerInput;
 
-    private CharacterController characterController;
-
+    // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
         playerInput = new PlayerInput();
         playerInput.Enable();
+    }
 
-        characterController = GetComponent<CharacterController>();
+    // Update is called once per frame
+    void Update()
+    {
+        // TO DO - Make similar movment to level 1
+
+        float horizontalMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float verticalMovement = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+
+        transform.Translate(new Vector3(horizontalMovement, 0, verticalMovement));
     }
 
     private void LateUpdate()
     {
-        GetComponent<PlayerLook>().ProcessHorizontalLook(playerInput.OnFoot.LookAround.ReadValue<Vector2>());
-    }
-
-    void FixedUpdate()
-    {
-        MoveSoul(playerInput.OnFoot.Move.ReadValue<Vector2>());
-    }
-
-    private void MoveSoul(Vector2 input)
-    {
-        Vector3 moveDirection = Vector3.zero;
-
-        moveDirection.x = input.x;
-        moveDirection.z = input.y;
-        
-        characterController.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        GetComponent<PlayerLook>().ProcessLook(playerInput.OnFoot.LookAround.ReadValue<Vector2>());
     }
 }

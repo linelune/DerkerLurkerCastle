@@ -32,16 +32,10 @@ public class PlayerMotor : MonoBehaviour
     Vector3 impact = Vector3.zero;
 
     public UnityEvent DamageOverlay;
-    public UnityEvent FreezeOverlay;
     public UnityEvent InvulnOverlay;
     public UnityEvent SpeedOverlay;
     public UnityEvent MoonOverlay;
     public UnityEvent DerkerOverlay;
-    public UnityEvent DeathOverlay;
-
-    public Animator playerCameraAnimator;
-    private bool isDead = false;
-    private float deathTime = 0.0f;
 
     // Audio
     private AudioManager movementAM;
@@ -50,10 +44,7 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
 
-        if (GameObject.Find("HealthBar"))
-            healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
-        else
-            healthBar = null;
+        healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         Cursor.lockState = CursorLockMode.Locked;
 
         if (GameObject.FindWithTag("UpgradeManager"))
@@ -98,14 +89,13 @@ public class PlayerMotor : MonoBehaviour
             }
         }
 
-        CheckDeathEnd();
     }
     public void setSkills()
     {
         if (uM != null)
-            speed = uM.getSpeed() * transform.localScale.x;
+            speed = uM.getSpeed();
         else
-            speed = 5.0f * transform.localScale.x;
+            speed = 5.0f;
 
         baseSpeed = speed;
         sprintSpeed = speed + 2.0f;
@@ -125,9 +115,6 @@ public class PlayerMotor : MonoBehaviour
 
     public void ProcessMove(Vector2 input)
     {
-        if (isDead)
-            return;
-
         Vector3 moveDirection = Vector3.zero;
         // Move on x and z axis
         moveDirection.x = input.x;
@@ -265,7 +252,8 @@ public class PlayerMotor : MonoBehaviour
     }
 
     void ResetMoon()
-    {   
+    {
+        
         gravity = -9.81f;
     }
 
@@ -284,15 +272,17 @@ public class PlayerMotor : MonoBehaviour
             {
                 DamageOverlay.Invoke();
             }
-            CheckHealth();
+            Debug.Log("Player Health: " + health);
+            if(health <= 0)
+            {
+                //Add death event
+                SceneManager.LoadScene("Out Of Time Zone");
+            }
         }
         else
-            Debug.Log("Blocked !");
-    }
-
-    public void Freeze()
-    {
-        FreezeOverlay.Invoke();
+        {
+            Debug.Log("Blocked!");
+        }
     }
 
     public void chargeHit()
@@ -316,39 +306,11 @@ public class PlayerMotor : MonoBehaviour
         {
             DerkerOverlay.Invoke();
         }
-        CheckHealth();
-    }
-
-    private void CheckHealth()
-    {
-        Debug.Log("Player Health : " + health);
-
         if (health <= 0)
         {
-            isDead = true;
-
-            playerCameraAnimator.SetBool("isPlayerDead", true);
-
-            DeathOverlay.Invoke();
+            SceneManager.LoadScene("Out Of Time Zone");
         }
     }
-
-    public bool IsPlayerAlive()
-    {
-        return ! isDead;
-    }
-
-    private void CheckDeathEnd()
-    {
-        if (!isDead)
-            return;
-
-        deathTime += Time.deltaTime;
-
-        if (deathTime >= 2.5f)
-            SceneManager.LoadScene("Death Menu");
-    }
-
     void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag == "DeathPlane")
@@ -357,13 +319,11 @@ public class PlayerMotor : MonoBehaviour
             SceneManager.LoadScene("Out Of Time Zone");
         }
     }
+    //add death event
 
     public void UpdateHealth()
     {
-        if (healthBar != null)
-        {
-            healthBar.maxValue = maxHealth;
-            healthBar.value = health;
-        }
+        healthBar.maxValue = maxHealth;
+        healthBar.value = health;
     }
 }
