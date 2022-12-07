@@ -26,8 +26,9 @@ public class Glutony_sprite : MonoBehaviour
     float distance;
     public float damage;
     bool awake;
-
-
+    private bool canAttack;
+    public Rigidbody projectile;
+    public GameObject emitter;
     float Gravity = 9.8f;
     float velocity = 0;
 
@@ -110,6 +111,11 @@ public class Glutony_sprite : MonoBehaviour
                 
                 movement = dir.normalized * speed * Time.deltaTime;
                 if (movement.magnitude > dir.magnitude) movement = dir;
+                if (canAttack)
+                {
+                    canAttack = false;
+                    anim.SetBool("isAttacking", true);
+                }
             }
                 //Strafing around objects
             else
