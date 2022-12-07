@@ -10,6 +10,7 @@ TagManager:
   - UpgradeManager
   - PlayerAttack
   - Boss
+  - Controls
   layers:
   - Default
   - TransparentFX

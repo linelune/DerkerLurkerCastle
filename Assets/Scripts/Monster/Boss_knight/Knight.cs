@@ -48,7 +48,7 @@ public class Knight : MonoBehaviour
         }
         
         var dir = Target.transform.position - transform.position;
-        //gameObject.transform.forward = nma.nextPosition;
+        
 
         if (dir.magnitude > 3f)
         {
@@ -97,6 +97,7 @@ public class Knight : MonoBehaviour
             anim.SetBool("isCharging", false);
             isCharging = false;
             anim.SetBool("isWalking", false);
+            gameObject.transform.forward = dir;
             if (canAttack)
             {
                 canAttack = false;
@@ -125,7 +126,7 @@ public class Knight : MonoBehaviour
         m_Audio.PlayOneShot(attack_sfx, 0.5f);
         Instantiate(attack_hitbox, emitter.transform.position, emitter.transform.rotation);
         anim.SetBool("isAttacking", false);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         canAttack = true;
     }
     //Charge hitbox should deal damage and knock player away
