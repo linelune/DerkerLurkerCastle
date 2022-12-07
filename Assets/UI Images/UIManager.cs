@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
         controlPanel.SetActive(false);
         optionsPanel.SetActive(false);
+        pauseMenu.SetActive(false);
         DontDestroyOnLoad(gameObject);
     }
     public void StartGame()
@@ -53,6 +54,7 @@ public class UIManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         controlPanel.SetActive(true);
         inGameUI.SetActive(false);
+        pauseMenu.SetActive(false);
     }
     public void Options()
     {
@@ -61,6 +63,7 @@ public class UIManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         optionsPanel.SetActive(true);
         inGameUI.SetActive(false);
+        pauseMenu.SetActive(false);
     }
     public void ReturnFromControls()
     {
@@ -74,6 +77,7 @@ public class UIManager : MonoBehaviour
         menusPanel.SetActive(false);
         controlPanel.SetActive(false);
         inGameUI.SetActive(true);
+        pauseMenu.SetActive(true);
     }
     public void ReturnFromOptions()
     {
@@ -87,6 +91,7 @@ public class UIManager : MonoBehaviour
         menusPanel.SetActive(false);
         optionsPanel.SetActive(false);
         inGameUI.SetActive(true);
+        pauseMenu.SetActive(true);
     }
 
     void PauseGame()

@@ -2071,6 +2071,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2028933469}
     m_Modifications:
+    - target: {fileID: 4034066615006229928, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1275515289}
+    - target: {fileID: 4034066615006229928, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034066615006229928, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034066615358712133, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1275515289}
+    - target: {fileID: 4034066615358712133, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Options
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034066615492754822, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3134ea56be2419844b2b7da40e164b14, type: 2}
+    - target: {fileID: 4034066615492754822, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5294776421089193104, guid: 3134ea56be2419844b2b7da40e164b14, type: 2}
+    - target: {fileID: 4034066615509818264, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3134ea56be2419844b2b7da40e164b14, type: 2}
+    - target: {fileID: 4034066615509818264, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5294776421089193104, guid: 3134ea56be2419844b2b7da40e164b14, type: 2}
+    - target: {fileID: 4034066615831451535, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3134ea56be2419844b2b7da40e164b14, type: 2}
+    - target: {fileID: 4034066615831451535, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5294776421089193104, guid: 3134ea56be2419844b2b7da40e164b14, type: 2}
     - target: {fileID: 4034066616130311298, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2158,6 +2202,22 @@ PrefabInstance:
     - target: {fileID: 4034066616130311299, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
       propertyPath: m_Name
       value: PauseMenuPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034066616315395131, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3134ea56be2419844b2b7da40e164b14, type: 2}
+    - target: {fileID: 4034066616315395131, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5294776421089193104, guid: 3134ea56be2419844b2b7da40e164b14, type: 2}
+    - target: {fileID: 4034066616513719583, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1275515289}
+    - target: {fileID: 4034066616513719583, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdad853c16a5f204ab03f9591edebc16, type: 3}
