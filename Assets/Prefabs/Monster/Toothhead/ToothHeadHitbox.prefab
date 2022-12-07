@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6954470165246935224}
   - component: {fileID: 4557706128981488805}
   m_Layer: 7
-  m_Name: SnakeHitbox
+  m_Name: ToothHeadHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c69b133116b58d469d544127d8c0179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 10
 --- !u!114 &6954470165246935224
 MonoBehaviour:
   m_ObjectHideFlags: 0
