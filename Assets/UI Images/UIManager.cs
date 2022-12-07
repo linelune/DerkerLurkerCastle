@@ -78,6 +78,8 @@ public class UIManager : MonoBehaviour
         controlPanel.SetActive(false);
         inGameUI.SetActive(true);
         pauseMenu.SetActive(true);
+        healthBarAndCoin.SetActive(true);
+
     }
     public void ReturnFromOptions()
     {
@@ -92,6 +94,7 @@ public class UIManager : MonoBehaviour
         optionsPanel.SetActive(false);
         inGameUI.SetActive(true);
         pauseMenu.SetActive(true);
+        healthBarAndCoin.SetActive(true);
     }
 
     void PauseGame()

@@ -25,9 +25,12 @@ public class Knight : MonoBehaviour
     float velocity = 0;
     private bool justHit = false;
     private int health = 600;
-    private AudioSource m_Audio;
+    public AudioSource m_OneShotAudio;
+    public AudioSource m_ConstantAudio;
     public AudioClip attack_sfx;
     public AudioClip damage_sfx;
+    public AudioClip spawn_sfx;
+    public AudioClip death_sfx;
     private UnityEngine.AI.NavMeshAgent nma;
     public GameObject deathPart;
     private bool dead = false;
@@ -40,7 +43,6 @@ public class Knight : MonoBehaviour
         m_Controller = GetComponent<CharacterController>();
         anim = model.GetComponent<Animator>();
         collider = GetComponent<Collider>();
-        m_Audio = GetComponent<AudioSource>();
         Target = GameObject.FindWithTag("Player");
         charge_hitbox.SetActive(false);
     }
@@ -56,7 +58,6 @@ public class Knight : MonoBehaviour
             }
 
             var dir = Target.transform.position - transform.position;
-
 
             if (dir.magnitude > 3f)
             {
@@ -132,7 +133,7 @@ public class Knight : MonoBehaviour
     {
         anim.SetBool("isAttacking", true);
         yield return new WaitForSeconds(0.35f);
-        m_Audio.PlayOneShot(attack_sfx, 0.5f);
+        m_OneShotAudio.PlayOneShot(attack_sfx, 0.5f);
         Instantiate(attack_hitbox, emitter.transform.position, emitter.transform.rotation);
         anim.SetBool("isAttacking", false);
         yield return new WaitForSeconds(2f);
@@ -178,7 +179,7 @@ public class Knight : MonoBehaviour
         if (col.tag == "PlayerAttack" && !justHit)
         {
             justHit = true;
-            m_Audio.PlayOneShot(damage_sfx, 0.5f);
+            m_OneShotAudio.PlayOneShot(damage_sfx, 0.5f);
             Invoke("resetHit", .1f);
             health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
             //Destroy(col.gameObject);
@@ -196,6 +197,7 @@ public class Knight : MonoBehaviour
     }
     IEnumerator die()
     {
+        m_OneShotAudio.PlayOneShot(death_sfx);
         dead = true;
         model.SetActive(false);
         collider.enabled = false;
