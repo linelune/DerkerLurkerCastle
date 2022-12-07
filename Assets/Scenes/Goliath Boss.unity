@@ -257,20 +257,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 860918883343676960, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3665460431853335512, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665460431853335512, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665460431853335512, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665460431853335512, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
-      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3665460431853335512, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
@@ -411,6 +403,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68372997775dd6e43a00160619585559, type: 3}
+--- !u!1 &1767880211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5771529610610782491, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
+  m_PrefabInstance: {fileID: 636931429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1797771373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -450,10 +447,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 261590454134656266, guid: 0ad85bf37c48ce14ead8d5816fd323b5, type: 3}
-      propertyPath: speed
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 261590454436718390, guid: 0ad85bf37c48ce14ead8d5816fd323b5, type: 3}
       propertyPath: cameraTransform
       value: 
@@ -462,6 +455,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 636931431}
+    - target: {fileID: 1437573475552683148, guid: 0ad85bf37c48ce14ead8d5816fd323b5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1767880211}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ad85bf37c48ce14ead8d5816fd323b5, type: 3}
 --- !u!1 &2015995273

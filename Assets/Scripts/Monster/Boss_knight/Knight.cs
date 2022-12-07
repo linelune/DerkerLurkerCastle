@@ -31,15 +31,15 @@ public class Knight : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent nma;
     public GameObject deathPart;
     private bool dead = false;
-    private Collider collider;
+    private Collider knightCollider;
     public GameObject mCoinPrefab;
-    // Start is called before the first frame update
+
     void Start()
     {
         nma = GetComponent<UnityEngine.AI.NavMeshAgent>();
         m_Controller = GetComponent<CharacterController>();
         anim = model.GetComponent<Animator>();
-        collider = GetComponent<Collider>();
+        knightCollider = GetComponent<Collider>();
         m_Audio = GetComponent<AudioSource>();
         Target = GameObject.FindWithTag("Player");
         charge_hitbox.SetActive(false);
@@ -198,7 +198,7 @@ public class Knight : MonoBehaviour
     {
         dead = true;
         model.SetActive(false);
-        collider.enabled = false;
+        knightCollider.enabled = false;
         Instantiate(deathPart, transform.position + new Vector3(0f,1.5f,0f), transform.rotation);
         for (int i = 0; i < 20; i++)
         {

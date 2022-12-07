@@ -18,7 +18,12 @@ public class ArrowHitbox : PlayerHitbox
 
     public override int getDamage()
     {
-        return (int) (damageVal * uM.playerDamage);
+        float damageMulttplier = 1.0f;
+
+        if (uM != null)
+            damageMulttplier = uM.playerDamage;
+
+        return (int) (damageVal * damageMulttplier);
     }
 
     void OnTriggerEnter(Collider col)
