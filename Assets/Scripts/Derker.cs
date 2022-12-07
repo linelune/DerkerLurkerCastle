@@ -15,6 +15,15 @@ public class Derker : MonoBehaviour
     private bool isDerking = false;
     bool speeding = false;
     Animator anim;
+
+    //Audio
+    public AudioSource m_ConstantAudio;
+    public AudioSource m_OneShotAudio;
+    public AudioClip farFollow_sfx;
+    public AudioClip nearFollow_sfx;
+    public AudioClip attack_sfx;
+    public AudioClip click_sfx;
+
     // Start is called before the first frame update
     void Start()
     {

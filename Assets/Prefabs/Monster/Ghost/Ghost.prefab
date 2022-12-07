@@ -57,6 +57,7 @@ MonoBehaviour:
   ChaseSpeed: 0.025
   damage: 0
   awake_sfx: {fileID: 8300000, guid: 0d30e7edd38f1ac4a85470a43d442d4c, type: 3}
+  freeze_sfx: {fileID: 8300000, guid: 69d2b931c13f38844801018af869bddc, type: 3}
   cooldown: 1
 --- !u!114 &8803483620857270971
 MonoBehaviour:

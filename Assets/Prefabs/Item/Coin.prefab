@@ -324,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 726128042538275161}
   bounce_sfx: {fileID: 8300000, guid: 59507c20690ca714bbd88ac8fb7beafb, type: 3}
+  pickup_sfx: {fileID: 8300000, guid: 9e17edcacd7e3ef4ea1729515bb773d0, type: 3}
 --- !u!54 &2903098688070564646
 Rigidbody:
   m_ObjectHideFlags: 0
