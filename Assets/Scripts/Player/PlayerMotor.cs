@@ -27,6 +27,7 @@ public class PlayerMotor : MonoBehaviour
     public float crouchTimer;
     public int health = 100;
     public int maxHealth = 100;
+    private int DerkerDamage = 0;
     public Slider healthBar;
     Vector3 impact = Vector3.zero;
 
@@ -66,9 +67,9 @@ public class PlayerMotor : MonoBehaviour
         {
             setSkills();
         }
-            if (health > maxHealth)
+            if (health > maxHealth - DerkerDamage)
         {
-            health = maxHealth;
+            health = maxHealth - DerkerDamage;
         }
         isGrounded = characterController.isGrounded;
         if (isCrouched)
@@ -296,10 +297,10 @@ public class PlayerMotor : MonoBehaviour
 
     public void Derk()
     {
-        maxHealth -= 25;
-        if(health > maxHealth)
+        DerkerDamage += 25;
+        if(health > maxHealth - DerkerDamage)
         {
-            health = maxHealth;
+            health = maxHealth - DerkerDamage;
         }
         if(DerkerOverlay != null)
         {

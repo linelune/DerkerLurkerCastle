@@ -844,6 +844,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3027058723999285516, guid: d8fc5e0f01ec8e74facbdf8dee36b511, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027058723999285516, guid: d8fc5e0f01ec8e74facbdf8dee36b511, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027058723999285516, guid: d8fc5e0f01ec8e74facbdf8dee36b511, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3027058723999285517, guid: d8fc5e0f01ec8e74facbdf8dee36b511, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1033,6 +1045,10 @@ PrefabInstance:
     - target: {fileID: 3027058724609767760, guid: d8fc5e0f01ec8e74facbdf8dee36b511, type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027058724609767761, guid: d8fc5e0f01ec8e74facbdf8dee36b511, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -624
       objectReference: {fileID: 0}
     - target: {fileID: 3027058724691824094, guid: d8fc5e0f01ec8e74facbdf8dee36b511, type: 3}
       propertyPath: m_IsActive
