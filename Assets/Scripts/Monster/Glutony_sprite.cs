@@ -8,9 +8,7 @@ public class Glutony_sprite : MonoBehaviour
   [SerializeField]
     Transform Target;
     float Damping=1f;
-    //[SerializeField] Material mMawake;
-    //[SerializeField] Material mMasleep;
-    //[SerializeField] Material mMfreeze;
+
     Animator anim;
     SpriteRenderer rend;
     Rigidbody m_Rigidbody;
@@ -20,13 +18,14 @@ public class Glutony_sprite : MonoBehaviour
     private bool justHit = false;
     public GameObject deathPart;
     DisplayManager mDM;
-    [SerializeField] GameObject mAcidPrefab;
+
     Vector3 mSpawnpos;
 
+    private bool dead = false;
     float distance;
     public float damage;
     bool awake;
-    private bool canAttack;
+    private bool canAttack = true;
     public Rigidbody projectile;
     public GameObject emitter;
     float Gravity = 9.8f;
@@ -40,14 +39,7 @@ public class Glutony_sprite : MonoBehaviour
         anim = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
         m_Controller = GetComponent<CharacterController>();
-        //rend.color = new Color(0.0f, 0.0f, 0.0f, 1f);
-    //mDM=GetComponentInChildren<DisplayManager>();
-    throwAcid();
-    
-    
-    
-    //mPlayer=GameObject.Find("Player");
-    //mPI=mPlayer.GetComponent<PlayerInput>();
+
     }
 
     // Update is called once per frame
@@ -57,10 +49,7 @@ public class Glutony_sprite : MonoBehaviour
      
      
      distance=(Target.position-transform.position).magnitude;
-     // < 3 is close
-     // > 3 is far
-     //Debug.Log(distance.ToString());
-     //Scaling color by distance to mimic lighting
+
      if(distance < 30f)
         {
             rend.color = new Color(1 - distance/20, 1 - distance/20, 1 - distance/20, 1f);
@@ -88,7 +77,7 @@ public class Glutony_sprite : MonoBehaviour
             anim.SetBool("isAwake", false);
             awake =false;
      }
-        if (awake)
+        if (awake && !dead)
         {
             bool strafe = false;
             RaycastHit hit;
@@ -111,6 +100,7 @@ public class Glutony_sprite : MonoBehaviour
                 
                 movement = dir.normalized * speed * Time.deltaTime;
                 if (movement.magnitude > dir.magnitude) movement = dir;
+               
                 if (canAttack)
                 {
                     canAttack = false;
@@ -147,7 +137,18 @@ public class Glutony_sprite : MonoBehaviour
 
 
     }
-    
+    void Attack()
+    {
+        anim.SetBool("isAttacking", false);
+        Rigidbody shot = Instantiate(projectile, emitter.transform.position, emitter.transform.rotation);
+        shot.velocity = ((Target.position + new Vector3(0f, 1f, 0f)) - emitter.transform.position).normalized * 15f;
+        Invoke("resetAttack", 3f);
+    }
+
+    void resetAttack()
+    {
+        canAttack = true;
+    }
     
     void lookAt ()
   {
@@ -160,35 +161,20 @@ public class Glutony_sprite : MonoBehaviour
     }
 
   
-  void throwAcid()
-    {
-    
-    //instantiate
-    if(awake){
-    Debug.Log("acid!");
-    mSpawnpos = Random.insideUnitSphere * 4+transform.position;
-    mSpawnpos.y=0;
-    Instantiate(mAcidPrefab,mSpawnpos,Quaternion.identity);
-    }
-    
-    Invoke("throwAcid",3f);
-    
-    
-    
-    
-    }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "PlayerAttack" && !justHit)
         {
             justHit = true;
+            anim.SetBool("isHurt", true);
             Invoke("resetHit", 1f);
             health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
             //Destroy(col.gameObject);
             if (health <= 0)
             {
-                Destroy(gameObject);
+                StartCoroutine(die());
+                //Destroy(gameObject);
                 //add method to spawn coins on death
             }
 
@@ -196,6 +182,7 @@ public class Glutony_sprite : MonoBehaviour
     }
     void resetHit()
     {
+        anim.SetBool("isHurt", false);
         justHit = false;
     }
 
@@ -205,6 +192,14 @@ public class Glutony_sprite : MonoBehaviour
         {
             Instantiate(deathPart, transform.position, transform.rotation);
         }
+    }
+
+    IEnumerator die()
+    {
+        dead = true;
+        anim.SetBool("isDead", true);
+        yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
     }
     
 }
