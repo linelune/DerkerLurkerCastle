@@ -6,25 +6,21 @@ using UnityEngine.UI;
 public class overlayManager : MonoBehaviour
 {
     public Image damageOverlay;
+    public Image freezeOverlay;
     public Image speedOverlay;
     public Image invulnOverlay;
     public Image moonOverlay;
     public Image derkerOverlay;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Image deathOverlay;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void takeDamage()
+    public void TakeDamage()
     {
         StartCoroutine(FadeImage(damageOverlay, 0f));
+    }
+
+    public void Freeze()
+    {
+        StartCoroutine(FadeImage(freezeOverlay, 0f));
     }
 
     public void Invuln()
@@ -46,6 +42,12 @@ public class overlayManager : MonoBehaviour
     {
         StartCoroutine(FadeImage(derkerOverlay, 0f));
     }
+
+    public void Death()
+    {
+        StartCoroutine(ReverseFadeImage(deathOverlay, 1.2f));
+    }
+
     IEnumerator FadeImage(Image img, float pUpDelay)
     {
 
@@ -59,7 +61,18 @@ public class overlayManager : MonoBehaviour
                 yield return null;
             }
         img.color = new Color(img.color.r, img.color.g, img.color.b, 0f);
+    }
 
-
+    IEnumerator ReverseFadeImage(Image img, float pUpDelay)
+    {
+        yield return new WaitForSeconds(pUpDelay);
+            // loop over 1 second backwards
+            for (float i = 0; i <= 1; i += Time.deltaTime)
+            {
+                // set color with i as alpha
+                img.color = new Color(img.color.r, img.color.g, img.color.b, i);
+                yield return null;
+            }
+        img.color = new Color(img.color.r, img.color.g, img.color.b, 1f);
     }
 }
