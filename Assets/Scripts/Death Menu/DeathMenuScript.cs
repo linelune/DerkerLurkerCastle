@@ -16,16 +16,18 @@ public class DeathMenuScript : MonoBehaviour
     public void SaveAndContinue()
     {
         saveManager.SaveData();
-        Application.Quit();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        SceneManager.LoadScene("Out Of Time Zone");
+
+       
     }
 
     public void SaveAndQuit()
     {
         saveManager.SaveData();
+        Application.Quit();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        SceneManager.LoadScene("Out Of Time Zone");
     }
 }

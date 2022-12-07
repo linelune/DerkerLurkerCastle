@@ -63,7 +63,7 @@ Animator:
   m_GameObject: {fileID: 6459752365683518239}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b6be49ff4dba6d544b351c3cbb5b47b9, type: 2}
+  m_Controller: {fileID: 9100000, guid: ef3610b4ba1d1fd4ca263702826d6956, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  speed: 5
+  speed: 3
   hitbox: {fileID: 6348132423974045048, guid: 247022ac2542c254e85dd72446c58486, type: 3}
   deathPart: {fileID: 2312591318274358134, guid: 1c8b119cdc4a3054780e59320414a67a, type: 3}
   attack_sfx: {fileID: 8300000, guid: b609876ba6b5b3b4ca7271338aa0c51c, type: 3}
@@ -133,8 +133,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1990616022, guid: 628a7edeaad61344d82d8e6fb6899da3, type: 3}
-  m_Color: {r: 0.8490566, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -86826903, guid: ea6593b7af724264c9efa74cd32651fc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

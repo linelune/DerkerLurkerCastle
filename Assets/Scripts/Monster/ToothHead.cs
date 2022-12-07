@@ -51,27 +51,31 @@ public class ToothHead : MonoBehaviour
         }
         if ((distance < 15f || health < 50) && distance > 1f)
         {
+            anim.SetBool("isAwake", true);
+            //var tpLock = transform.position;
+            var dir = Target.position - transform.position;
+            var movement = dir.normalized * speed * Time.deltaTime;
+            if (movement.magnitude > dir.magnitude) movement = dir;
 
-                //var tpLock = transform.position;
-                var dir = Target.position - transform.position;
-                var movement = dir.normalized * speed * Time.deltaTime;
-                if (movement.magnitude > dir.magnitude) movement = dir;
-
-                    m_Controller.Move(movement);
+            m_Controller.Move(movement);
 
 
-                
 
-                if (distance < 2f && attackLock)
-                {
+
+            if (distance < 2f && attackLock)
+            {
                 attackLock = false;
-                    StartCoroutine(attack());
-                    Invoke("ResetAttack", 6f);
+                StartCoroutine(attack());
+                Invoke("ResetAttack", 6f);
 
 
-                }
-           
+            }
 
+
+        }
+        else
+        {
+            anim.SetBool("isAwake", false);
         }
         if (m_Controller.isGrounded)
         {
