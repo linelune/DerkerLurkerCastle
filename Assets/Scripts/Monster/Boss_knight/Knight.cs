@@ -24,17 +24,22 @@ public class Knight : MonoBehaviour
     float Gravity = 9.8f;
     float velocity = 0;
     private bool justHit = false;
-    private int health = 1000;
+    private int health = 600;
     private AudioSource m_Audio;
     public AudioClip attack_sfx;
     public AudioClip damage_sfx;
     private UnityEngine.AI.NavMeshAgent nma;
+    public GameObject deathPart;
+    private bool dead = false;
+    private Collider collider;
+    public GameObject mCoinPrefab;
     // Start is called before the first frame update
     void Start()
     {
         nma = GetComponent<UnityEngine.AI.NavMeshAgent>();
         m_Controller = GetComponent<CharacterController>();
         anim = model.GetComponent<Animator>();
+        collider = GetComponent<Collider>();
         m_Audio = GetComponent<AudioSource>();
         Target = GameObject.FindWithTag("Player");
         charge_hitbox.SetActive(false);
@@ -43,80 +48,83 @@ public class Knight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canSpawnGhost)
+        if (!dead)
         {
-            StartCoroutine(SpawnGhost());
-        }
-        
-        var dir = Target.transform.position - transform.position;
-        
-
-        if (dir.magnitude > 3f)
-        {
-            if (canCharge)
+            if (canSpawnGhost)
             {
-                StartCoroutine(charge());
-                chargeTarget = Target.transform.position;
-                nma.SetDestination(chargeTarget);
-                //canCharge = false;
-
+                StartCoroutine(SpawnGhost());
             }
 
-            anim.SetBool("isWalking", false);
+            var dir = Target.transform.position - transform.position;
 
-            if (!isCharging)
+
+            if (dir.magnitude > 3f)
             {
-                nma.stoppingDistance = 3f;
-                nma.acceleration = 8f;
-                nma.speed = 3.5f;
-                nma.SetDestination(Target.transform.position);
-                anim.SetBool("isWalking", true);
-               
+                if (canCharge)
+                {
+                    StartCoroutine(charge());
+                    chargeTarget = Target.transform.position;
+                    nma.SetDestination(chargeTarget);
+                    //canCharge = false;
+
+                }
+
+                anim.SetBool("isWalking", false);
+
+                if (!isCharging)
+                {
+                    nma.stoppingDistance = 3f;
+                    nma.acceleration = 8f;
+                    nma.speed = 3.5f;
+                    nma.SetDestination(Target.transform.position);
+                    anim.SetBool("isWalking", true);
+
+                }
+                else
+                {
+                    nma.stoppingDistance = 0f;
+                    nma.acceleration = 20f;
+                    nma.speed = 21f;
+
+
+                    float dist = nma.remainingDistance;
+                    if (dist != Mathf.Infinity && nma.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete && nma.remainingDistance == 0)
+                    {
+                        isCharging = false;
+                        anim.SetBool("isCharging", false);
+                    }
+                }
+
+
+                // m_Controller.Move(movement);
+
+
             }
             else
             {
-                nma.stoppingDistance = 0f;
-                nma.acceleration = 20f;
-                nma.speed = 21f;
-                
-
-                float dist = nma.remainingDistance;
-                if (dist != Mathf.Infinity && nma.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete && nma.remainingDistance == 0)
+                anim.SetBool("isCharging", false);
+                isCharging = false;
+                anim.SetBool("isWalking", false);
+                gameObject.transform.forward = new Vector3(dir.x, 0f, dir.z);
+                if (canAttack)
                 {
-                    isCharging = false;
-                    anim.SetBool("isCharging", false);
+                    canAttack = false;
+                    StartCoroutine(attack());
                 }
             }
-
-
-            // m_Controller.Move(movement);
-            
-             
-        }
-        else
-        {
-            anim.SetBool("isCharging", false);
-            isCharging = false;
-            anim.SetBool("isWalking", false);
-            gameObject.transform.forward = dir;
-            if (canAttack)
+            if (!isCharging)
             {
-                canAttack = false;
-                StartCoroutine(attack());
+                charge_hitbox.SetActive(false);
             }
-        }
-        if (!isCharging)
-        {
-            charge_hitbox.SetActive(false);
-        }
-        if (m_Controller.isGrounded)
-        {
-            velocity = 0;
-        }
-        else
-        {
-            velocity -= Gravity * Time.deltaTime;
-            m_Controller.Move(new Vector3(0, velocity, 0));
+            if (m_Controller.isGrounded)
+            {
+                velocity = 0;
+            }
+            else
+            {
+                velocity -= Gravity * Time.deltaTime;
+                m_Controller.Move(new Vector3(0, velocity, 0));
+            }
         }
     }
     //Need to create/spawn hitboxes
@@ -154,7 +162,7 @@ public class Knight : MonoBehaviour
         Instantiate(GhostParticles, pos, transform.rotation);
         yield return new WaitForSeconds(5f);
         Instantiate(Ghost, pos, transform.rotation);
-        yield return new WaitForSeconds(10f);
+        //yield return new WaitForSeconds(10f);
         canSpawnGhost = true;
     }
 
@@ -176,8 +184,7 @@ public class Knight : MonoBehaviour
             //Destroy(col.gameObject);
             if (health <= 0)
             {
-                Destroy(gameObject);
-                SceneManager.LoadScene("Level_2");
+                StartCoroutine(die());
                 //add method to spawn coins on death
             }
 
@@ -186,5 +193,24 @@ public class Knight : MonoBehaviour
     void resetHit()
     {
         justHit = false;
+    }
+    IEnumerator die()
+    {
+        dead = true;
+        model.SetActive(false);
+        collider.enabled = false;
+        Instantiate(deathPart, transform.position + new Vector3(0f,1.5f,0f), transform.rotation);
+        for (int i = 0; i < 20; i++)
+        {
+            //Gives coins a random velocity so they fly around when the pot breaks
+            GameObject c = Instantiate(mCoinPrefab, transform.position, transform.rotation);
+            Rigidbody cr = c.GetComponent<Rigidbody>();
+            float rx = Random.Range(-0.5f, 0.5f);
+            float rz = Random.Range(-0.5f, 0.5f);
+            cr.velocity = new Vector3(rx, 5f, rz);
+            Debug.Log("Coin !");
+        }
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("Level_2");
     }
 }

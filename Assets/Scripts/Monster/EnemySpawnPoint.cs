@@ -27,7 +27,7 @@ public class EnemySpawnPoint : MonoBehaviour
 
     public void spawnMonster(GameObject monster)
     {
-        enemy = Instantiate(monster, transform.position, Quaternion.identity);
+        enemy = Instantiate(monster, transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
         hasSpawned = true;
     }
 }

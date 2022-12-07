@@ -144,7 +144,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7629879584163118163}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1
   m_Height: 3
@@ -177,13 +177,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 4.4
+  m_Radius: 0.8
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &1241892854675666253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +204,8 @@ MonoBehaviour:
   GhostParticles: {fileID: 2093665427698663830, guid: 0a2bd33049915e5469b5d91a146dedfd, type: 3}
   attack_sfx: {fileID: 8300000, guid: 32ef17fc14d90d84d918d2e02e52624b, type: 3}
   damage_sfx: {fileID: 8300000, guid: 36c2c839943718a47a2b5fd8348cbe46, type: 3}
+  deathPart: {fileID: 2312591318274358134, guid: 1c8b119cdc4a3054780e59320414a67a, type: 3}
+  mCoinPrefab: {fileID: 7838264792752073962, guid: 72169da8d9e928260b10f7f3fdb01fb5, type: 3}
 --- !u!82 &5120006087939361478
 AudioSource:
   m_ObjectHideFlags: 0
