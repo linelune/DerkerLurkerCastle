@@ -27,6 +27,8 @@ public class Derker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_ConstantAudio.clip = farFollow_sfx;
+        //m_ConstantAudio.Play();
         anim = GetComponent<Animator>();
     }
 
@@ -51,6 +53,18 @@ public class Derker : MonoBehaviour
         pos1 = new Vector3(transform.position.x, 0.5f, transform.position.z);
         pos2 = new Vector3(transform.position.x, 2f, transform.position.z);
         transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(m_Bobspeed * Time.time) + 1.0f) / 2.0f);
+
+        // Change Following Sound
+        if(Vector3.Distance(Target.position, transform.position)< 10f)
+        {
+            m_ConstantAudio.clip = nearFollow_sfx;
+        } else
+        {
+            m_ConstantAudio.clip = farFollow_sfx;
+        }
+
+
+
         if (!justCaught)
         {
             Target = GameObject.FindWithTag("Player").transform;
@@ -78,6 +92,7 @@ public class Derker : MonoBehaviour
         Debug.Log(col.tag);
         if(col.tag == "Player")
         {
+            m_OneShotAudio.PlayOneShot(attack_sfx);
             justCaught=true;
             gameObject.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
             //Debug.Log("Caught Player");

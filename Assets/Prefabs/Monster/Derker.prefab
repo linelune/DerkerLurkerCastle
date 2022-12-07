@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OneShotAudio: {fileID: 997135709676388924}
   farFollow_sfx: {fileID: 8300000, guid: 20f7a5e09835fbf458d952b7584f099c, type: 3}
   nearFollow_sfx: {fileID: 8300000, guid: 77df8bd2364ec904492a27ce3aefca3f, type: 3}
-  attack_sfx: {fileID: 0}
+  attack_sfx: {fileID: 8300000, guid: dd42da2e00476ae4b92e7981428a8e88, type: 3}
   click_sfx: {fileID: 8300000, guid: a2ebe269ea1e6b9498efd9efd4bd0965, type: 3}
 --- !u!212 &6195514201757526866
 SpriteRenderer:
@@ -283,7 +283,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -376,7 +376,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

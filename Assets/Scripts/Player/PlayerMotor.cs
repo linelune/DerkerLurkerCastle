@@ -54,6 +54,7 @@ public class PlayerMotor : MonoBehaviour
         baseSpeed = speed;
         sprintSpeed = speed + 2.0f;
         characterController = GetComponent<CharacterController>();
+        movementAM = GetComponent<AudioManager>();
         //m_Audio = GetComponent<AudioSource>();
     }
 
