@@ -36,9 +36,6 @@ public class Knight : MonoBehaviour
     private bool dead = false;
     private Collider collider;
     public GameObject mCoinPrefab;
-
-    public delegate void Death();
-    public static event Death OnDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -200,7 +197,6 @@ public class Knight : MonoBehaviour
     }
     IEnumerator die()
     {
-        OnDeath?.Invoke();
         m_OneShotAudio.PlayOneShot(death_sfx);
         dead = true;
         model.SetActive(false);
