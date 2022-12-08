@@ -9,6 +9,11 @@ public class GoliathBossScript : MonoBehaviour
     public Collider goliathCollider;
 
     public AudioClip damage_sfx;
+    public AudioClip shoot_sfx;
+
+    public Rigidbody avoidable;
+    public Transform emitter;
+    private bool canShoot = false;
 
     public GameObject deathPart;
     public GameObject mCoinPrefab;
@@ -17,7 +22,7 @@ public class GoliathBossScript : MonoBehaviour
     public CharacterController playerCharacterController;
 
     private bool justHit = false;
-    private int health = 250;
+    private int health = 255;
     
     private AudioSource m_Audio;
 
@@ -28,6 +33,7 @@ public class GoliathBossScript : MonoBehaviour
         m_Audio = GetComponent<AudioSource>();
         goliathCollider = GetComponent<Collider>();
         playerCharacterController = player.GetComponent<CharacterController>();
+        Invoke("resetShot", 3f);
     }
 
     void Update()
@@ -42,6 +48,14 @@ public class GoliathBossScript : MonoBehaviour
             playerCharacterController.Move(impact * Time.deltaTime);
 
         impact = Vector3.Lerp(impact, Vector3.zero, 2 * Time.deltaTime);
+        if (canShoot)
+        {
+            canShoot = false;
+            Invoke("resetShot", 5f);
+            m_Audio.PlayOneShot(shoot_sfx, 0.4f);
+            Rigidbody shot = Instantiate(avoidable, emitter.position, emitter.rotation);
+            shot.velocity = ((player.transform.position + new Vector3(0f, 1.5f, 0f)) - emitter.transform.position).normalized * 15f;
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -65,9 +79,14 @@ public class GoliathBossScript : MonoBehaviour
         justHit = false;
     }
 
+    void resetShot()
+    {
+        canShoot = true;
+    }
     IEnumerator die()
     {
-        goliath.SetActive(false);
+
+        canShoot = false;
 
         goliathCollider.enabled = false;
         
@@ -82,7 +101,8 @@ public class GoliathBossScript : MonoBehaviour
             cr.velocity = new Vector3(rx, 5f, rz);
             Debug.Log("Coin !");
         }
-        yield return new WaitForSeconds(10f);
+        goliath.transform.position = new Vector3(-100f, 0f, 0f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("Level_2");
     }
 }

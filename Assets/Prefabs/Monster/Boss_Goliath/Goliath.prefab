@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 261590453460317607}
   m_Layer: 0
   m_Name: Goliath
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,8 @@ Transform:
   m_LocalPosition: {x: 56.003067, y: 56.26795, z: 40.23456}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7225095325715223899}
   m_Father: {fileID: 261590453460317607}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -191,8 +192,13 @@ MonoBehaviour:
   goliath: {fileID: 261590453460317606}
   goliathCollider: {fileID: 261590454134656270}
   damage_sfx: {fileID: 8300000, guid: 36c2c839943718a47a2b5fd8348cbe46, type: 3}
+  shoot_sfx: {fileID: 8300000, guid: f7b2c9eee5c0b054faa1beecbd1f9c03, type: 3}
+  avoidable: {fileID: 8263836476369448692, guid: 346b0964c082ac741b559e597de69e5c, type: 3}
+  emitter: {fileID: 7225095325715223899}
   deathPart: {fileID: 2312591318274358134, guid: 1c8b119cdc4a3054780e59320414a67a, type: 3}
   mCoinPrefab: {fileID: 7838264792752073962, guid: 72169da8d9e928260b10f7f3fdb01fb5, type: 3}
+  player: {fileID: 0}
+  playerCharacterController: {fileID: 0}
 --- !u!82 &4756616544810310885
 AudioSource:
   m_ObjectHideFlags: 0
@@ -513,6 +519,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   headTransform: {fileID: 261590454134656265}
+--- !u!1 &5730400710139517860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7225095325715223899}
+  m_Layer: 0
+  m_Name: Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7225095325715223899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5730400710139517860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.23, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 261590454134656265}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3643872439040236524
 PrefabInstance:
   m_ObjectHideFlags: 0
