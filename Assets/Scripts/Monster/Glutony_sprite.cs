@@ -7,12 +7,10 @@ public class Glutony_sprite : MonoBehaviour
 {
   [SerializeField]
     Transform Target;
-
-    //float Damping=1f;
+    float Damping=1f;
     //[SerializeField] Material mMawake;
     //[SerializeField] Material mMasleep;
     //[SerializeField] Material mMfreeze;
-
     Animator anim;
     SpriteRenderer rend;
     Rigidbody m_Rigidbody;
@@ -22,9 +20,8 @@ public class Glutony_sprite : MonoBehaviour
     private bool justHit = false;
     public GameObject deathPart;
     DisplayManager mDM;
-
+  
     Vector3 mSpawnpos;
-
     private bool dead = false;
     float distance;
     public float damage;
@@ -36,9 +33,9 @@ public class Glutony_sprite : MonoBehaviour
     float velocity = 0;
 
     // Audio
-    private AudioSource m_Audio;
+    public AudioSource m_Audio;
     public AudioClip awake_sfx;
-    public AudioClip walk_sfx;
+    public AudioClip spit_sfx;
 
 
     private GameObject target;
@@ -50,7 +47,14 @@ public class Glutony_sprite : MonoBehaviour
         anim = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
         m_Controller = GetComponent<CharacterController>();
-
+        //rend.color = new Color(0.0f, 0.0f, 0.0f, 1f);
+    //mDM=GetComponentInChildren<DisplayManager>();
+    
+    
+    
+    
+    //mPlayer=GameObject.Find("Player");
+    //mPI=mPlayer.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -60,7 +64,10 @@ public class Glutony_sprite : MonoBehaviour
      
      
      distance=(Target.position-transform.position).magnitude;
-
+     // < 3 is close
+     // > 3 is far
+     //Debug.Log(distance.ToString());
+     //Scaling color by distance to mimic lighting
      if(distance < 30f)
         {
             rend.color = new Color(1 - distance/20, 1 - distance/20, 1 - distance/20, 1f);
@@ -77,7 +84,7 @@ public class Glutony_sprite : MonoBehaviour
      
             anim.SetBool("isAwake", true);
             awake=true;
-            m_Audio.Play();
+            m_Audio.PlayOneShot(awake_sfx);
      
      
      }
@@ -112,7 +119,7 @@ public class Glutony_sprite : MonoBehaviour
                 
                 movement = dir.normalized * speed * Time.deltaTime;
                 if (movement.magnitude > dir.magnitude) movement = dir;
-               
+
                 if (canAttack)
                 {
                     canAttack = false;
@@ -161,7 +168,7 @@ public class Glutony_sprite : MonoBehaviour
     {
         canAttack = true;
     }
-    
+
     void lookAt ()
   {
         //Locks x and z axis, rotates y to face camera
@@ -179,14 +186,12 @@ public class Glutony_sprite : MonoBehaviour
         if (col.tag == "PlayerAttack" && !justHit)
         {
             justHit = true;
-            anim.SetBool("isHurt", true);
             Invoke("resetHit", 1f);
             health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();
             //Destroy(col.gameObject);
             if (health <= 0)
             {
                 StartCoroutine(die());
-                //Destroy(gameObject);
                 //add method to spawn coins on death
             }
 
@@ -213,5 +218,5 @@ public class Glutony_sprite : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
-    
+
 }

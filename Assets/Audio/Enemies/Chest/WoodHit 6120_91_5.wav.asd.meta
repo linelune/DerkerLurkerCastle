@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Audio/Weapons/Crossbow.meta
+guid: 0e4c6018e7ff2554881b3e2a6cfc7ee0
+folderAsset: yes
+========
 guid: 1164494cc211db94d86c9fffc8407050
+>>>>>>>> 074298a730470844369294a913312874155f993e:Assets/Audio/Enemies/Chest/WoodHit 6120_91_5.wav.asd.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

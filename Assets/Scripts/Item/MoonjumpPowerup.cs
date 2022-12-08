@@ -8,9 +8,15 @@ public class MoonjumpPowerup : MonoBehaviour
     private Vector3 pos1;
     private Vector3 pos2;
     public float m_Bobspeed = 1f;
+
+    // Audio
+    private AudioSource m_Audio;
+    public AudioClip pickupSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        m_Audio = GetComponent<AudioSource>();
         pos1 = new Vector3(transform.position.x, 1f, transform.position.z);
         pos2 = new Vector3(transform.position.x, 1.5f, transform.position.z);
     }
@@ -26,6 +32,7 @@ public class MoonjumpPowerup : MonoBehaviour
     {
         if (col.tag == "Player")
         {
+            m_Audio.PlayOneShot(pickupSound);
             Destroy(gameObject);
             col.gameObject.GetComponent<PlayerMotor>().MoonPower();
         }

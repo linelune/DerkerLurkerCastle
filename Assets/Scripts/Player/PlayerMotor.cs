@@ -37,12 +37,12 @@ public class PlayerMotor : MonoBehaviour
     public UnityEvent SpeedOverlay;
     public UnityEvent MoonOverlay;
     public UnityEvent DerkerOverlay;
+
     public UnityEvent DeathOverlay;
 
     public Animator playerCameraAnimator;
     private bool isDead = false;
     private float deathTime = 0.0f;
-
     // Audio
     //private AudioManager movementAM;
     /*private AudioSource m_Audio;
@@ -51,7 +51,6 @@ public class PlayerMotor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         if (GameObject.Find("HealthBar"))
             healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         else
@@ -74,12 +73,11 @@ public class PlayerMotor : MonoBehaviour
     void Update()
     {
         UpdateHealth();
-        
         if (Keyboard.current[Key.Y].wasPressedThisFrame)
         {
             setSkills();
         }
-            if (health > maxHealth - DerkerDamage)
+        if (health > maxHealth - DerkerDamage)
         {
             health = maxHealth - DerkerDamage;
         }
@@ -100,15 +98,14 @@ public class PlayerMotor : MonoBehaviour
                 crouchTimer = 0f;
             }
         }
-
         CheckDeathEnd();
     }
     public void setSkills()
     {
         if (uM != null)
-            speed = uM.getSpeed() * transform.localScale.x;
+            speed = uM.getSpeed();
         else
-            speed = 5.0f * transform.localScale.x;
+            speed = 5.0f;
 
         baseSpeed = speed;
         sprintSpeed = speed + 2.0f;
@@ -136,14 +133,13 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
         if (transform.TransformDirection(moveDirection) == new Vector3(0.0f, 0.0f, 0.0f)) {
-            //movementAM.StopPlaying("Footsteps");
+            AudioManager.instance.StopPlaying("Footsteps");
             
             //animator.SetFloat("Speed", 0); 
         }
         else {
-           //movementAM.Play("Footsteps", 0f, 1f);
-           //movementAM.Volume("Footsteps", 1.5f);
-            
+            AudioManager.instance.Play("Footsteps", 0f, 1f);
+            AudioManager.instance.Volume("Footsteps", 1.5f);
             //animator.SetFloat("Speed", speed); 
         }
         // apply the impact force:
@@ -192,14 +188,14 @@ public class PlayerMotor : MonoBehaviour
         if (isSprinting)
         {
             speed = sprintSpeed;
-            //movementAM.Play("Footsteps", 0f, 1.5f);
-            //movementAM.Volume("Footsteps", 1.5f);
+            AudioManager.instance.Play("Footsteps", 0f, 1.5f);
+            AudioManager.instance.Volume("Footsteps", 1.5f);
             //animator.SetBool("IsRunning", true);
         }
         else
         {
             speed = baseSpeed;
-            //movementAM.StopPlaying("Footsteps");
+            AudioManager.instance.StopPlaying("Footsteps");
             //animator.SetBool("IsRunning", false);
         }
     }
@@ -268,7 +264,8 @@ public class PlayerMotor : MonoBehaviour
     }
 
     void ResetMoon()
-    {   
+    {
+        
         gravity = -9.81f;
     }
 
@@ -283,22 +280,25 @@ public class PlayerMotor : MonoBehaviour
         if (!isBlocking && !invulnerable)
         {
             //m_Audio.PlayOneShot(takeDamageSound);
-            //movementAM.Play("TakeHit");
+            AudioManager.instance.Play("Grunt");
             health -= damage;
             if(DamageOverlay != null)
             {
                 DamageOverlay.Invoke();
             }
             CheckHealth();
+
         }
         else
-            Debug.Log("Blocked !");
+        {
+            Debug.Log("Blocked!");
+        }
     }
-
     public void Freeze()
     {
         FreezeOverlay.Invoke();
     }
+
 
     public void chargeHit()
     {
@@ -323,7 +323,6 @@ public class PlayerMotor : MonoBehaviour
         }
         CheckHealth();
     }
-
     private void CheckHealth()
     {
         Debug.Log("Player Health : " + health);
@@ -331,18 +330,16 @@ public class PlayerMotor : MonoBehaviour
         if (health <= 0)
         {
             isDead = true;
-
+            AudioManager.instance.Play("Die");
             playerCameraAnimator.SetBool("isPlayerDead", true);
 
             DeathOverlay.Invoke();
         }
     }
-
     public bool IsPlayerAlive()
     {
-        return ! isDead;
+        return !isDead;
     }
-
     private void CheckDeathEnd()
     {
         if (!isDead)
@@ -353,7 +350,6 @@ public class PlayerMotor : MonoBehaviour
         if (deathTime >= 2.5f)
             SceneManager.LoadScene("Death Menu");
     }
-
     void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag == "DeathPlane")
@@ -371,4 +367,5 @@ public class PlayerMotor : MonoBehaviour
             healthBar.value = health;
         }
     }
+    //add death event
 }
