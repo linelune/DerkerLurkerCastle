@@ -21,6 +21,13 @@ public class GameManager : MonoBehaviour
         {
             bossSpawned = true;
             GameObject[] spawns = GameObject.FindGameObjectsWithTag("EnemySpawnPoint");
+            
+            if (spawns.Length <= 0)
+            {
+                bossSpawned = false;
+                return;
+            }
+
             int target = Random.Range(0, spawns.Length-1);
             Instantiate(bossPortal, spawns[target].transform.position, spawns[target].transform.rotation);
             
