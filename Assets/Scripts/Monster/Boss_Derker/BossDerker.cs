@@ -29,6 +29,8 @@ public class BossDerker : MonoBehaviour
     private states state;
 
     private int health = 1200;
+    public delegate void Death();
+    public static event Death OnDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -176,6 +178,7 @@ public class BossDerker : MonoBehaviour
 
     IEnumerator die()
     {
+        OnDeath?.Invoke();
         state = states.DIE;
         anim.SetBool("isHurting", true);
         for (float i = 5; i >= 0; i -= Time.deltaTime)
