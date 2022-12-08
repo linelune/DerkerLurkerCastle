@@ -33,9 +33,8 @@ public class Glutony_sprite : MonoBehaviour
     float velocity = 0;
 
     // Audio
-    public AudioSource m_Audio;
+    private AudioSource m_Audio;
     public AudioClip awake_sfx;
-    public AudioClip spit_sfx;
 
 
     private GameObject target;
