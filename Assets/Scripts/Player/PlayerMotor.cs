@@ -44,9 +44,10 @@ public class PlayerMotor : MonoBehaviour
     private bool isDead = false;
     private float deathTime = 0.0f;
     // Audio
-    //private AudioManager movementAM;
-    /*private AudioSource m_Audio;
-    public AudioClip takeDamageSound;*/
+    public AudioSource m_Audio;
+    public AudioSource footsteps;
+    public AudioClip takeDamageSound;
+    public AudioClip dieSound;
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +67,6 @@ public class PlayerMotor : MonoBehaviour
         baseSpeed = speed;
         sprintSpeed = speed + 2.0f;
         characterController = GetComponent<CharacterController>();
-        //movementAM = GetComponent<AudioManager>();
         //m_Audio = GetComponent<AudioSource>();
     }
 
@@ -133,13 +133,12 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
         if (transform.TransformDirection(moveDirection) == new Vector3(0.0f, 0.0f, 0.0f)) {
-            AudioManager.instance.StopPlaying("Footsteps");
-            
+
+            footsteps.enabled = false;
             //animator.SetFloat("Speed", 0); 
         }
         else {
-            AudioManager.instance.Play("Footsteps", 0f, 1f);
-            AudioManager.instance.Volume("Footsteps", 1.5f);
+            footsteps.enabled = true;
             //animator.SetFloat("Speed", speed); 
         }
         // apply the impact force:
@@ -149,7 +148,7 @@ public class PlayerMotor : MonoBehaviour
             // consumes the impact energy each cycle:
             impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
             //speed = baseSpeed;
-
+            
         }
         else
         {
@@ -157,7 +156,7 @@ public class PlayerMotor : MonoBehaviour
 
             // Move on y axis (jump and gravity)
             playerVelocity.y += gravity * Time.deltaTime;
-
+            
         }
         if (isGrounded && playerVelocity.y < 0)
         playerVelocity.y = -2.0f;
@@ -188,14 +187,13 @@ public class PlayerMotor : MonoBehaviour
         if (isSprinting)
         {
             speed = sprintSpeed;
-            AudioManager.instance.Play("Footsteps", 0f, 1.5f);
-            AudioManager.instance.Volume("Footsteps", 1.5f);
+            
             //animator.SetBool("IsRunning", true);
         }
         else
         {
             speed = baseSpeed;
-            AudioManager.instance.StopPlaying("Footsteps");
+            
             //animator.SetBool("IsRunning", false);
         }
     }
@@ -279,8 +277,8 @@ public class PlayerMotor : MonoBehaviour
     {
         if (!isBlocking && !invulnerable)
         {
-            //m_Audio.PlayOneShot(takeDamageSound);
-            AudioManager.instance.Play("Grunt");
+            m_Audio.PlayOneShot(takeDamageSound);
+            
             health -= damage;
             if(DamageOverlay != null)
             {
@@ -330,7 +328,8 @@ public class PlayerMotor : MonoBehaviour
         if (health <= 0)
         {
             isDead = true;
-            AudioManager.instance.Play("Die");
+
+            m_Audio.PlayOneShot(dieSound);
             playerCameraAnimator.SetBool("isPlayerDead", true);
 
             DeathOverlay.Invoke();

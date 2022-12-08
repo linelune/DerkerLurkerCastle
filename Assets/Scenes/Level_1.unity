@@ -302,6 +302,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpgradeSpeed
       objectReference: {fileID: 0}
+    - target: {fileID: 8156928975246089483, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156928975246089483, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
+      propertyPath: m_Pitch
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156928975246089483, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
+      propertyPath: m_Volume
+      value: 0.527
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156928975246089483, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156928975246089483, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -4470558125972615415, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d0d4dc45eac145049b60918ea17fa00c, type: 3}
@@ -473,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2911155744520280973, guid: 0d95d685c440e45cc889541d6481954f, type: 3}
       propertyPath: sounds.Array.size
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2911155744520280973, guid: 0d95d685c440e45cc889541d6481954f, type: 3}
       propertyPath: sounds.Array.data[1].clip

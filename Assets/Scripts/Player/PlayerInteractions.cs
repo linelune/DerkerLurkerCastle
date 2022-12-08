@@ -35,7 +35,6 @@ public class PlayerInteractions : MonoBehaviour
     {
         //animator.SetTrigger("OnAttack");
         // Audio
-        FindObjectOfType<AudioManager>().Play("SwordHit", 0.2f);
         weapons[activeWeapon].StartCoroutine("Attack");
         //StartCoroutine(EnableCollider(sword, 1));
     }
