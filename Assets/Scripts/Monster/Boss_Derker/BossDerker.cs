@@ -28,7 +28,7 @@ public class BossDerker : MonoBehaviour
     private enum states{PROJECTILE, CLONE, DIE };
     private states state;
 
-    private int health = 1200;
+    private int health = 1000;
     // Start is called before the first frame update
     void Start()
     {

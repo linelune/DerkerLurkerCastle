@@ -18,7 +18,15 @@ public class BossPortal : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) < 2.0f)
         {
             // TO DO - Go back to life;
-            SceneManager.LoadScene("Ghostknight_Boss");
+            int t = Random.Range(0, 2);
+            if (t >= 1)
+            {
+                SceneManager.LoadScene("Ghostknight_Boss");
+            }
+            else
+            {
+                SceneManager.LoadScene("Goliath Boss");
+            }
         }
     }
 }
