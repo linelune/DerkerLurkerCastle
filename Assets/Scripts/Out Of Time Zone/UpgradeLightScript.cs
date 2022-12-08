@@ -58,6 +58,8 @@ public class UpgradeLightScript : MonoBehaviour
 
     void Update()
     {
+        UIManager.coinDisplay.text = um.coins.ToString();
+        
         // Show question when the player get close to the light
 
         if (Vector3.Distance(transform.position, playerSoul.position) < 7.0f && text.text == "")
