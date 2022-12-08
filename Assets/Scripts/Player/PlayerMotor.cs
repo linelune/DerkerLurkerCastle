@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class PlayerMotor : MonoBehaviour
@@ -26,14 +27,22 @@ public class PlayerMotor : MonoBehaviour
     public float crouchTimer;
     public int health = 100;
     public int maxHealth = 100;
+    private int DerkerDamage = 0;
+    public Slider healthBar;
     Vector3 impact = Vector3.zero;
 
     public UnityEvent DamageOverlay;
+    public UnityEvent FreezeOverlay;
     public UnityEvent InvulnOverlay;
     public UnityEvent SpeedOverlay;
     public UnityEvent MoonOverlay;
     public UnityEvent DerkerOverlay;
 
+    public UnityEvent DeathOverlay;
+
+    public Animator playerCameraAnimator;
+    private bool isDead = false;
+    private float deathTime = 0.0f;
     // Audio
     //private AudioManager movementAM;
     /*private AudioSource m_Audio;
@@ -42,7 +51,10 @@ public class PlayerMotor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (GameObject.Find("HealthBar"))
+            healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
+        else
+            healthBar = null;
         Cursor.lockState = CursorLockMode.Locked;
 
         if (GameObject.FindWithTag("UpgradeManager"))
@@ -60,13 +72,14 @@ public class PlayerMotor : MonoBehaviour
 
     void Update()
     {
+        UpdateHealth();
         if (Keyboard.current[Key.Y].wasPressedThisFrame)
         {
             setSkills();
         }
-            if (health > maxHealth)
+        if (health > maxHealth - DerkerDamage)
         {
-            health = maxHealth;
+            health = maxHealth - DerkerDamage;
         }
         isGrounded = characterController.isGrounded;
         if (isCrouched)
@@ -85,7 +98,7 @@ public class PlayerMotor : MonoBehaviour
                 crouchTimer = 0f;
             }
         }
-
+        CheckDeathEnd();
     }
     public void setSkills()
     {
@@ -112,6 +125,9 @@ public class PlayerMotor : MonoBehaviour
 
     public void ProcessMove(Vector2 input)
     {
+        if (isDead)
+            return;
+
         Vector3 moveDirection = Vector3.zero;
         // Move on x and z axis
         moveDirection.x = input.x;
@@ -270,19 +286,19 @@ public class PlayerMotor : MonoBehaviour
             {
                 DamageOverlay.Invoke();
             }
-            Debug.Log("Player Health: " + health);
-            if(health <= 0)
-            {
-                //Add death event
-                AudioManager.instance.Play("Die");
-                SceneManager.LoadScene("Out Of Time Zone");
-            }
+            CheckHealth();
+
         }
         else
         {
             Debug.Log("Blocked!");
         }
     }
+    public void Freeze()
+    {
+        FreezeOverlay.Invoke();
+    }
+
 
     public void chargeHit()
     {
@@ -296,19 +312,43 @@ public class PlayerMotor : MonoBehaviour
 
     public void Derk()
     {
-        maxHealth -= 25;
-        if(health > maxHealth)
+        DerkerDamage += 25;
+        if(health > maxHealth - DerkerDamage)
         {
-            health = maxHealth;
+            health = maxHealth - DerkerDamage;
         }
         if(DerkerOverlay != null)
         {
             DerkerOverlay.Invoke();
         }
+        CheckHealth();
+    }
+    private void CheckHealth()
+    {
+        Debug.Log("Player Health : " + health);
+
         if (health <= 0)
         {
-            SceneManager.LoadScene("Out Of Time Zone");
+            isDead = true;
+            AudioManager.instance.Play("Die");
+            playerCameraAnimator.SetBool("isPlayerDead", true);
+
+            DeathOverlay.Invoke();
         }
+    }
+    public bool IsPlayerAlive()
+    {
+        return !isDead;
+    }
+    private void CheckDeathEnd()
+    {
+        if (!isDead)
+            return;
+
+        deathTime += Time.deltaTime;
+
+        if (deathTime >= 2.5f)
+            SceneManager.LoadScene("Death Menu");
     }
     void OnTriggerEnter(Collider col)
     {
@@ -316,6 +356,15 @@ public class PlayerMotor : MonoBehaviour
         {
             //die
             SceneManager.LoadScene("Out Of Time Zone");
+        }
+    }
+
+    public void UpdateHealth()
+    {
+        if (healthBar != null)
+        {
+            healthBar.maxValue = maxHealth;
+            healthBar.value = health;
         }
     }
     //add death event
