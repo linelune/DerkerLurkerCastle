@@ -780,8 +780,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 6850283744058999547}
-  xSensitivity: 30
-  ySensitivity: 30
 --- !u!114 &2559340718946386002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,6 +798,7 @@ MonoBehaviour:
   crouchTimer: 0
   health: 100
   maxHealth: 100
+  healthBar: {fileID: 0}
   DamageOverlay:
     m_PersistentCalls:
       m_Calls:
@@ -913,11 +912,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5771529610610782491}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

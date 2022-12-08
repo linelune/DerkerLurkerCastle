@@ -61,7 +61,7 @@ MonoBehaviour:
   emitter: {fileID: 7300048857285056778}
   m_Audio: {fileID: 0}
   awake_sfx: {fileID: 8300000, guid: 1e7bd8dca9695db4f84c6a6677ef3dea, type: 3}
-  spit_sfx: {fileID: 0}
+  spit_sfx: {fileID: 8300000, guid: a9cb2367d045e7a488922fa4983db630, type: 3}
 --- !u!114 &3733958934962991804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,8 +217,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

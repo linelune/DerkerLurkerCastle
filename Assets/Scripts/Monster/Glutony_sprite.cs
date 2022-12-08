@@ -84,7 +84,7 @@ public class Glutony_sprite : MonoBehaviour
      
             anim.SetBool("isAwake", true);
             awake=true;
-            m_Audio.PlayOneShot(awake_sfx);
+            m_Audio.PlayOneShot(awake_sfx, 0.2f);
      
      
      }
@@ -158,6 +158,7 @@ public class Glutony_sprite : MonoBehaviour
     }
     void Attack()
     {
+        m_Audio.PlayOneShot(spit_sfx, 0.4f);
         anim.SetBool("isAttacking", false);
         Rigidbody shot = Instantiate(projectile, emitter.transform.position, emitter.transform.rotation);
         shot.velocity = ((Target.position + new Vector3(0f, 1f, 0f)) - emitter.transform.position).normalized * 15f;
