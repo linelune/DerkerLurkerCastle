@@ -150,11 +150,13 @@ public class UIManager : MonoBehaviour
                 if (pauseMenu.activeSelf)
                 {
                     ResumeGame();
+                    //ReturnFromControlsToGame();
+                    //ReturnFromOptionsToGame();
                 }
                 else
                     PauseGame();
                 pauseMenu.SetActive(!pauseMenu.activeSelf);
-                healthBarAndCoin.SetActive(!inGameUI.activeSelf);
+                healthBarAndCoin.SetActive(!pauseMenu.activeSelf);
             }
         }
     }
