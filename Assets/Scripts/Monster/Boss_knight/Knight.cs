@@ -24,7 +24,7 @@ public class Knight : MonoBehaviour
     float Gravity = 9.8f;
     float velocity = 0;
     private bool justHit = false;
-    private int health = 600;
+    private int health = 500;
     public AudioSource m_OneShotAudio;
     public AudioSource m_ConstantAudio;
     public AudioClip attack_sfx;
