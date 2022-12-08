@@ -10,7 +10,11 @@ TagManager:
   - UpgradeManager
   - PlayerAttack
   - Boss
+  - SaveManager
   - DeathPlane
+  - Controls
+  - IngameUI
+  - Menu
   layers:
   - Default
   - TransparentFX

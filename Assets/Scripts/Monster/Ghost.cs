@@ -5,22 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class Ghost : MonoBehaviour
 {
-//GameObject mPlayer;
-//PlayerInput mPI;
-[SerializeField]
-Transform Target;
-float Damping=1f;
-    SpriteRenderer rend;
+    //GameObject mPlayer;
+    //PlayerInput mPI;
+    [SerializeField]
+    Transform Target;
+    //float Damping=1f;
+
     //[SerializeField] Material mMfreeze;
-    DisplayManager mDM;
-Freezer mFreezer;
-float distance;
+    //DisplayManager mDM;
+    //Freezer mFreezer;
+    float distance;
+    SpriteRenderer rend;
     public GameObject deathPart;
     public float ChaseSpeed = 0.05f;
     private int health = 20;
     private bool justHit = false;
     private bool frozen = false;
-public float damage;
+    public float damage;
     private AudioSource m_Audio;
     private Animator anim;
     public AudioClip awake_sfx;
@@ -30,11 +31,11 @@ public float damage;
     GameObject mPlayer;
     PlayerMotor mPI;
     public bool cooldown = true;
-    bool freezed = false;
+    //bool freezed = false;
     private float resetval;
 
     private GameObject target;
-    // Start is called before the first frame update
+
     void Start()
     {
         mPlayer = GameObject.FindWithTag("Player");
@@ -48,27 +49,23 @@ public float damage;
         //mPI=mPlayer.GetComponent<PlayerInput>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-     Target=GameObject.FindWithTag("Player").transform;
-     
-     
-     distance=(Target.position-transform.position).magnitude;
+        Target=GameObject.FindWithTag("Player").transform;
+          
+        distance=(Target.position-transform.position).magnitude;
+
         if (distance < 30f)
-        {
             rend.color = new Color(1 - distance / 20, 1 - distance / 20, 1 - distance / 20, 1f);
-        }
         else
-        {
             rend.color = new Color(0.0f, 0.0f, 0.0f, 1f);
-        }
+
         // < 3 is close
         // > 3 is far
         //Debug.Log(distance.ToString());
         lookAt();
-     if(distance<15f)
-     {
+        if(distance<15f)
+        {
             if (!awake)
             {
                 awake=true;
@@ -76,9 +73,7 @@ public float damage;
                 m_Audio.PlayOneShot(awake_sfx, 0.5f);
             }
             if (distance > 2f)
-            {
                 gameObject.transform.position = Vector3.MoveTowards(transform.position, Target.position + new Vector3(0f, 1.5f, 0f), ChaseSpeed);
-            }
 
             if(cooldown && distance<3f)
             {
@@ -86,23 +81,13 @@ public float damage;
                 Debug.Log("WHY");
                 anim.SetBool("isAttacking", true);
                 frozen=true;
-     
             }
-    
-     }
-     else
-        {
+        } else
             awake = false;
-        }
-     
-    
-    
-        
     }
     
     void lookAt ()
-  {
-        
+    {    
         var delta = Target.position - transform.position;
         delta.x = delta.z = 0;
         transform.LookAt(Target.transform.position - delta);
@@ -152,6 +137,9 @@ public float damage;
         mPI.TakeDamage(5);
         mPI.speed = 0;
         mPI.health--;
+
+        mPI.Freeze();
+
         Debug.Log("freeze");
         Invoke("releasePlayer", 4f);
         Invoke("resetCoolDown", 8f);

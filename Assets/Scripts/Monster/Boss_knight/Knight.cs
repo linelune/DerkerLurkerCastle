@@ -13,12 +13,12 @@ public class Knight : MonoBehaviour
     public GameObject GhostParticles;
     private GameObject Target;
     private Animator anim;
-    private float speed = 3f;
+    //private float speed = 3f;
     private bool canAttack= true;
     private bool canCharge = true;
     private bool isCharging = false;
     private bool canSpawnGhost = true;
-    Vector3 movement;
+    //Vector3 movement;
     Vector3 chargeTarget;
     private CharacterController m_Controller;
     float Gravity = 9.8f;

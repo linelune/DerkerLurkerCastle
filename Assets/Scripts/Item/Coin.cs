@@ -5,8 +5,8 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public GameObject model;
-    private bool collectible = false;
-    private GameObject pot;
+    //private bool collectible = false;
+    //private GameObject pot;
     private AudioSource m_Audio;
     public AudioClip bounce_sfx;
     public AudioClip pickup_sfx;
@@ -30,6 +30,7 @@ public class Coin : MonoBehaviour
             m_Audio.PlayOneShot(pickup_sfx, 0.1f);
             other.gameObject.GetComponent<PlayerMotor>().health += 1;
             GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().coins += 1;
+            UIManager.coinDisplay.text = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().coins.ToString();
             Debug.Log("We got coin");
             StartCoroutine(cleanup());
         }
@@ -43,10 +44,7 @@ public class Coin : MonoBehaviour
             max_bounces -= 1;
         }
     }
-    private void makeCollectible()
-    {
-        collectible = true;
-    }
+
     private IEnumerator cleanup()
     {
         Destroy(model);

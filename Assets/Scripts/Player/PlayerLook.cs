@@ -6,11 +6,22 @@ public class PlayerLook : MonoBehaviour
 {
     public Camera playerCamera;
 
-    public float xSensitivity = 20.0f;
-    public float ySensitivity = 20.0f;
+    public static float xSensitivity;
+    public static float ySensitivity;
 
     private float xRotation = 0f;
 
+    private void Awake()
+    {
+        xSensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+        ySensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+    }
+
+    private void Update()
+    {
+        xSensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+        ySensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
+    }
     public void ProcessLook(Vector2 input)
     {
         float mouseX = input.x;
@@ -23,6 +34,14 @@ public class PlayerLook : MonoBehaviour
         // Apply this to our camera transform
         playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f,0f);
         
+        // Rotate Player to look left and right
+        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+    }
+
+    public void ProcessHorizontalLook(Vector2 input)
+    {
+        float mouseX = input.x;
+
         // Rotate Player to look left and right
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
     }

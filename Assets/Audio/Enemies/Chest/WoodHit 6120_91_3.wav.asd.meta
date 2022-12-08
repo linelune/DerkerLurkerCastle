@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Audio/Enemies/Chest.meta
+guid: 4a45a3fb2b62d3e4a8095a8e217276e7
+folderAsset: yes
+========
 guid: ba279f3ff0520f74e974df90028a1864
+>>>>>>>> 074298a730470844369294a913312874155f993e:Assets/Audio/Enemies/Chest/WoodHit 6120_91_3.wav.asd.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
