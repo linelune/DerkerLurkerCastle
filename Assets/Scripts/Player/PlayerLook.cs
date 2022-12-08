@@ -22,6 +22,7 @@ public class PlayerLook : MonoBehaviour
         xSensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
         ySensitivity = PlayerPrefs.GetFloat("sensitivityXnY");
     }
+
     public void ProcessLook(Vector2 input)
     {
         float mouseX = input.x;

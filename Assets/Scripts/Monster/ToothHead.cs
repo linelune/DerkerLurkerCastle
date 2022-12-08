@@ -13,8 +13,8 @@ public class ToothHead : MonoBehaviour
     public GameObject hitbox;
     private CharacterController m_Controller;
     float distance;
-    bool justTP = false;
-    bool tpLock = true;
+    //bool justTP = false;
+    //bool tpLock = true;
     bool attackLock = true;
     float Gravity = 9.8f;
     float velocity = 0;
