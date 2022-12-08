@@ -186,6 +186,7 @@ public class Glutony_sprite : MonoBehaviour
     {
         if (col.tag == "PlayerAttack" && !justHit)
         {
+            anim.SetBool("isHurt", true);
             justHit = true;
             Invoke("resetHit", 1f);
             health -= col.gameObject.GetComponent<PlayerHitbox>().getDamage();

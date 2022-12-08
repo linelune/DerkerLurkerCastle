@@ -89,8 +89,8 @@ MonoBehaviour:
   speed: 3
   hitbox: {fileID: 6348132423974045048, guid: 247022ac2542c254e85dd72446c58486, type: 3}
   deathPart: {fileID: 2312591318274358134, guid: 1c8b119cdc4a3054780e59320414a67a, type: 3}
-  attack_sfx: {fileID: 8300000, guid: b609876ba6b5b3b4ca7271338aa0c51c, type: 3}
-  damage_sfx: {fileID: 8300000, guid: d55296892cffb044e99edae1e22bd456, type: 3}
+  attack_sfx: {fileID: 8300000, guid: d1f8d4165dfa79a4fa92289d2d83d58f, type: 3}
+  damage_sfx: {fileID: 8300000, guid: 8332815109b433243a4e134868c6d46f, type: 3}
   teleport_sfx: {fileID: 0}
 --- !u!212 &510169761338466001
 SpriteRenderer:
