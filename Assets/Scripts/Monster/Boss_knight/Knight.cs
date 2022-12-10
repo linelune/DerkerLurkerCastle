@@ -215,6 +215,6 @@ public class Knight : MonoBehaviour
             Debug.Log("Coin !");
         }
         yield return new WaitForSeconds(10f);
-        SceneManager.LoadScene("Level_2");
+        SceneManager.LoadScene("BossCutscene");
     }
 }

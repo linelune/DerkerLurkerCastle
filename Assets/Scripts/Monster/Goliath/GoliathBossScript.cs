@@ -103,6 +103,6 @@ public class GoliathBossScript : MonoBehaviour
         }
         goliath.transform.position = new Vector3(-100f, 0f, 0f);
         yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene("Level_2");
+        SceneManager.LoadScene("BossCutscene");
     }
 }

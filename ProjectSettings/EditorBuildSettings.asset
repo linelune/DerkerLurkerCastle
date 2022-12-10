@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Goliath Boss.unity
     guid: 57f2ff5a373e0284ba7f11c4c252b521
   - enabled: 1
+    path: Assets/Scenes/BossCutscene.unity
+    guid: f51d537009aa55a46a282b4619c1f346
+  - enabled: 1
     path: Assets/Scenes/Level_2.unity
     guid: 5352fed27a9c5234ebb362d91a27b20e
   - enabled: 1
